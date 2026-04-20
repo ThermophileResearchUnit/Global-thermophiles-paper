@@ -1,0 +1,111 @@
+Repair_mechanism,Symbol,Description,COG
+Base excision repair,AlkA,3-methyladenine DNA glycosylase/8-oxoguanine DNA glycosylase,COG0122
+Base excision repair,AlkC,3-methyladenine DNA glycosylase,COG4335
+Base excision repair,AlkD,3-methyladenine DNA glycosylase,COG4912
+Base excision repair,Mpg,3-methyladenine DNA glycosylase,COG2094
+Base excision repair,Mug,G:T/U-mismatch repair DNA glycosylase,COG3663
+Base excision repair,MutM (Fpg),Formamidopyrimidine-DNA glycosylase,COG0266
+Base excision repair,MutY,"Adenine-specific DNA glycosylase, acts on AG and A-oxoG pairs",COG1194
+Base excision repair,Nfi,Deoxyinosine 3'endonuclease (endonuclease V),COG1515
+Base excision repair,Nfo,Endonuclease IV,COG0648
+Base excision repair,Nth,Endonuclease III,COG0177
+Base excision repair,Tag,3-methyladenine DNA glycosylase,COG2818
+Base excision repair,Udg4,Uracil-DNA glycosylase ,COG1573
+Base excision repair,Ung,Uracil DNA glycosylase,COG0692
+Base excision repair,XthA,Exonuclease III,COG0708
+Direct reversal,Ada,Bifunctional transcriptional activator/DNA repair enzyme ,COG2169
+Direct reversal,Ada,Bifunctional transcriptional activator/DNA repair enzyme ,COG0350
+Direct reversal,AdaB,O6-methylguanine-DNA-protein-cysteine methyltransferase,COG0350
+Direct reversal,AlkB,Alkylated DNA repair dioxygenase,COG3145
+Direct reversal,Dcd,Deoxycytidine triphosphate deaminase,COG0717
+Direct reversal,DJ-1/PfpI family,methylglyoxal and glyoxal deglycase,COG0693
+Direct reversal,Dut,dUTPase,COG0756
+Direct reversal,PhrB,Deoxyribodipyrimidine photolyase,COG0415
+Direct reversal,RdgB,Inosine/xanthosine triphosphate pyrophosphatase,COG0127
+Direct reversal,SplB,Spore photoproduct lyase family protein,COG1533
+Ligases with adjacent genes,DinP,Nucleotidyltransferase/DNA polymerase involved in DNA repair,COG0389
+Ligases with adjacent genes,DnaA,Chromosomal replication initiation ATPase DnaA,COG0593
+Ligases with adjacent genes,DnaE,"DNA polymerase III, alpha subunit",COG0587
+Ligases with adjacent genes,DnaE2,putative Error-prone DNA polymerase dnaE2,COG0587
+Ligases with adjacent genes,DnaN,"DNA polymerase III sliding clamp (beta) subunit, PCNA homolog",COG0592
+Ligases with adjacent genes,DnaQ,"DNA polymerase III, epsilon subunit or related 3'-5' exonuclease",COG0847
+Ligases with adjacent genes,DnaX,"DNA polymerase III, gamma/tau subunits",COG2812
+Ligases with adjacent genes,DR_B0095,putative exonuclease,COG5018
+Ligases with adjacent genes,Exo,5'-3' exonuclease,COG0258
+Ligases with adjacent genes,GyrA,"DNA gyrase/topoisomerase IV, subunit A",COG0188
+Ligases with adjacent genes,GyrB,"DNA gyrase/topoisomerase IV, subunit B",COG0187
+Ligases with adjacent genes,HelD,DNA helicase IV,COG3973
+Ligases with adjacent genes,HepA,"Superfamily II DNA or RNA helicase, SNF2 family",COG0553
+Ligases with adjacent genes,LigA,NAD-dependent DNA ligase,COG0272
+Ligases with adjacent genes,MutK,Uncharacterized membrane protein (maybe involved in DNA repair),COG2354
+Ligases with adjacent genes,NucS (EndoMS),"Endonuclease NucS, RecB family",COG1637
+Ligases with adjacent genes,Obg,GTPase involved in cell partioning and DNA repair,COG0536
+Ligases with adjacent genes,PARG,poly ADP-ribose glycohydrolase,COG4295
+Ligases with adjacent genes,PNKP,polynucleotide kinase,COG0617
+Ligases with adjacent genes,PNKP,polynucleotide kinase,COG4639
+Ligases with adjacent genes,PolA,DNA polymerase I - 3'-5' exonuclease and polymerase domains,COG0749
+Ligases with adjacent genes,PolB,DNA polymerase elongation subunit (family B),COG0417
+Ligases with adjacent genes,PolX,DNA polymerase/3'-5' exonuclease PolX,COG1796
+Ligases with adjacent genes,PolX,DNA polymerase/3'-5' exonuclease PolX,COG1387
+Ligases with adjacent genes,PriA,Primosomal protein N' (replication factor Y) - superfamily II helicase,COG1198
+Ligases with adjacent genes,RadC,DNA repair protein containing a helix-hairpin-helix DNA-binding motif ,COG2003
+Ligases with adjacent genes,RarA,Replication-associated recombination protein RarA ,COG2256
+Ligases with adjacent genes,RnhA,Ribonuclease HI,COG0328
+Ligases with adjacent genes,RnhB,Ribonuclease HII,COG0164
+Ligases with adjacent genes,SbcB,Exonuclease I,COG2925
+Ligases with adjacent genes,Ssb,Single-stranded DNA-binding protein,COG0629
+Ligases with adjacent genes,Top1,DNA topoisomerase IB ,COG3569
+Ligases with adjacent genes,TopA,DNA topoisomerase IA/Uncharacterized C-terminal domain of TopIA ,COG0550
+Ligases with adjacent genes,TopA,DNA topoisomerase IA/Uncharacterized C-terminal domain of TopIA ,COG1754
+Ligases with adjacent genes,TopA-like,DNA topoisomerase IA,COG0550
+Ligases with adjacent genes,XseA,"Exonuclease VII, large subunit",COG1570
+Ligases with adjacent genes,XseB,Exonuclease VII small subunit,COG1722
+Ligases with adjacent genes,YqgF,"RNase H-fold protein, predicted Holliday junction resolvase ",COG0816
+Ligases with adjacent genes,YrdD,ssDNA-binding Zn-finger and Zn-ribbon domains of topoisomerase 1 ,COG0551
+Mismatch repair,Dam,Site-specific DNA-adenine methylase,COG0338
+Mismatch repair,Dcm,Site-specific DNA-cytosine methylase,COG0270
+Mismatch repair,MutH,DNA mismatch repair protein MutH,COG3066
+Mismatch repair,MutL,DNA mismatch repair ATPase,COG0323
+Mismatch repair,MutS,DNA mismatch repair ATPase,COG0249
+Mismatch repair,MutS2,dsDNA-specific endonuclease/ATPase,COG1193
+Mismatch repair,Vsr,very short path repair endonuclease (G:T-mismatch) ,COG3727
+Mismatch repair,YcjD,endonuclease domain-containing protein (DUF559),COG2852
+Mismatch repair,YhdJ,"DNA modification methylase (DR with frameshift, WP correct)",COG0863
+Novel fusions,AdaA/AlkA,fusion AdaA/AlkA,COG0122
+Novel fusions,AdaA/AlkA,fusion AdaA/AlkA,COG2169
+Novel fusions,Nth/Dcm,fusion Nth/Dcm,COG0270
+Novel fusions,Nth/Dcm,fusion Nth/Dcm,COG0177
+Novel fusions,PhrB/Ung,fusion PhrB/Ung,COG0692
+Novel fusions,PhrB/Ung,fusion PhrB/Ung,COG0415
+Nucleotide excision repair,Atl1,"Alkylated DNA nucleotide flippase Atl1, Ada-like DNA-binding domain",COG3695
+Nucleotide excision repair,Cho,Excinuclease cho,COG0322
+Nucleotide excision repair,Mfd,Transcription-repair coupling factor (superfamily II helicase),COG1197
+Nucleotide excision repair,SSL2 (Rad25),Superfamily II DNA or RNA helicase (multi-form),COG1061
+Nucleotide excision repair,Uve (UvsE),UV DNA damage repair endonuclease ,COG4294
+Nucleotide excision repair,UvrA,"Excinuclease UvrABC, ATPase subunit",COG0178
+Nucleotide excision repair,UvrA2,"Excinuclease UvrABC, ATPase subunit",COG0178
+Nucleotide excision repair,UvrB,"Excinuclease UvrABC, helicase subunit",COG0556
+Nucleotide excision repair,UvrC,"Excinuclease UvrABC, nuclease subunit",COG0322
+Nucleotide excision repair,UvrD,Superfamily I DNA or RNA helicase,COG0210
+Nucleotide excision repair,UvrD-like,Superfamily I DNA or RNA helicase,COG0210
+Recombinational repair,RadA (Sms),DNA repair protein RadA,COG1066
+Recombinational repair,RecA,Protein RecA; Recombinase A,COG0468
+Recombinational repair,RecB,ATP-dependent exoDNAse (exonuclease V) beta subunit,COG1074
+Recombinational repair,RecC,Exonuclease V gamma subunit,COG1330
+Recombinational repair,RecD,ATP-dependent RecD-like DNA helicase (RecD2),COG0507
+Recombinational repair,RecF,Recombinational DNA repair ATPase RecF,COG1195
+Recombinational repair,RecG,RecG-like helicase,COG1200
+Recombinational repair,RecJ,Single-stranded DNA-specific exonuclease,COG0608
+Recombinational repair,RecN,DNA repair ATPase RecN,COG0497
+Recombinational repair,RecO,DNA repair protein RecO; Recombination protein O,COG1381
+Recombinational repair,RecQ,Superfamily II DNA helicase RecQ (including HRDC domains),COG0514
+Recombinational repair,RecQ-like,RecQ-like (without HRDC domain),COG0514
+Recombinational repair,RecR,Recombinational DNA repair protein RecR,COG0353
+Recombinational repair,RecT,Recombinational DNA repair protein RecT,COG3723
+Recombinational repair,RecX,"SOS response regulatory protein OraA/RecX, interacts with RecA",COG2137
+Recombinational repair,RusA,Holliday junction resolvase RusA (prophage-encoded endonuclease),COG4570
+Recombinational repair,RuvA,"Holliday junction resolvasome RuvABC, DNA-binding subunit",COG0632
+Recombinational repair,RuvB,"Holliday junction resolvasome RuvABC, DNA helicase subunit",COG2255
+Recombinational repair,RuvC,"Holliday junction resolvasome RuvABC, endonuclease subunit",COG0817
+Recombinational repair,SbcC,"DNA repair exonuclease SbcCD, ATPase subunit",COG0419
+Recombinational repair,SbcD,"DNA repair exonuclease SbcCD, nuclease subunit",COG0420
