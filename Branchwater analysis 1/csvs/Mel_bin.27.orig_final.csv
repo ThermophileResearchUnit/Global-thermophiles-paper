@@ -1,0 +1,8 @@
+acc,assay_type,bioproject,cANI,collection_date_sam,containment,geo_loc_name_country_calc,lat_lon,organism
+SRR13258664,WGS,PRJNA685225,1.0,2018-11-25,0.99,uncalculated,"[-74.3555,164.6955]",soil metagenome
+SRR29496777,Hi-C,PRJNA1126331,0.94,2022-12-01,0.26,uncalculated,"[-73.45,165.5]",metagenome
+SRR12918224,WGS,PRJNA651859,0.9,2017-10-13,0.11,USA,"[41.896,-89.3636]",soil metagenome
+SRR29483437,WGS,PRJNA1126331,1.0,2022-12-01,1.0,uncalculated,"[-74.35,164.7]",metagenome
+SRR29483436,WGS,PRJNA1126331,1.0,2022-12-01,0.91,uncalculated,"[-73.45,165.5]",metagenome
+SRR28401739,WGA,PRJNA1085405,0.9,2018-08-01,0.11,China,null,metagenome
+SRR13254584,WGS,PRJNA685225,0.94,2018-11-25,0.26,uncalculated,"[-74.3556,164.6956]",soil metagenome

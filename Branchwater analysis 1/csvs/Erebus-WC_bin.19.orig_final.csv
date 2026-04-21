@@ -1,0 +1,13 @@
+acc,assay_type,bioproject,cANI,collection_date_sam,containment,geo_loc_name_country_calc,lat_lon,organism
+SRR29483437,WGS,PRJNA1126331,0.94,2022-12-01,0.3,uncalculated,"[-74.35,164.7]",metagenome
+SRR24677579,WGS,PRJNA974462,0.92,2018-10-02,0.19,USA,"[40.8008,-76.3415]",mine metagenome
+SRR26663048,WGS,PRJNA1035420,0.9,null,0.11,China,"[24.9,102.89]",soil metagenome
+SRR26663026,WGS,PRJNA1035420,0.93,null,0.2,China,"[24.61,117.81]",soil metagenome
+SRR29483436,WGS,PRJNA1126331,0.92,2022-12-01,0.17,uncalculated,"[-73.45,165.5]",metagenome
+SRR25893917,WGS,PRJNA1009937,0.9,2021-05-01,0.1,China,null,sediment metagenome
+SRR15082123,WGS,PRJNA745062,0.92,2020-11-01,0.18,China,null,Pyrinomonas methylaliphatogenes
+SRR11729959,WGS,PRJNA621236,0.9,2018-08-23,0.1,USA,"[46.1125,-122.987]",rhizosphere metagenome
+SRR13258664,WGS,PRJNA685225,0.99,2018-11-25,0.73,uncalculated,"[-74.3555,164.6955]",soil metagenome
+SRR26663016,WGS,PRJNA1035420,0.9,null,0.12,China,"[22.98,108.58]",soil metagenome
+SRR5215545,WGS,PRJNA364916,0.9,2016-02-17,0.11,Panama,"[9.1086,-79.8436]",soil metagenome
+SRR21020893,WGS,PRJNA868779,0.93,2018-02-19,0.21,United Kingdom,"[57.18,-2.21]",soil metagenome

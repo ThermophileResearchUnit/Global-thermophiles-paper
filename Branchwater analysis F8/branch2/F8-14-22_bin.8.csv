@@ -1,0 +1,90 @@
+acc,assay_type,bioproject,cANI,collection_date_sam,containment,geo_loc_name_country_calc,lat_lon,organism
+SRR8368399,WGS,PRJNA507515,0.9,2015-11-08,0.11,India,"[24.15053189,85.64587959]",hot springs metagenome
+SRR6797140,WGS,PRJNA305188,0.98,2015-02-01,0.67,China,"[39.36,105.08]",freshwater metagenome
+ERR2529108,WGS,PRJEB24462,0.97,null,0.5,Iceland,null,metagenome
+ERR1545491,WGS,PRJEB14893,0.93,2016-06-12,0.23,India,null,sediment metagenome
+SRR490148,OTHER,NP,0.9,null,0.12,NP,null,soil metagenome
+SRR5579885,WGS,PRJNA375308,0.95,null,0.33,USA,"[40.7999,-76.3402]",soil metagenome
+DRR101363,WGS,PRJDB6348,1.0,2017-06-13,0.94,Japan,"[35.3202,139.65]",ammonia-oxidizing enrichment culture
+SRR490138,OTHER,NP,0.9,null,0.12,NP,null,soil metagenome
+SRR7216773,CLONE,PRJNA385762,0.9,2012-08-01,0.1,uncalculated,"[-15.16,-13.35]",hydrothermal vent metagenome
+SRR398108,OTHER,NP,0.9,null,0.1,NP,null,soil metagenome
+SRR7756683,WGS,PRJNA436039,0.9,2016-02-01,0.12,Singapore,"[1.3453,103.6797]",air metagenome
+SRR495212,OTHER,NP,0.9,null,0.12,NP,null,soil metagenome
+SRR398114,OTHER,NP,0.9,null,0.11,NP,null,soil metagenome
+SRR15532681,WGS,PRJNA756367,0.91,2013-10-30,0.12,USA,"[41.384,-82.513]",wetland metagenome
+SRR490130,OTHER,NP,0.9,null,0.12,NP,null,soil metagenome
+SRR21619488,WGS,PRJNA544494,0.92,2018-08-01,0.16,China,"[24.91,98.39]",hot springs metagenome
+SRR16915463,WGS,PRJNA779554,0.9,2017-10-01,0.1,USA,"[47.884722,-120.158333]",soil metagenome
+SRR5262251,WGS,PRJNA374886,0.9,2014-10-27,0.11,Panama,"[9.1086,-79.8436]",soil metagenome
+ERR2179512,WGS,PRJEB22775,0.9,2015-09-20,0.11,China,null,metagenome
+SRR11609031,WGS,PRJNA1007388,0.9,2018-08-08,0.1,USA,"[41.3776,-82.512]",wetland metagenome
+ERR1612256,OTHER,PRJEB15110,0.99,2015-03-11,0.74,India,null,soil metagenome
+SRR13697452,OTHER,PRJNA697336,0.91,2019-05-31,0.13,USA,null,biocrust metagenome
+ERR5001842,WGS,PRJEB42019,0.98,null,0.63,USA,null,soil metagenome
+SRR15532679,WGS,PRJNA756367,0.9,2013-10-30,0.12,USA,"[41.3778,-82.5108]",wetland metagenome
+SRR18214678,WGS,PRJNA797241,0.91,2018-09-01,0.13,France,"[42.80247,1.42333]",peat metagenome
+SRR1662223,WGS,PRJNA268268,0.99,2011-11-16,0.81,India,"[30.492542,79.631002]",microbial mat metagenome
+ERR5004483,WGS,PRJEB42019,0.95,null,0.35,USA,null,soil metagenome
+SRR23086377,WGS,PRJNA919165,0.9,null,0.1,China,"[29.01667,120.5]",sediment metagenome
+SRR21619491,WGS,PRJNA544494,0.92,2019-12-01,0.17,China,"[25.44,98.46]",hot springs metagenome
+SRR7882662,WGS,PRJNA492298,0.99,2014-10-06,0.79,USA,"[40.801167,-76.3429]",metagenome
+SRR7207567,CLONE,PRJNA385762,0.9,2012-08-01,0.11,uncalculated,"[-15.16,-13.35]",hydrothermal vent metagenome
+SRR490140,OTHER,NP,0.9,null,0.11,NP,null,soil metagenome
+SRR9009773,WGS,PRJNA539695,0.91,2017-09-18,0.13,USA,null,soil metagenome
+SRR24490436,WGS,PRJNA970198,0.9,2012-08-01,0.12,Portugal,"[37.785278,-25.331111]",hot springs metagenome
+SRR24490442,WGS,PRJNA970198,1.0,2012-08-01,0.93,Portugal,"[37.802222,-25.500278]",hot springs metagenome
+SRR23081785,WGS,PRJNA923741,0.9,2022-02-01,0.11,China,"[24.5,107.4]",metagenome
+SRR10466945,WGS,PRJNA365685,0.9,2014-09-03,0.11,USA,"[39.7392,-123.6308]",soil metagenome
+SRR24490440,WGS,PRJNA970198,0.97,2012-08-01,0.5,Portugal,"[37.802222,-25.500278]",hot springs metagenome
+ERR5004479,WGS,PRJEB42019,0.95,null,0.35,USA,null,soil metagenome
+ERR5003120,WGS,PRJEB42019,0.95,null,0.33,USA,null,soil metagenome
+SRR490127,OTHER,NP,0.9,null,0.11,NP,null,soil metagenome
+SRR16893499,OTHER,PRJNA698245,0.91,null,0.15,Canada,"[54.35655,-128.5422833]",hot springs metagenome
+DRR101367,WGS,PRJDB6348,0.98,2017-06-13,0.7,Japan,"[35.3202,139.65]",ammonia-oxidizing enrichment culture
+ERR5003119,WGS,PRJEB42019,0.92,null,0.18,USA,null,soil metagenome
+SRR12918224,WGS,PRJNA651859,0.93,2017-10-13,0.2,USA,"[41.896,-89.3636]",soil metagenome
+SRR27869038,WGS,PRJNA979897,0.98,2021-12-01,0.65,Turkey,"[39.287251,28.341724]",hot springs metagenome
+DRR082459,WGS,PRJDB5417,0.9,2009-06-25,0.12,Japan,"[38.8,140.67]",hot springs metagenome
+SRR13514086,WGS,PRJNA693984,0.9,null,0.1,USA,null,lichen metagenome
+SRR15170210,WGS,PRJNA741280,0.9,2019-05-28,0.12,USA,"[40.6529,-104.9995]",soil metagenome
+SRR13115019,WGS,PRJNA382640,0.99,2013-05-01,0.78,Germany,"[51.6,9.9]",soil metagenome
+DRR082457,WGS,PRJDB5417,0.91,2009-06-25,0.15,Japan,"[38.8,140.67]",hot springs metagenome
+SRR17794511,WGS,PRJNA800583,0.99,2021-03-25,0.83,China,"[24.95,98.44]",hot springs metagenome
+SRR15532680,WGS,PRJNA756367,0.9,2013-10-30,0.11,USA,"[41.3778,-82.5108]",wetland metagenome
+DRR101364,WGS,PRJDB6348,1.0,2017-06-13,0.95,Japan,"[35.3202,139.65]",ammonia-oxidizing enrichment culture
+ERR6862846,WGS,PRJEB47746,0.9,2017-07-15,0.11,Russia,null,metagenome
+DRR101361,WGS,PRJDB6348,1.0,2017-06-13,0.92,Japan,"[35.3202,139.65]",ammonia-oxidizing enrichment culture
+SRR11687776,WGS,PRJNA552582,0.9,2018-07-02,0.1,Greenland,"[81.567,-16.358]",glacier metagenome
+SRR14537107,WGS,PRJNA728906,0.99,2018-07-23,0.87,Russia,"[53.542314,86.86237]",coal metagenome
+SRR7903765,WGS,PRJNA493162,0.91,2017-08-17,0.14,Russia,"[43.988333,145.651389]",metagenome
+SRR11608765,WGS,PRJNA1007388,0.9,2018-08-08,0.1,USA,"[41.3776,-82.5117]",wetland metagenome
+SRR1662248,WGS,PRJNA268268,0.91,2012-11-14,0.14,India,"[30.492542,79.631002]",microbial mat metagenome
+ERR5001841,WGS,PRJEB42019,0.95,null,0.31,USA,null,soil metagenome
+SRR7473444,WGS,PRJNA479576,0.99,2015-11-28,0.74,India,"[23.69,83.68]",metagenome
+ERR5003121,WGS,PRJEB42019,0.98,null,0.63,USA,null,soil metagenome
+SRR21020893,WGS,PRJNA868779,0.9,2018-02-19,0.11,United Kingdom,"[57.18,-2.21]",soil metagenome
+ERR5001840,WGS,PRJEB42019,0.92,null,0.16,USA,null,soil metagenome
+SRR490149,OTHER,NP,0.9,null,0.11,NP,null,soil metagenome
+SRR9009774,WGS,PRJNA539696,0.9,2017-09-18,0.11,USA,null,soil metagenome
+SRR31012009,WGS,PRJNA1173490,0.91,2024-05-12,0.15,Singapore,"[1.4096677,103.9564002]",mangrove metagenome
+SRR15532682,WGS,PRJNA756367,0.9,2013-10-30,0.12,USA,"[41.384,-82.513]",wetland metagenome
+SRR8554900,WGS,PRJNA520979,0.9,2017-06-20,0.1,China,"[30.68,91.1]",soil metagenome
+SRR5198900,WGS,PRJNA362960,0.9,2011-08-18,0.12,USA,"[38.1072,-121.6485]",wetland metagenome
+DRR101362,WGS,PRJDB6348,0.99,2017-06-13,0.74,Japan,"[35.3202,139.65]",ammonia-oxidizing enrichment culture
+ERR5003696,WGS,PRJEB42019,0.95,null,0.33,USA,null,soil metagenome
+SRR11670876,WGS,PRJNA552582,0.9,2018-07-02,0.11,Greenland,"[81.567,-16.358]",glacier metagenome
+SRR24079435,WGS,PRJNA914269,1.0,2019-02-01,0.91,Argentina,"[-25.40986,-64.59134]",hot springs metagenome
+SRR24490441,WGS,PRJNA970198,1.0,2012-08-01,0.93,Portugal,"[37.802222,-25.500278]",hot springs metagenome
+SRR490139,OTHER,NP,0.9,null,0.11,NP,null,soil metagenome
+SRR5262248,WGS,PRJNA374886,0.9,2014-10-27,0.11,Panama,"[9.1086,-79.8436]",soil metagenome
+SRR408201,OTHER,NP,0.9,null,0.12,NP,null,soil metagenome
+SRR9648402,WGS,PRJNA539595,0.9,2017-08-14,0.1,USA,"[39.0844,-86.4705]",soil metagenome
+ERR5003692,WGS,PRJEB42019,0.95,null,0.35,USA,null,soil metagenome
+DRR082460,WGS,PRJDB5417,0.99,2009-06-25,0.9,Japan,"[38.8,140.67]",hot springs metagenome
+SRR408195,OTHER,NP,0.9,null,0.11,NP,null,soil metagenome
+SRR9648403,WGS,PRJNA539596,0.9,2017-08-14,0.11,USA,"[39.0844,-86.4705]",soil metagenome
+ERR2179510,WGS,PRJEB22775,0.9,2015-09-20,0.1,China,null,metagenome
+SRR24490439,WGS,PRJNA970198,1.0,2012-08-01,0.93,Portugal,"[37.802222,-25.500278]",hot springs metagenome
+ERR2271549,OTHER,PRJEB24462,0.9,null,0.11,Iceland,null,metagenome
+SRR7974119,WGS,PRJNA444436,0.9,null,0.11,Panama,"[9.1086,-79.8436]",soil metagenome

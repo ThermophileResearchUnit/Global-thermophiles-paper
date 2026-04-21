@@ -1,0 +1,32 @@
+filename,full_gene_name,gene,Metabolism2,Metabolism,cutoff
+volc_mags_all-FeFe_hydrogenase_hydrogenase,FeFe hydrogenase,,Hydrogen oxidation,Hydrogen Cycling,45
+volc_mags_all-Fe_hydrogenase,Fe hydrogenase,,Hydrogen oxidation,Hydrogen Cycling,50
+volc_mags_all-NiFe_Group_1a,NiFe - Group 1a - Periplasmic,"Electron input for sulfate, metal and organohalide respiration. [NiFeSe] variants.",,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1b,NiFe - Group 1b - Prototypical,"Electron input for sulfate, fumarate, metal and nitrate respiration.",,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1c,NiFe - Group 1c - Hyb-type,"Electron input for fumarate, nitrate and sulfate respiration. Physiologically reversible.",,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1d,NiFe - Group 1d - Oxygen-tolerant,Electron input for aerobic respiration and oxygen-tolerant anaerobic respiration.,,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1e,NiFe - Group 1e - Isp-type,Electron input primarily for sulfur respiration. Physiologically reversible.,,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1f,NiFe - Group 1f - Oxygen-protecting,Unresolved role. May liberate electrons to reduce reactive oxygen species.,,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1g,NiFe - Group 1g - Crenarchaeota-type,Electron input primarily for sulfur respiration.,,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1h,NiFe - Group 1h - Actinobacteria-type,Electron input for aerobic respiration. Scavenges electrons from atmospheric H2.,,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1i,NiFe - Group 1i - Coriobacteria-type (putative),Undetermined role. May liberate electrons for anaerobic respiration.,,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1j,NiFe - Group 1j - Archaeoglobi-type,Electron input for sulfate respiration.,,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1k,NiFe - Group 1k - Methanophenazine-reducing,Electron input for methanogenic heterodisulfide respiration.,,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_1l,NiFe - Group 1l - Unknown,,,Group 1 hydrogenases,60
+volc_mags_all-NiFe_Group_2a,NiFe - Group 2a - Cyanobacteria-type,Electron input for aerobic respiration. Recycles H2 produced by other cellular processes.,,Group 2 hydrogenases,60
+volc_mags_all-NiFe_Group_2b,NiFe - Group 2b - Histidine kinase-linked,H2 sensing. Activates two-component system controlling hydrogenase expression.,,Group 2 hydrogenases,60
+volc_mags_all-NiFe_Group_2c,NiFe - Group 2c - Diguanylate cyclase-linked (putative),Undetermined role. May sense H2 and regulate processes through cyclic di-GMP production.,,Group 2 hydrogenases,60
+volc_mags_all-NiFe_Group_2d,NiFe - Group 2d - Aquificae-type,Unresolved role. May generate reductant for carbon fixation or have a regulatory role.,,Group 2 hydrogenases,60
+volc_mags_all-NiFe_Group_2e,NiFe - Group 2e - Metallosphaera-type (putative),Undetermined role. May liberate electrons primarily for aerobic respiration26.,,Group 2 hydrogenases,60
+volc_mags_all-NiFe_Group_3a,NiFe - Group 3a - F420-coupled,Couples oxidation of H2 to reduction of F420 during methanogenesis. Physiologically reversible. [NiFeSe] variants.,,Group 3 hydrogenases,60
+volc_mags_all-NiFe_Group_3b,NiFe - Group 3b - NADP-coupled,Couples oxidation of NADPH to evolution of H2. Physiologically reversible. May have sulfhydrogenase activity.,,Group 3 hydrogenases,60
+volc_mags_all-NiFe_Group_3c,NiFe - Group 3c - Heterodisulfide reductase-linked,Bifurcates electrons from H2 to heterodisulfide and Fdox in methanogens. [NiFeSe] variants.,,Group 3 hydrogenases,60
+volc_mags_all-NiFe_Group_3d,NiFe - Group 3d - NAD-coupled,Interconverts electrons between H2 and NAD depending on cellular redox state.,,Group 3 hydrogenases,60
+volc_mags_all-NiFe_Group_4a,NiFe - Group 4a - Formate hydrogenlyase,Couples formate oxidation to fermentative H2 evolution. May be H+-translocating.,,Group 4 hydrogenases,50
+volc_mags_all-NiFe_Group_4b,NiFe - Group 4b - Formate-respiring,Respires formate or carbon monoxide using H+ as electron acceptor. Na+-translocating via Mrp23.,,Group 4 hydrogenases,50
+volc_mags_all-NiFe_Group_4c,NiFe - Group 4c - Carbon monoxide-respiring,Respires carbon monoxide using H+ as electron acceptor. H+-translocating.,,Group 4 hydrogenases,50
+volc_mags_all-NiFe_Group_4d,"NiFe - Group 4d - Ferredoxin-coupled, Mrp-linked",Couples Fdred oxidation to H+ reduction. Na+-translocating via Mrp complex.,,Group 4 hydrogenases,50
+volc_mags_all-NiFe_Group_4e,"NiFe - Group 4e - Ferredoxin-coupled, Ech-type",Couples Fdred oxidation to H+ reduction. Physiologically reversible via H+/Na+ translocation.,,Group 4 hydrogenases,50
+volc_mags_all-NiFe_Group_4f,NiFe - Group 4f - Formate-coupled (putative),Undetermined role. May couple formate oxidation to H2 evolution and H+ translocation.,,Group 4 hydrogenases,50
+volc_mags_all-NiFe_Group_4g,NiFe - Group 4g - Ferredoxin-coupled (putative),Undetermined role. May couple Fdred oxidation to proton reduction and H+/Na+ translocation.,,Group 4 hydrogenases,50
+volc_mags_all-NiFe_Group_4h,"NiFe - Group 4h - Ferredoxin-coupled, Eha-type",Couples Fdred oxidation to H+ reduction in anaplerotic processes. H+/Na+-translocating.,,Group 4 hydrogenases,50

@@ -1,0 +1,58 @@
+acc,assay_type,bioproject,cANI,collection_date_sam,containment,geo_loc_name_country_calc,lat_lon,organism
+SRR12226570,WGS,PRJNA620483,0.9,2019-04-10,0.11,USA,"[44.754,-110.7257]",hot springs metagenome
+SRR5273272,WGS,PRJNA365748,0.94,null,0.25,USA,"[44.376,-110.69]",hot springs metagenome
+SRR5681517,WGS,PRJNA375677,0.96,2015-04-10,0.46,USA,"[44.7219,-110.7021]",hot springs metagenome
+SRR5273316,WGS,PRJNA365751,0.97,null,0.58,USA,"[44.376,-110.69]",hot springs metagenome
+DRR163687,WGS,PRJDB7293,0.91,2013-09-01,0.15,Japan,"[31.55,130.47]",hot springs metagenome
+SRR21619491,WGS,PRJNA544494,0.97,2019-12-01,0.53,China,"[25.44,98.46]",hot springs metagenome
+SRR8239691,WGS,PRJNA364792,0.96,2015-04-16,0.43,USA,"[37.1043,-76.1811]",aquatic metagenome
+SRR25522566,WGS,PRJNA791658,0.96,null,0.45,USA,"[44.68772,-110.72821]",hot springs metagenome
+SRR16183353,WGS,PRJNA768333,0.9,2021-07-05,0.11,Dominican Republic,"[19.2517,-70.0774]",African swine fever virus
+SRR4030103,WGS,PRJNA336650,0.96,2011-10-11,0.43,USA,"[44.7330426,-110.7089928]",microbial mat metagenome
+ERR738544,WGS,PRJEB8286,0.96,null,0.4,NP,null,metagenome
+SRR5682979,WGS,PRJNA375185,0.96,2015-05-13,0.44,USA,"[44.733,-110.709]",hot springs metagenome
+SRR5468438,WGS,PRJNA367340,0.96,2015-06-29,0.42,USA,"[44.7315,-110.7113]",hot springs metagenome
+ERR738546,WGS,PRJEB8286,0.96,null,0.41,NP,null,metagenome
+SRR5468440,WGS,PRJNA367341,0.94,2015-07-28,0.25,USA,"[44.7315,-110.7113]",hot springs metagenome
+SRR5273271,WGS,PRJNA365747,0.93,null,0.21,USA,"[44.376,-110.69]",hot springs metagenome
+SRR7545550,WGS,PRJNA481947,0.9,2012-03-15,0.12,Italy,"[40.829188,14.147042]",hot springs metagenome
+SRR25522552,WGS,PRJNA791658,0.91,null,0.13,USA,"[44.7311,-110.710192]",hot springs metagenome
+SRR16183347,WGS,PRJNA768333,0.9,2021-07-19,0.11,Dominican Republic,"[19.4541,-70.6922]",African swine fever virus
+SRR24079464,WGS,PRJNA914269,0.95,2021-06-01,0.34,Iceland,"[64.007062,-21.180739]",hot springs metagenome
+SRR5682141,WGS,PRJNA375183,0.95,2015-05-13,0.38,USA,"[44.7315,-110.7113]",hot springs metagenome
+SRR13514086,WGS,PRJNA693984,0.92,null,0.17,USA,null,lichen metagenome
+ERR738547,WGS,PRJEB8286,0.97,null,0.48,NP,null,metagenome
+SRR5468443,WGS,PRJNA367342,0.9,2015-09-09,0.1,USA,"[44.7315,-110.7113]",hot springs metagenome
+SRR21619488,WGS,PRJNA544494,0.92,2018-08-01,0.16,China,"[24.91,98.39]",hot springs metagenome
+SRR21619495,WGS,PRJNA544494,0.91,2019-01-01,0.15,China,"[24.95,98.44]",hot springs metagenome
+SRR21916491,WGS,PRJNA890466,0.96,null,0.42,uncalculated,null,Sulfolobus islandicus rod-shaped virus 2
+ERR738545,WGS,PRJEB8286,0.96,null,0.39,NP,null,metagenome
+SRR16526563,WGS,PRJNA768538,0.91,2019-10-11,0.14,USA,"[43.0738,-89.4139]",bioreactor sludge metagenome
+DRR267103,WGS,PRJDB11069,0.9,2019-09-02,0.11,uncalculated,"[34.2607,142.0203]",marine metagenome
+SRR27170998,WGS,PRJNA1050888,0.98,2018-08-01,0.59,China,"[24.95,98.44]",hot springs metagenome
+SRR4030100,WGS,PRJNA336638,0.96,2011-11-16,0.44,USA,"[44.731451,-110.7113131]",hypersaline lake metagenome
+SRR21916490,WGS,PRJNA890466,0.96,null,0.42,uncalculated,null,Sulfolobus islandicus rod-shaped virus 2
+SRR21916489,WGS,PRJNA890466,0.95,null,0.31,uncalculated,null,Sulfolobus islandicus rod-shaped virus 2
+SRR21916492,WGS,PRJNA890466,0.96,null,0.43,uncalculated,null,Sulfolobus islandicus rod-shaped virus 2
+SRR5723934,WGS,PRJNA367346,0.96,2015-09-09,0.43,USA,"[44.733,-110.709]",hot springs metagenome
+SRR5682125,WGS,PRJNA375680,0.96,2015-04-10,0.44,USA,"[44.7219,-110.7021]",hot springs metagenome
+SRR5682896,WGS,PRJNA375184,0.96,2015-05-13,0.45,USA,"[44.7315,-110.7113]",hot springs metagenome
+SRR21916494,WGS,PRJNA890466,0.96,null,0.42,uncalculated,null,Sulfolobus islandicus rod-shaped virus 2
+SRR21916495,WGS,PRJNA890466,0.96,null,0.43,uncalculated,null,Sulfolobus islandicus rod-shaped virus 2
+SRR16183360,WGS,PRJNA768333,0.9,2021-07-05,0.11,Dominican Republic,"[19.2517,-70.0774]",African swine fever virus
+ERR738548,WGS,PRJEB8286,0.97,null,0.47,NP,null,metagenome
+SRR17794519,WGS,PRJNA800583,0.98,2021-03-25,0.59,China,"[24.95,98.44]",hot springs metagenome
+SRR27170999,WGS,PRJNA1050888,0.9,2019-01-01,0.12,China,"[24.9539,98.43819]",hot springs metagenome
+SRR27215044,WGS,PRJNA1050888,0.93,2019-01-01,0.2,China,"[24.9511,98.43597]",hot springs metagenome
+SRR5682117,WGS,PRJNA375678,0.96,2015-04-10,0.44,USA,"[44.7219,-110.7021]",hot springs metagenome
+ERR738549,WGS,PRJEB8286,0.97,null,0.48,NP,null,metagenome
+SRR12918224,WGS,PRJNA651859,0.9,2017-10-13,0.1,USA,"[41.896,-89.3636]",soil metagenome
+SRR13002033,WGS,PRJNA675130,0.91,2018-03-01,0.12,Australia,"[-34.1192,151.2267]",marine metagenome
+SRR5468447,WGS,PRJNA367344,0.96,2015-07-28,0.42,USA,"[44.733,-110.709]",hot springs metagenome
+SRR5682124,WGS,PRJNA375679,0.96,2015-04-10,0.41,USA,"[44.7219,-110.7021]",hot springs metagenome
+SRR5723982,WGS,PRJNA367343,0.96,2015-09-09,0.46,USA,"[44.7315,-110.7113]",hot springs metagenome
+SRR5273290,WGS,PRJNA365749,0.97,null,0.51,USA,"[44.376,-110.69]",hot springs metagenome
+SRR10917569,WGS,PRJNA568226,0.96,2018-09-15,0.4,USA,"[44.7535,-110.7249]",hot springs metagenome
+SRR21916493,WGS,PRJNA890466,0.96,null,0.43,uncalculated,null,Sulfolobus islandicus rod-shaped virus 2
+DRR163685,WGS,PRJDB7293,0.96,2013-09-01,0.41,Japan,"[31.55,130.47]",hot springs metagenome
+SRR5273315,WGS,PRJNA365750,0.97,null,0.58,USA,"[44.376,-110.69]",hot springs metagenome

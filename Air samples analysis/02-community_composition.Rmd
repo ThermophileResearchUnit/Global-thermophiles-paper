@@ -1,0 +1,417 @@
+---
+title: "Biological diversity"
+author: "Stephen Noell"
+date: "01/07/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE, 
+                      warning = FALSE,
+                      fig.align = "center",
+                      fig.width = 10,
+                      fig.height = 6)
+```
+
+
+```{r Libraries and seed}
+
+# Libraries
+library("tidyverse")       # data wrangling and visualisation
+library("phyloseq")        # analysis of microbial communities
+library("vegan")           # ecological multivariate analyses
+library("microbiome") #for analyzing phyloseq objects
+library("viridis") #color package
+library("svglite") #for saving SVGs
+library("ggpubr") #for saving plots
+library("here")            # set the path to the folder
+library("ggplot2")
+library(cowplot)
+
+set.seed(57)
+
+```
+
+```{r}
+#Load version of physeq object, with contaminants removed and relative abundance normalized
+esfrel <- readRDS("physeq.fin.rel")
+
+```
+
+
+```{r community composition - 16S}
+# Make community composition plot to see what's different
+pal_barn <- RColorBrewer::brewer.pal(11, "RdBu")
+#pal_barn2 <- RColorBrewer::brewer.pal(6, "Oranges")
+pal_barnf_p <- c(pal_barn, "black", "grey")
+
+## Phylum abundance plot
+# Data for plotting
+es_p <- esfrel %>% psmelt() %>%
+  select(Sample, Phylum, Abundance)
+
+# Step 1: find max abundance per Phylum across samples
+phylum_max <- es_p %>%
+  group_by(Phylum) %>%
+  summarise(max_abund = max(Abundance, na.rm = TRUE))
+
+# Step 2: identify "rare" phyla
+rare_phyla <- phylum_max$Phylum[phylum_max$max_abund < 0.01]
+
+# Step 3: relabel
+es_p <- es_p %>%
+  mutate(Phylum = ifelse(Phylum %in% rare_phyla, "Phyla < 1 %", Phylum),
+         Phylum = ifelse(is.na(Phylum), "Unassigned", Phylum))
+
+#Reorder phyla so <1% is first, then alphabetical
+list <- es_p$Phylum %>%
+  unique(.) %>%
+  as.data.frame(.) %>%
+  filter(., . != "Unassigned") %>%
+  filter(., . != "Phyla < 1 %") %>%
+  unlist(., use.names=FALSE) %>%
+  sort(.)
+
+x <- c("Phyla < 1 %", list, "Unassigned")
+
+es_p$Phylum <- factor(as.character(es_p$Phylum), levels=x)
+es_p <- es_p[order(es_p$Phylum),]
+
+# Plot 
+plot_phylum<- ggplot(es_p, aes(x = Sample, y = Abundance, fill = Phylum)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = pal_barnf_p) +
+  labs(x = "Sample", y = "Relative\nAbundance") +
+  theme(
+    strip.text.x = element_text(size = 11),
+    legend.title = element_blank(),
+    legend.text = element_text(size=10),
+    axis.text.x  = element_text(size=11, angle = 90),
+    axis.title.x = element_text(size=11),
+    axis.text.y  = element_text(size=11),
+    axis.title.y = element_text(size=11),
+    legend.position = "bottom",
+    legend.key.width = unit(0.3, "cm"),
+    legend.key.height=unit(0.3,"cm")) +
+  coord_cartesian(expand = FALSE) +
+  guides(fill = guide_legend(nrow = 5, byrow = TRUE))
+
+plot_phylum
+
+```
+
+```{r community composition - 16S}
+## Class abundance plot
+# Data for plotting
+
+pal_barn2 <- RColorBrewer::brewer.pal(8, "PiYG")
+pal_barn3 <- RColorBrewer::brewer.pal(8, "PuOr")
+pal_barnf_c <- c("black", pal_barn2, pal_barn3, "grey")
+
+es_c <- esfrel %>% psmelt() %>%
+  select(Sample, Class, Abundance)
+
+# Step 1: find max abundance per Phylum across samples
+class_max <- es_c %>%
+  group_by(Class) %>%
+  summarise(max_abund = max(Abundance, na.rm = TRUE))
+
+# Step 2: identify "rare" classes
+rare_classes <- class_max$Class[class_max$max_abund < 0.01]
+
+# Step 3: relabel
+es_c <- es_c %>%
+  mutate(Class = ifelse(Class %in% rare_classes, "Class < 1 %", Class),
+         Class = ifelse(is.na(Class), "Unassigned", Class))
+
+
+#Reorder class so <X% is first, then alphabetical
+list <- es_c$Class %>%
+  unique(.) %>%
+  as.data.frame(.) %>%
+  filter(., . != "Unassigned") %>%
+  filter(., . != "Class < 1 %") %>%
+  unlist(., use.names=FALSE) %>%
+  sort(.)
+
+x <- c("Class < 1 %", list, "Unassigned")
+
+es_c$Class <- factor(as.character(es_c$Class), levels=x)
+es_c <- es_c[order(es_c$Class),]
+
+# Plot 
+plot_class<- ggplot(es_c, aes(x = Sample, y = Abundance, fill = Class)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = pal_barnf_c) +
+  labs(x = "Sample", y = "Relative\nAbundance") +
+  theme(
+    strip.text.x = element_text(size = 11),
+    legend.title = element_blank(),
+    legend.text = element_text(size=10),
+    axis.text.x  = element_text(size=11, angle = 90),
+    axis.title.x = element_text(size=11),
+    axis.text.y  = element_text(size=11),
+    axis.title.y = element_text(size=11),
+    legend.position = "bottom",
+    legend.key.width = unit(0.3, "cm"),
+    legend.key.height=unit(0.3,"cm")) +
+  coord_cartesian(expand = FALSE) +
+  guides(fill = guide_legend(nrow = 6, byrow = TRUE))
+
+plot_class
+
+```
+
+
+
+```{r}
+#final plot
+
+bars <- ggarrange(plot_phylum, plot_class,
+                  labels = c("A", "B"),
+                  ncol = 2)
+
+bars
+
+#ggsave("air_taxa.png", plot = bars, dpi = 300, width = 240, height = 150, units = "mm")
+#ggsave("air_taxa.svg", plot = bars, dpi = 300, width = 240, height = 150, units = "mm")
+```
+
+```{r}
+#exploring matching genera
+# Extract genus information from both phyloseq objects
+erb.rel <- readRDS("erb_survey_clean.rel")
+
+genus1 <- tax_table(esfrel)[, "Genus"]
+genus2 <- tax_table(erb.rel)[, "Genus"]
+
+# Remove NAs and find intersection of genera
+genus1_no_na <- genus1[!is.na(genus1)]
+genus2_no_na <- genus2[!is.na(genus2)]
+shared_genera <- intersect(genus1_no_na, genus2_no_na)
+
+# Filter both phyloseq objects
+air.filt <- subset_taxa(esfrel, Genus %in% shared_genera & !is.na(Genus))
+erb.filt <- subset_taxa(erb.rel, Genus %in% shared_genera & !is.na(Genus))
+
+#number of overlapping taxa:
+ntaxa(air.filt)
+
+#total, non NA at genus taxa in air:
+nrow(genus1_no_na)
+
+#proportion
+ntaxa(air.filt) / nrow(genus1_no_na)
+
+###################
+air.filt2 <- air.filt %>%
+  psmelt() %>%
+  dplyr::select(-is.neg,-Sample_or_Control)
+
+#clean up data
+air.filt2$Sample_type4 <- "Air"
+air.filt2$Phylum[is.na(air.filt2$Phylum)] = "Unassigned"
+air.filt2$Sample <- as.factor(air.filt2$Sample)
+air.filt2$ASV_Phylum = paste(
+  air.filt2$Phylum, air.filt2$Genus)
+
+#now ERB data
+erb.filt2 <- erb.filt %>%
+  psmelt() %>%
+  dplyr::select(OTU, Sample, Abundance, Sample_type4, Kingdom,
+                Phylum, Class, Order, Family, Genus)
+
+#clean up data
+erb.filt2$Phylum[is.na(erb.filt2$Phylum)] = "Unassigned"
+erb.filt2$Sample <- as.factor(erb.filt2$Sample)
+
+erb.filt2$Phylum[erb.filt2$Phylum == "Chloroflexi"] <- "Chloroflexota"
+erb.filt2$Phylum[erb.filt2$Phylum == "Actinobacteriota"] <- "Actinomycetota"
+erb.filt2$Phylum[erb.filt2$Phylum == "Actinobacteriota"] <- "Actinomycetota"
+erb.filt2$Phylum[erb.filt2$Phylum == "Firmicutes"] <- "Bacillota"
+erb.filt2$Phylum[erb.filt2$Phylum == "Proteobacteria"] <- "Pseudomonadota"
+
+erb.filt2$ASV_Phylum = paste(
+  erb.filt2$Phylum, erb.filt2$Genus)
+
+#now for the heatmaps
+
+air.filt2.agg <- air.filt2 %>%
+  group_by(Sample, ASV_Phylum, Sample_type4) %>%
+  summarise(Abundance = sum(Abundance), .groups = 'drop')
+
+heatmap_asv <- ggplot(air.filt2.agg, aes(Sample, ASV_Phylum)) +
+  geom_tile(aes(fill = Abundance)) +
+  theme_bw() +
+  scale_fill_gradientn(colors = c("white", "#f768a1", "#49006a"),
+    name = "Relative\nabundance (%)",
+    na.value = "white"
+  ) +
+  ylab("ASV #") +
+  xlab("Sample") +
+  theme(
+    axis.title.x = element_text (size=10),
+    axis.text.x  = element_text(size=8),
+    axis.title.y = element_blank(),
+    axis.text.y  = element_text(size=8),
+    strip.text.x = element_text(size = 8),
+    legend.text = element_text(size=8),
+    legend.title = element_text(size=10),
+    legend.position = "bottom") +
+    scale_x_discrete(guide = guide_axis(angle = 90)) +
+  facet_grid(.~factor(Sample_type4), scales = "free",
+             space='free')
+
+erb.filt2.agg <- erb.filt2 %>%
+  group_by(Sample, ASV_Phylum, Sample_type4) %>%
+  summarise(Abundance = sum(Abundance), .groups = 'drop')
+
+heatmap_asv2 <- ggplot(erb.filt2.agg, aes(Sample, ASV_Phylum)) +
+  geom_tile(aes(fill = Abundance)) +
+  theme_bw() +
+  scale_fill_gradientn(colors = c("white", "#f768a1", "#49006a"),
+    name = "Relative\nabundance (%)",
+    na.value = "white"
+  ) +
+  ylab("ASV #") +
+  xlab("Sample") +
+  theme(
+    axis.title.x = element_text (size=10),
+    axis.text.x  = element_text(size=8),
+    axis.title.y = element_blank(),
+    axis.text.y  = element_blank(),
+    strip.text.x = element_text(size = 8),
+    legend.text = element_text(size=8),
+    legend.title = element_text(size=10),
+    legend.position = "bottom") +
+    scale_x_discrete(guide = guide_axis(angle = 90)) +
+  facet_grid(.~factor(Sample_type4), scales = "free",
+             space='free')
+
+pp <- list(heatmap_asv, heatmap_asv2)
+air.erb.heat <- cowplot::plot_grid(plotlist=pp, ncol=2, align='h',
+                                 rel_widths = c(1, 2))
+air.erb.heat
+```
+
+
+```{r}
+#putting plots together
+
+air_fin <- ggarrange(bars, air.erb.heat,
+                     nrow = 2,
+                     labels = c("", "C"))
+air_fin
+
+#ggsave("air_taxa_heat.png", plot = air_fin, dpi = 300, width = 250, height = 270, units = "mm")
+#ggsave("air_taxa_heat.svg", plot = air_fin, dpi = 300, width = 250, height = 270, units = "mm")
+```
+
+
+```{r}
+###########correlation between air and soil abund?
+tr.air <- air.filt2 %>% filter(Sample == "Western Crater") %>%
+  dplyr::select(ASV_Phylum, Sample_type4, Abundance)
+
+tr.soil <- erb.filt2.agg %>% as.data.frame(.) %>%
+  filter(Sample_type4 == "Western Crater") %>%
+  select(-Sample)
+
+tr.both <- rbind(tr.air, tr.soil) 
+tr.both.agg <- tr.both %>%
+  group_by(ASV_Phylum, Sample_type4) %>%
+  summarise(Abundance = sum(Abundance, na.rm = TRUE), .groups = 'drop')
+
+tr.both.agg2 <- tr.both.agg%>%
+  pivot_wider(names_from = Sample_type4, 
+              values_from = Abundance,
+              values_fill = 0) %>%
+  rename("Tramway_Ridge" = 3)
+
+tr.plot <- ggplot(tr.both.agg2, aes(x = Air, y = Tramway_Ridge)) +
+  geom_point() +
+  theme_bw()
+
+tr.plot
+
+#correlation between air and soil abund?
+wc.air <- air.filt2 %>% filter(Sample == "Western Crater") %>%
+  dplyr::select(ASV_Phylum, Sample_type4, Abundance)
+
+wc.soil <- erb.filt2.agg %>% as.data.frame(.) %>%
+  mutate(Sample = as.character(Sample),
+         Sample_type4 = ifelse(startsWith(Sample, "WC"), "Western Crater", Sample_type4)) %>%
+  filter(Sample_type4 == "Western Crater") %>%
+  select(-Sample)
+
+wc.both <- rbind(wc.air, wc.soil) 
+wc.both.agg <- wc.both %>%
+  group_by(ASV_Phylum, Sample_type4) %>%
+  summarise(Abundance = sum(Abundance, na.rm = TRUE), .groups = 'drop')
+
+wc.both.agg2 <- wc.both.agg%>%
+  pivot_wider(names_from = Sample_type4, 
+              values_from = Abundance,
+              values_fill = 0) %>%
+  rename("Western_Crater" = 3)
+
+wc.plot <- ggplot(wc.both.agg2, aes(x = Air, y = Western_Crater)) +
+  geom_point() +
+  theme_bw()
+
+wc.plot
+```
+
+```{r}
+#looking for other ASVs in Erebus
+
+#Look at the abundance profile of whatever ASVs you want to using heatmaps
+volcs.heat <- erb.rel %>%
+  psmelt()
+
+volcs.heat$Phylum[is.na(volcs.heat$Phylum)] = "Unassigned"
+volcs.heat$Genus[is.na(volcs.heat$Genus)] = ""
+
+volcs.heat.filt <- volcs.heat %>%
+  dplyr::filter(., OTU == "ASV_1153" | OTU == "ASV_346" | OTU == "ASV_289")
+
+#ASV 130 is a specialist for temp; ASV 131 is spec for pH
+
+#volcs.heat.filt <- volcs.heat.filt %>%
+ # mutate(Abundance2 = log10(Abundance)) %>%
+  #select(-Abundance) %>%
+  #dplyr::rename(Abundance = Abundance2)
+
+volcs.heat.filt$Sample <- as.factor(volcs.heat.filt$Sample)
+
+volcs.heat.filt$ASV_Phylum = paste(
+  volcs.heat.filt$Phylum, 
+                                       #volcs.heat.filt$Class,
+                                   #volcs.heat.filt$Order, 
+                                   #volcs.heat.filt$Family,
+                                   volcs.heat.filt$Genus, 
+                                   volcs.heat.filt$OTU)
+
+heatmap_asv <- ggplot(volcs.heat.filt, aes(Sample, ASV_Phylum)) +
+  geom_tile(aes(fill = Abundance)) +
+  theme_bw() +
+  scale_fill_distiller('Relative\nabundance (%)', palette = "YlOrRd", direction = 1) +
+  ylab("ASV #") +
+  xlab("Sample") +
+  theme(
+    axis.title.x = element_text (size=10),
+    axis.text.x  = element_text(size=8),
+    axis.title.y = element_blank(),
+    axis.text.y  = element_text(size=8),
+    strip.text.x = element_text(size = 8),
+    legend.text = element_text(size=8),
+    legend.title = element_text(size=10),
+    legend.position = "bottom") +
+    scale_x_discrete(guide = guide_axis(angle = 90)) +
+  facet_grid(.~factor(Sample_type4), scales = "free",
+             space='free')
+
+heatmap_asv
+
+```

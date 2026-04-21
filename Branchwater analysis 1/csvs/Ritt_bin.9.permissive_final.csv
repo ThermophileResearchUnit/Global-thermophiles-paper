@@ -1,0 +1,13 @@
+acc,assay_type,bioproject,cANI,collection_date_sam,containment,geo_loc_name_country_calc,lat_lon,organism
+SRR6519256,WGS,PRJNA431961,0.97,2009-02-01,0.52,NP,null,metagenome
+SRR29496778,Hi-C,PRJNA1126331,0.94,2022-12-01,0.26,uncalculated,"[-74.35,164.7]",metagenome
+SRR29483437,WGS,PRJNA1126331,1.0,2022-12-01,0.98,uncalculated,"[-74.35,164.7]",metagenome
+SRR14762249,WGS,PRJNA732601,0.91,2016-12-14,0.13,uncalculated,"[-49.63508,68.78616]",hot springs metagenome
+SRR29483436,WGS,PRJNA1126331,1.0,2022-12-01,1.0,uncalculated,"[-73.45,165.5]",metagenome
+SRR6519253,WGS,PRJNA431961,0.97,2009-02-01,0.54,NP,null,metagenome
+ERR6412196,WGS,PRJEB46766,0.91,2016-12-14,0.13,uncalculated,null,freshwater metagenome
+SRR13258664,WGS,PRJNA685225,0.91,2018-11-25,0.14,uncalculated,"[-74.3555,164.6955]",soil metagenome
+SRR29496777,Hi-C,PRJNA1126331,1.0,2022-12-01,1.0,uncalculated,"[-73.45,165.5]",metagenome
+SRR13514086,WGS,PRJNA693984,0.91,null,0.13,USA,null,lichen metagenome
+SRR6519259,WGS,PRJNA431961,0.99,2009-02-01,0.83,NP,null,metagenome
+SRR13254584,WGS,PRJNA685225,1.0,2018-11-25,0.98,uncalculated,"[-74.3556,164.6956]",soil metagenome

@@ -1,0 +1,166 @@
+---
+title: "Community metabolism"
+author: "Stephen Noell"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE, 
+                      warning = FALSE,
+                      fig.align = "center",
+                      fig.width = 10,
+                      fig.height = 6)
+```
+
+
+```{r Libraries and seed}
+
+# Libraries
+library("tidyverse")       # data wrangling and visualisation
+library("patchwork")       # plots together
+library("viridis") #color package
+library("svglite") #for saving SVGs
+library("ggpubr") #for saving plots
+library("here")            # set the path to the folder 
+library("RColorBrewer")
+library("broom")
+library("vegan")
+library("rstatix")
+library("data.table")
+library(purrr)
+library(scales)
+library(stringr)
+
+
+set.seed(57)
+```
+
+```{r}
+process_tab_file <- function(tab_file, cutoff) {
+  # Extract the filename without the path and extension
+  filename <- tools::file_path_sans_ext(basename(tab_file))
+  
+  # Read the .tab file
+  tab_data <- read.delim(tab_file, header = FALSE, stringsAsFactors = FALSE)
+  
+  # Get the cutoff value for the current file
+  cutoff_value <- cutoff$cutoff[cutoff$filename == filename]
+  
+  # Filter the rows where column 12 is >= cutoff value
+  filtered_data <- tab_data[tab_data[, 12] >= cutoff_value, ]
+  
+  # Create a new data frame that includes the filename and filtered data
+  if (nrow(filtered_data) > 0) {
+    returns <- data.frame(filename = filename, filtered_data)
+  } else {
+    # Return an empty data frame if no rows match
+    returns <- data.frame(filename = character(), filtered_data[0, ])
+  }
+  
+  return(returns)
+}
+
+```
+
+
+```{r}
+#just get heatmap of presence of metabolic marker genes in MAGs
+
+#need to first modify the prefixes from the mapping file to match MAG names
+#read in mapping file
+cutoff <- read.csv("list_genes_mags.csv", header = TRUE)
+
+# Get unique prefixes
+tab_files <- list.files("met_marker", pattern = "\\.tab$", full.names = FALSE)
+
+# Extract unique prefixes matching the pattern F8-*-22_bin.*-
+prefixes <- unique(str_extract(tab_files, "F8-[^-]+-22_bin\\.[^-]+-"))
+
+# Create expanded dataframe with all prefixes
+df_expanded <- bind_rows(
+  lapply(prefixes, function(prefix) {
+    cutoff %>%
+      mutate(filename = str_replace(filename, "^volc_mags_all-", prefix))
+  })
+)
+
+#################do the cutoff etc.
+# Set the directory containing .tab files
+tab_dir <- "./met_marker"
+
+# Get a list of all .tab files in the directory
+tab_files <- list.files(tab_dir, pattern = "\\.tab$", full.names = TRUE)
+
+all_hits <- data.frame()
+
+for (tab_file in tab_files) {
+  hits <- process_tab_file(tab_file, df_expanded)
+  all_hits <- rbind(all_hits, hits)
+}
+
+all_hits2 <- all_hits %>%
+  dplyr::select(filename, V1)
+
+cutoff2 <- df_expanded %>%
+  dplyr::select(filename, full_gene_name, gene, Metabolism) %>%
+  dplyr::mutate(gene_f = paste(full_gene_name, "(",gene,")", sep = " ")) %>%
+  dplyr::select(-full_gene_name, -gene)
+
+all_hits3 <- all_hits2 %>%
+  left_join(., cutoff2, by = "filename") %>%
+  dplyr::select(-V1, ) %>%
+  dplyr::rename("MAG" = "filename") %>%
+  mutate(MAG = str_extract(MAG, "^F8-[0-9]+-22_bin\\.[0-9]+"))
+
+#write.csv(all_hits3, "Metabolic_marker_MAGs_all.csv")
+
+```
+
+```{r}
+
+#############################################
+#just thermophiles
+#adding in taxonomy info for bins: thermophiles
+mags.phy <- read.csv(file = "mag_char_f8.csv")
+
+all_hits4 <- all_hits3 %>%
+  left_join(., mags.phy, by = "MAG") %>%
+  dplyr::mutate(tax = paste(Phylum,
+                             Class, MAG, sep = "..")) %>%
+  dplyr::filter(!is.na(dist))
+
+final_data.2 <- all_hits4
+final_data.2$Present <- 1
+
+transc_mags.2 <- ggplot(final_data.2, aes(x = tax, y = gene_f)) +
+  geom_tile(aes(fill = factor(Present)), color = "white") +
+  scale_fill_manual(values = "blue", name = "Present", na.value = "grey80") +
+theme(
+    axis.text.x = element_text(size = 8),
+    axis.text.y = element_text(size = 10),
+    #axis.line = element_blank(),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_line(color = "black"),
+    legend.position = "bottom",
+    legend.justification = c(0, 0), # Align the legend within the plot area
+    legend.direction = "horizontal", # Set the legend direction to vertical
+    legend.text = element_text(angle = 90, hjust = 1, vjust = 0.5), # Rotate the legend text
+    strip.background = element_rect(fill = "#f2f2f2", colour = "white"),
+    strip.text = element_text(size = 11,face = "bold", hjust = 0),
+    strip.placement = "outside",
+    strip.text.y = element_text(size = 10, angle = 0, hjust = 0, vjust = 0.5),
+    panel.spacing = unit(1, "mm"),
+    panel.background = element_rect(fill = "white", colour = "grey80")
+    ) +
+    ylab("Gene name") +
+  xlab("MAG") +
+   scale_x_discrete(guide = guide_axis(angle = -90)) +
+  facet_grid(Metabolism ~ dist, scales = "free", space = "free")
+
+transc_mags.2
+#ggsave("Mags_metabolic_marker_genome_presence.png", transc_mags.2, width = 220, height = 210, units = "mm",dpi = 300)
+#ggsave("Mags_metabolic_marker_genome_presence.svg", transc_mags.2, width = 220, height = 210, units = "mm",dpi = 300)
+
+```

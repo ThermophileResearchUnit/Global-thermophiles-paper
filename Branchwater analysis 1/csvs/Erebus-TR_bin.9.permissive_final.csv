@@ -1,0 +1,26 @@
+acc,assay_type,bioproject,cANI,collection_date_sam,containment,geo_loc_name_country_calc,lat_lon,organism
+SRR6519254,WGS,PRJNA431961,1.0,2009-02-01,1.0,NP,null,metagenome
+SRR5249533,WGS,PRJNA366281,0.99,2009-01-31,0.87,uncalculated,"[-77.5182,167.1113]",freshwater sediment metagenome
+SRR6519253,WGS,PRJNA431961,1.0,2009-02-01,1.0,NP,null,metagenome
+ERR6412193,WGS,PRJEB46766,0.98,2016-12-13,0.69,uncalculated,null,freshwater metagenome
+SRR6519256,WGS,PRJNA431961,1.0,2009-02-01,1.0,NP,null,metagenome
+ERR6412195,WGS,PRJEB46766,0.99,2016-12-13,0.73,uncalculated,null,freshwater metagenome
+SRR14760936,WGS,PRJNA732601,0.99,2016-12-13,0.73,uncalculated,"[-49.62579,68.79895]",hot springs metagenome
+SRR6519257,WGS,PRJNA431961,0.96,2009-02-01,0.42,NP,null,metagenome
+ERR6412196,WGS,PRJEB46766,0.9,2016-12-14,0.11,uncalculated,null,freshwater metagenome
+SRR13697452,OTHER,PRJNA697336,0.9,2019-05-31,0.1,USA,null,biocrust metagenome
+SRR5249478,WGS,PRJNA366278,1.0,2009-01-31,1.0,uncalculated,"[-77.5182,167.1113]",freshwater sediment metagenome
+SRR14762249,WGS,PRJNA732601,0.9,2016-12-14,0.11,uncalculated,"[-49.63508,68.78616]",hot springs metagenome
+SRR5249513,WGS,PRJNA366280,0.99,2009-01-31,0.75,uncalculated,"[-77.5182,167.1113]",freshwater sediment metagenome
+SRR14681580,WGS,PRJNA732601,0.98,2016-12-13,0.69,uncalculated,"[-49.62535,68.79869]",hot springs metagenome
+SRR14699520,WGS,PRJNA732601,0.98,2016-12-13,0.68,uncalculated,"[-49.62566,68.79865]",hot springs metagenome
+ERR6412194,WGS,PRJEB46766,0.98,2016-12-13,0.68,uncalculated,null,freshwater metagenome
+SRR29483436,WGS,PRJNA1126331,1.0,2022-12-01,0.94,uncalculated,"[-73.45,165.5]",metagenome
+SRR5249264,WGS,PRJNA366279,1.0,2009-01-31,0.96,uncalculated,"[-77.5182,167.1113]",freshwater sediment metagenome
+SRR5249602,WGS,PRJNA366053,0.99,2009-01-31,0.78,uncalculated,"[-77.5182,167.1113]",freshwater sediment metagenome
+SRR6519260,WGS,PRJNA431961,0.97,2009-02-01,0.53,NP,null,metagenome
+SRR6519258,WGS,PRJNA431961,1.0,2009-02-01,0.91,NP,null,metagenome
+SRR6519259,WGS,PRJNA431961,1.0,2009-02-01,0.98,NP,null,metagenome
+SRR6519255,WGS,PRJNA431961,1.0,2009-02-01,1.0,NP,null,metagenome
+SRR29496777,Hi-C,PRJNA1126331,0.99,2022-12-01,0.86,uncalculated,"[-73.45,165.5]",metagenome
+SRR12918224,WGS,PRJNA651859,0.91,2017-10-13,0.13,USA,"[41.896,-89.3636]",soil metagenome

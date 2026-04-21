@@ -1,0 +1,80 @@
+filename,full_gene_name,gene,Metabolism2,Metabolism,cutoff
+volc_mags_all-ATP-citrate_lyase_AclB_sequences,ATP-citrate lyase,AclB,Reductive tricarboxylic acid,Carbon Fixation,50
+volc_mags_all-Acetyl_CoA_synthase_AcsB_99,Acetyl CoA synthase AcsB,AcsB,Wood ljungdahl pathway,Carbon Fixation,50
+volc_mags_all-Ammonia-forming_nitrite_reductase_NrfA_sequences,Ammonia-forming nitrite reductase,NrfA,Anaerobic nitrate reduction,Nitrogen Cycling,50
+volc_mags_all-Ammonia_monooxygenase_amoA,Ammonia monooxygenase,amoA,Ammonia oxidation,Nitrogen Cycling,60
+volc_mags_all-Anaerobic_carbon_monoxide_dehydrogenase_CooS_sequences,Anaerobic carbon monoxide dehydrogenase,CooS,Anaerobic carbon monoxide oxidation,Co Oxidation,50
+volc_mags_all-Anaerobic_sulfite_reductase_AsrA_sequences,Anaerobic sulfite reductase,AsrA,Anaerobic sulfite reduction,Sulfur Cycling,50
+volc_mags_all-Arsenate_reductase_ArsC,Arsenate reductase,ArsC,Arsenate reduction ,Arsenic Cycling,50
+volc_mags_all-Arsenite_oxidase_ARO,Arsenite oxidase,ARO,Arsenite oxidation ,Arsenic Cycling,70
+volc_mags_all-Carbon_monoxide_dehydrogenase_CoxL,Carbon monoxide dehydrogenase,CoxL,Aerobic carbon monoxide oxidation ,Co Oxidation,60
+volc_mags_all-Copper_containing_nitrite_reductase_NirK_sequences,Copper containing nitrite reductase,NirK,Denitrification,Nitrogen Cycling,50
+volc_mags_all-Crenarchaeotal_4-hydroxybutyryl-CoA_synthetase_HbsC_sequences,Crenarchaeotal 4-hydroxybutyryl-CoA synthetase,HbsC,Crenarchaeotal 4-hydroxybutyryl cycle ,Carbon Fixation,50
+volc_mags_all-Cytochrome_aa3_oxidase_CoxA,Cytochrome aa3 oxidase,CoxA,Aerobic respiration,Aerobic Respiration,50
+volc_mags_all-Cytochrome_bd_oxidase_CydA,Cytochrome bd oxidase,CydA,Aerobic respiration,Aerobic Respiration,50
+volc_mags_all-Cytochrome_bo3_oxidase_CyoA,Cytochrome bo3 oxidase,CyoA,Aerobic respiration,Aerobic Respiration,50
+volc_mags_all-Cytochrome_cbb3_oxidase_CcoN,Cytochrome cbb3 oxidase,CcoN,Aerobic respiration,Aerobic Respiration,50
+volc_mags_all-Cytochrome_cd1_nitrite_reductase_NirS_sequence,Cytochrome cd1 nitrite reductase,NirS,Denitrification,Nitrogen Cycling,50
+volc_mags_all-Decaheme_iron_reductase_MtrB_sequences,Decaheme iron reductase,MtrB,Iron Cycling,Iron Cycling,50
+volc_mags_all-Dissimilatory_nitrate_reductase_NarG_sequences,Dissimilatory nitrate reductase,NarG,Anaerobic nitrate reduction,Nitrogen Cycling,50
+volc_mags_all-Dissimilatory_sulfite_reductase_DsrA_sequences,Dissimilatory sulfite reductase,DsrA,Sulfur Cycling,Sulfur Cycling,50
+volc_mags_all-F-type_ATP_synthase_AtpA,F-type ATP synthase,AtpA,Oxidative phosphorylation,Oxidative Phosphorylation,70
+volc_mags_all-Flavocytochrome_c_sulfide_dehydrogenase_FCC_sequences,Flavocytochrome c sulfide dehydrogenase,FCC,Sulfide oxidation ,Sulfur Cycling,50
+volc_mags_all-Formate_dehydrogenase_FdhA,Formate dehydrogenase,FdhA,Formate oxidation,Formate Oxidation,50
+volc_mags_all-Fumarate_reductase_FrdA,Fumarate reductase,FrdA,Anaerobic respiration,Fumarate Reduction,50
+volc_mags_all-Hydrazine_synthase_HzsA,Hydrazine synthase,HzsA,Anammox ,Nitrogen Cycling,50
+volc_mags_all-Iron_oxidising_cytochrome_Cyc2,Iron oxidising cytochrome,Cyc2,Iron oxidation,Iron Cycling,50
+volc_mags_all-Isoprene_monooxygenase_subunit_A,Isoprene monooxygenase subunit,IsoA,Isoprene oxidation,Isoprene Oxidation,70
+volc_mags_all-Malonyl-CoA_reductase_Mcr_sequences,Malonyl-CoA reductase,Mcr,3 hydroxypropionate cycle,Carbon Fixation,50
+volc_mags_all-Methyl_CoM_reductase_McrA,Methyl CoM reductase,McrA,Anaerobic methane metabolism,Methane Cycling,50
+volc_mags_all-Microbial_rhodopsin_RHO,Microbial rhodopsin,RHO,Rhodopsin-dependent phototrophy,Phototrophy,50
+volc_mags_all-NADH-ubiquinone_oxidoreductase_NuoF,NADH-ubiquinone oxidoreductase,NuoF,NADH oxidation,NADH Oxidation,60
+volc_mags_all-Nitric_oxide_reductase_NorB_sequences,Nitric oxide reductase,NorB,Nitric oxide reduction  ,Nitrogen Cycling,50
+volc_mags_all-Nitrite_oxidoreductase_NxrA,Nitrite oxidoreductase,NxrA,Nitrite oxidase ,Nitrogen Cycling,60
+volc_mags_all-Nitrogenase_NifH_99,Nitrogenase NifH,NifH,Nitrogen-fixation ,Nitrogen Cycling,50
+volc_mags_all-Nitrous_oxide_reductase_NosZ_sequences,Nitrous oxide reductase,NosZ,Denitrification,Nitrogen Cycling,50
+volc_mags_all-Particulate_methane_monooxygenase_PmoA,Particulate methane monooxygenase,PmoA,Methane Oxidation ,Methane Cycling,50
+volc_mags_all-Periplasmic_nitrate_reductase_NapA_sequences,Periplasmic nitrate reductase,NapA,Nitrate reduction ,Nitrogen Cycling,50
+volc_mags_all-Photosystem_II_reaction_centre_PsbA_sequences,Photosystem II reaction centre,PsbA,Photosystem II-dependent phototrophy,Phototrophy,70
+volc_mags_all-Photosystem_I_reaction_centre_PsaA_sequences,Photosystem I reaction centre,PsaA,Photosystem I-dependent phototrophy,Phototrophy,80
+volc_mags_all-Polyheme_iron_reductase_OmcB,Polyheme iron reductase,OmcB,Iron Reduction,Iron Cycling,50
+volc_mags_all-Reductive_dehalogenase_RdhA,Reductive dehalogenase,RdhA,Organohalide Respiration,Reductive Dehalogenation,50
+volc_mags_all-Rubisco_RbcL_95_Filtered,Rubisco RbcL 95,RbcL,Calvin-Benson-Bassham cycle ,Carbon Fixation,50
+volc_mags_all-Selenate_reductase_YgfK,Selenate reductase,YgfK,Selenate reduction,Selenium Cycling,70
+volc_mags_all-Soluble_methane_monooxygenase_MmoA,Soluble methane monooxygenase,MmoA,Methane oxidation ,Methane Cycling,50
+volc_mags_all-Succinate_dehydrogenase_SdhA,Succinate dehydrogenase,SdhA,Succinate oxidation ,Succinate Oxidation,50
+volc_mags_all-Sulfide_quinone_oxidoreductase_Sqr_sequences,Sulfide quinone oxidoreductase,Sqr,Sulfide oxidation ,Sulfur Cycling,50
+volc_mags_all-Sulfur_oxygenase_reductase_Sor_sequences,Sulfur oxygenase reductase,Sor,Sulfur oxidation and reduction ,Sulfur Cycling,50
+volc_mags_all-Thaumarchaeota_4-hydroxybutyryl-CoA_synthetase_HbsT_sequences,Thaumarchaeota 4-hydroxybutyryl-CoA synthetase,HbsT,Thaumarchaeota 4-hydroxybutyryl cycle ,Carbon Fixation,75
+volc_mags_all-Thiosulfohydrolase_SoxB_sequences,Thiosulfohydrolase,SoxB,Thiosulfate oxidation ,Sulfur Cycling,50
+volc_mags_all-FeFe_hydrogenase_hydrogenase,FeFe hydrogenase,,Hydrogen oxidation,Hydrogen Cycling,45
+volc_mags_all-Fe_hydrogenase,Fe hydrogenase,,Hydrogen oxidation,Hydrogen Cycling,50
+volc_mags_all-NiFe_Group_1a,NiFe - Group 1a - Periplasmic,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1b,NiFe - Group 1b - Prototypical,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1c,NiFe - Group 1c - Hyb-type,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1d,NiFe - Group 1d - Oxygen-tolerant,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1e,NiFe - Group 1e - Isp-type,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1f,NiFe - Group 1f - Oxygen-protecting,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1g,NiFe - Group 1g - Crenarchaeota-type,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1h,NiFe - Group 1h - Actinobacteria-type,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1i,NiFe - Group 1i - Coriobacteria-type (putative),,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1j,NiFe - Group 1j - Archaeoglobi-type,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1k,NiFe - Group 1k - Methanophenazine-reducing,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_1l,NiFe - Group 1l - Unknown,,Group 1 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_2a,NiFe - Group 2a - Cyanobacteria-type,,Group 2 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_2b,NiFe - Group 2b - Histidine kinase-linked,,Group 2 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_2c,NiFe - Group 2c - Diguanylate cyclase-linked (putative),,Group 2 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_2d,NiFe - Group 2d - Aquificae-type,,Group 2 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_2e,NiFe - Group 2e - Metallosphaera-type (putative),,Group 2 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_3a,NiFe - Group 3a - F420-coupled,,Group 3 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_3b,NiFe - Group 3b - NADP-coupled,,Group 3 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_3c,NiFe - Group 3c - Heterodisulfide reductase-linked,,Group 3 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_3d,NiFe - Group 3d - NAD-coupled,,Group 3 hydrogenases,Hydrogen Cycling,60
+volc_mags_all-NiFe_Group_4a,NiFe - Group 4a - Formate hydrogenlyase,,Group 4 hydrogenases,Hydrogen Cycling,50
+volc_mags_all-NiFe_Group_4b,NiFe - Group 4b - Formate-respiring,,Group 4 hydrogenases,Hydrogen Cycling,50
+volc_mags_all-NiFe_Group_4c,NiFe - Group 4c - Carbon monoxide-respiring,,Group 4 hydrogenases,Hydrogen Cycling,50
+volc_mags_all-NiFe_Group_4d,"NiFe - Group 4d - Ferredoxin-coupled, Mrp-linked",,Group 4 hydrogenases,Hydrogen Cycling,50
+volc_mags_all-NiFe_Group_4e,"NiFe - Group 4e - Ferredoxin-coupled, Ech-type",,Group 4 hydrogenases,Hydrogen Cycling,50
+volc_mags_all-NiFe_Group_4f,NiFe - Group 4f - Formate-coupled (putative),,Group 4 hydrogenases,Hydrogen Cycling,50
+volc_mags_all-NiFe_Group_4g,NiFe - Group 4g - Ferredoxin-coupled (putative),,Group 4 hydrogenases,Hydrogen Cycling,50
+volc_mags_all-NiFe_Group_4h,"NiFe - Group 4h - Ferredoxin-coupled, Eha-type",,Group 4 hydrogenases,Hydrogen Cycling,50

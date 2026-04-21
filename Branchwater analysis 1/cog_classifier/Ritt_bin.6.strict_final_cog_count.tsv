@@ -1,0 +1,27 @@
+LETTER	COUNT	COLOR	DESCRIPTION
+J	185	#FCCCFC	Translation, ribosomal structure and biogenesis
+A	1	#FCDCFC	RNA processing and modification
+K	105	#FCDCEC	Transcription
+L	77	#FCDCDC	Replication, recombination and repair
+B	0	#FCDCCC	Chromatin structure and dynamics
+D	36	#FCFCDC	Cell cycle control, cell division, chromosome partitioning
+Y	0	#FCFCCC	Nuclear structure
+V	43	#FCFCBC	Defense mechanisms
+T	84	#FCFCAC	Signal transduction mechanisms
+M	132	#ECFCAC	Cell wall/membrane/envelope biogenesis
+N	22	#DCFCAC	Cell motility
+Z	0	#CCFCAC	Cytoskeleton
+W	1	#BCFCAC	Extracellular structures
+U	20	#ACFCAC	Intracellular trafficking, secretion, and vesicular transport
+O	105	#9CFCAC	Posttranslational modification, protein turnover, chaperones
+X	27	#9CFC9C	Mobilome: prophages, transposons
+C	237	#BCFCFC	Energy production and conversion
+G	234	#CCFCFC	Carbohydrate transport and metabolism
+E	379	#DCFCFC	Amino acid transport and metabolism
+F	86	#DCECFC	Nucleotide transport and metabolism
+H	169	#DCDCFC	Coenzyme transport and metabolism
+I	132	#DCCCFC	Lipid transport and metabolism
+P	127	#CCCCFC	Inorganic ion transport and metabolism
+Q	26	#BCCCFC	Secondary metabolites biosynthesis, transport and catabolism
+R	124	#E0E0E0	General function prediction only
+S	72	#CCCCCC	Function unknown

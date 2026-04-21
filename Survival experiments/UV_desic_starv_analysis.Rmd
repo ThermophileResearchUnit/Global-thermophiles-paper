@@ -1,0 +1,136 @@
+---
+title: "Temp plotting"
+author: "Stephen Noell"
+date: "26/01/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE, 
+                      warning = FALSE,
+                      fig.align = "center",
+                      fig.width = 10,
+                      fig.height = 6)
+```
+
+
+```{r}
+
+# Libraries
+library("tidyverse")       # data wrangling and visualisation
+library("here")            # set the path to the folder
+library("ggplot2")
+library("ggpubr") #for putting figs together
+library("RColorBrewer") #for color palettes
+library("svglite") #for saving SVGs
+library("reshape2")
+
+set.seed(57)
+```
+
+```{r}
+######UV data
+#data loading
+
+uv1 <- read.csv("UV_results_combined.csv", header = TRUE) %>%
+  dplyr::select(Treatment, dose, Strain, Final.cells.mL) %>%
+  dplyr::group_by(Strain) %>%
+  dplyr::mutate(survival = 100*(Final.cells.mL / mean(Final.cells.mL[dose == 0], na.rm = TRUE))) %>%
+  ungroup() %>%
+  as.data.frame(.) %>%
+  dplyr::mutate(prop = survival / 100) %>%
+  dplyr::mutate(log_survival = log10(prop))
+
+uv1e <- uv1 %>% 
+  group_by(Strain, dose) %>%
+  summarise(
+    mean_prop = mean(prop, na.rm = TRUE),
+    mean_surv = mean(log_survival, na.rm = TRUE),
+    sd_surv = sd(log_survival, na.rm = TRUE),
+    .groups = 'drop'
+  ) %>%
+  as.data.frame(.)
+
+#write.csv(uv1e, "uv_results_avg.csv", row.names = FALSE)
+```
+
+```{r}
+#data plotting
+
+uv_plot <- ggplot(uv1e, aes(x = dose, y = mean_surv, color = Strain)) +
+  geom_point(size = 2) +
+  geom_line(width = 2) +
+  geom_errorbar(aes(ymin = mean_surv - sd_surv, ymax = mean_surv + sd_surv), width = 40) +
+  theme_bw() +
+  theme(legend.position = "top") +
+  scale_color_manual(values = c("#e66101", "#525252", "#969696", "#fdb863")) +
+  xlab(expression("UVC exposure (J/m"^2*")")) +
+  ylab("log(proportion survival)")
+
+uv_plot
+
+#ggsave("UV_plot.svg", uv_plot, width = 100, height = 100, units = "mm",dpi = 300)
+#ggsave("UV_plot.png", uv_plot, width = 100, height = 100, units = "mm",dpi = 300)
+
+```
+
+```{r}
+######frez data
+#data loading
+
+frez1 <- read.csv("frez_results_combined.csv", header = TRUE) %>%
+  dplyr::select(Treatment, time, Strain, Final.cells.mL) %>%
+  dplyr::group_by(Strain) %>%
+  dplyr::mutate(survival = 100*(Final.cells.mL / mean(Final.cells.mL[time == 0], na.rm = TRUE))) %>%
+  ungroup() %>%
+  as.data.frame(.) %>%
+  dplyr::mutate(prop = survival / 100) %>%
+  dplyr::mutate(log_survival = log10(prop))
+
+frez1e <- frez1 %>% 
+  group_by(Strain, time) %>%
+  summarise(
+    mean_prop = mean(prop, na.rm = TRUE),
+    mean_surv = mean(log_survival, na.rm = TRUE),
+    sd_surv = sd(log_survival, na.rm = TRUE),
+    .groups = 'drop'
+  ) %>%
+  as.data.frame(.)
+
+#write.csv(frez1e, "frez_results_avg.csv", row.names = FALSE)
+
+```
+
+```{r}
+#data plotting
+
+frez_plot <- ggplot(frez1e, aes(x = time, y = mean_surv, color = Strain)) +
+  geom_point(size = 2) +
+  geom_line(width = 2) +
+  geom_errorbar(aes(ymin = mean_surv - sd_surv, ymax = mean_surv + sd_surv), width = 0.5) +
+  theme_bw() +
+  theme(legend.position = "top") +
+  scale_color_manual(values = c("#e66101", "#525252", "#969696", "#fdb863")) +
+  xlab("Time (days)") +
+  ylab("log(proportion survival)")
+
+frez_plot
+
+#ggsave("frez_plot.svg", frez_plot, width = 100, height = 100, units = "mm",dpi = 300)
+#ggsave("frez_plot.png", frez_plot, width = 100, height = 100, units = "mm",dpi = 300)
+
+```
+
+```{r}
+uv_frez <- ggarrange(frez_plot, uv_plot,
+                     labels = c("A", "B"),
+                     ncol = 2,
+                     common.legend = TRUE)
+
+uv_frez
+
+#ggsave("../Figure 2_UV-frez.svg", uv_frez, width = 200, height = 100, units = "mm",dpi = 300)
+#ggsave("../Figure 2_UV-frez.png", uv_frez, width = 200, height = 100, units = "mm",dpi = 300)
+```
+

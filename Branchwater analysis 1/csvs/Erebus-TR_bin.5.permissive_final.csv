@@ -1,0 +1,29 @@
+acc,assay_type,bioproject,cANI,collection_date_sam,containment,geo_loc_name_country_calc,lat_lon,organism
+SRR6519254,WGS,PRJNA431961,1.0,2009-02-01,0.94,NP,null,metagenome
+SRR20140223,WGS,PRJNA858297,0.93,2020-01-01,0.2,Chile,null,hot springs metagenome
+SRR20140225,WGS,PRJNA858297,0.92,2020-01-01,0.19,Chile,null,hot springs metagenome
+SRR490139,OTHER,NP,0.9,null,0.1,NP,null,soil metagenome
+SRR6519253,WGS,PRJNA431961,1.0,2009-02-01,0.98,NP,null,metagenome
+SRR20140229,WGS,PRJNA858297,0.93,2019-08-01,0.2,Chile,null,hot springs metagenome
+SRR6519259,WGS,PRJNA431961,0.97,2009-02-01,0.52,NP,null,metagenome
+SRR5451032,WGS,PRJNA382437,0.93,2013-03-01,0.22,Chile,"[-42.27291,-72.27393]",hot springs metagenome
+SRR20140219,WGS,PRJNA858297,0.92,2020-01-01,0.18,Chile,null,hot springs metagenome
+SRR6519260,WGS,PRJNA431961,0.96,2009-02-01,0.41,NP,null,metagenome
+SRR15170210,WGS,PRJNA741280,0.9,2019-05-28,0.11,USA,"[40.6529,-104.9995]",soil metagenome
+SRR6519258,WGS,PRJNA431961,0.92,2009-02-01,0.16,NP,null,metagenome
+SRR5451033,WGS,PRJNA382437,0.94,2013-03-01,0.25,Chile,"[-42.27291,-72.27393]",hot springs metagenome
+SRR15532681,WGS,PRJNA756367,0.9,2013-10-30,0.11,USA,"[41.384,-82.513]",wetland metagenome
+SRR20140222,WGS,PRJNA858297,0.91,2020-01-01,0.15,Chile,null,hot springs metagenome
+ERR6058144,WGS,PRJEB45419,0.9,null,0.12,Argentina,null,metagenome
+SRR13697452,OTHER,PRJNA697336,0.9,2019-05-31,0.11,USA,null,biocrust metagenome
+SRR20140226,WGS,PRJNA858297,0.93,2020-01-01,0.2,Chile,null,hot springs metagenome
+SRR6519256,WGS,PRJNA431961,1.0,2009-02-01,0.98,NP,null,metagenome
+SRR5451031,WGS,PRJNA382437,0.92,2013-03-01,0.17,Chile,"[-42.27291,-72.27393]",hot springs metagenome
+SRR6519257,WGS,PRJNA431961,0.91,2009-02-01,0.13,NP,null,metagenome
+SRR5249478,WGS,PRJNA366278,0.9,2009-01-31,0.12,uncalculated,"[-77.5182,167.1113]",freshwater sediment metagenome
+SRR9009773,WGS,PRJNA539695,0.9,2017-09-18,0.11,USA,null,soil metagenome
+SRR12918224,WGS,PRJNA651859,0.92,2017-10-13,0.17,USA,"[41.896,-89.3636]",soil metagenome
+SRR18214678,WGS,PRJNA797241,0.9,2018-09-01,0.1,France,"[42.80247,1.42333]",peat metagenome
+SRR20140232,WGS,PRJNA858297,0.93,2020-01-01,0.21,Chile,null,hot springs metagenome
+SRR20140224,WGS,PRJNA858297,0.92,2020-01-01,0.19,Chile,null,hot springs metagenome
+SRR6519255,WGS,PRJNA431961,1.0,2009-02-01,0.96,NP,null,metagenome

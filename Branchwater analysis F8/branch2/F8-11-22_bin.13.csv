@@ -1,0 +1,27 @@
+acc,assay_type,bioproject,cANI,collection_date_sam,containment,geo_loc_name_country_calc,lat_lon,organism
+SRR12918224,WGS,PRJNA651859,0.91,2017-10-13,0.14,USA,"[41.896,-89.3636]",soil metagenome
+ERR5003692,WGS,PRJEB42019,0.91,null,0.13,USA,null,soil metagenome
+ERR3971504,WGS,PRJEB36447,0.9,null,0.12,NP,null,metagenome
+ERR3971671,WGS,PRJEB36447,0.95,null,0.32,NP,null,metagenome
+SRR24490439,WGS,PRJNA970198,0.97,2012-08-01,0.56,Portugal,"[37.802222,-25.500278]",hot springs metagenome
+SRR5579883,WGS,PRJNA375306,0.97,null,0.53,USA,"[40.7999,-76.3402]",soil metagenome
+SRR5579884,WGS,PRJNA375307,0.95,null,0.38,USA,"[40.7999,-76.3402]",soil metagenome
+SRR13697452,OTHER,PRJNA697336,0.9,2019-05-31,0.1,USA,null,biocrust metagenome
+ERR5004085,WGS,PRJEB42019,0.94,null,0.3,USA,null,soil metagenome
+SRR24677581,WGS,PRJNA974462,0.92,2016-10-11,0.17,USA,"[40.8008,-76.3415]",mine metagenome
+SRR24490441,WGS,PRJNA970198,0.97,2012-08-01,0.56,Portugal,"[37.802222,-25.500278]",hot springs metagenome
+ERR3971599,WGS,PRJEB36447,0.93,null,0.2,NP,null,metagenome
+SRR24677566,WGS,PRJNA974462,0.93,2016-10-11,0.2,USA,"[40.8011,-76.3431]",mine metagenome
+ERR3974372,WGS,PRJEB36447,0.9,null,0.12,NP,null,metagenome
+ERR5003347,WGS,PRJEB42019,0.92,null,0.18,USA,null,soil metagenome
+ERR3971850,WGS,PRJEB36447,0.97,null,0.48,NP,null,metagenome
+ERR3971502,WGS,PRJEB36447,0.9,null,0.12,NP,null,metagenome
+ERR5002068,WGS,PRJEB42019,0.92,null,0.19,USA,null,soil metagenome
+SRR9009773,WGS,PRJNA539695,0.9,2017-09-18,0.1,USA,null,soil metagenome
+SRR8554444,WGS,PRJNA518328,0.97,2017-10-29,0.48,USA,"[44.5676,-110.8075]",sediment metagenome
+SRR24490442,WGS,PRJNA970198,0.92,2012-08-01,0.16,Portugal,"[37.802222,-25.500278]",hot springs metagenome
+SRR24490440,WGS,PRJNA970198,0.97,2012-08-01,0.55,Portugal,"[37.802222,-25.500278]",hot springs metagenome
+ERR5004479,WGS,PRJEB42019,0.91,null,0.14,USA,null,soil metagenome
+SRR5579875,WGS,PRJNA375305,0.98,null,0.69,USA,"[40.7999,-76.3402]",soil metagenome
+SRR5579885,WGS,PRJNA375308,0.96,null,0.46,USA,"[40.7999,-76.3402]",soil metagenome
+ERR5004872,WGS,PRJEB42019,0.95,null,0.31,USA,null,soil metagenome
