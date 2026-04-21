@@ -1,0 +1,1 @@
+Repository for all data analyses associated with the global thermophiles manuscript. Note: for the Air samples analysis, the DADA2 processing script requires the presence of the raw sequencing files (available from GenBank) and the DADA2-formatted SILVA taxonomy training file to run properly.
