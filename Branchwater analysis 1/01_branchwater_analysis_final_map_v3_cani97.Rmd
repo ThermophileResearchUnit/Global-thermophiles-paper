@@ -45,9 +45,9 @@ colorsc <- c("#b35806", "black", "#5e3c99", "#b2abd2")
 ###Note: here, defining endemics as hits of 1 or 0 on non-Erebus/Melbourne/Rittmann metagenomes.
 # this accounts for any potential false hit
 
-#Set the threshold for containment or cANI to use
+###Also note: what containment threshold to use?
 containment_thresh <- 0.3
-cani_thresh <- 0.95
+cani_thresh <- 0.97
 
 # Define the directory containing the .csv files
 csv_folder <- "./csvs"
@@ -91,13 +91,9 @@ for (csv_file in csv_files) {
       !grepl("^\\*-77\\.5182", lat_lon),  # Remove rows where lat_lon starts with *-77.5182
       !organism %in% c("mixed culture metagenome", "Delftia acidovorans", "Chloroflexota bacterium",
                        "microbial fuel cell metagenome", "uncultured bacterium",
-                       "activated sludge metagenome", "Acidobacteriota bacterium",
-                       "Lepraria finkii", "Verrucomicrobiota bacterium", "Bacillota bacterium",
-                       "Bacteroidota bacterium", "Bacillus anthracis", "anaerobic digester metagenome",
-                       "Actinomycetota bacterium", "sludge metagenome", "Pseudomonadota bacterium",
-                       "Abditibacteriota", "Stereocaulon cornutum", "museum specimen metagenome"), #remove synthetic and culture metagenomes
+                       "activated sludge metagenome"), #remove synthetic and culture metagenomes
       cani_thresh >= containment_thresh,
-      cANI >= cani_thresh
+      cANI >= cani_thresh  ####
     )
   
   # Add the filename as a new column, but only if there are rows remaining
@@ -142,7 +138,7 @@ row_count_summary <- row_count_summary %>%
 
 
 ```{r}
-#look for any correlation between >1 hit (cosm) and genome characteristics?
+#load in MAG info
 mag_char <- read.csv("mag_char_ant_volcs.csv") %>%
   dplyr::select(-`Dropped.during.dereplication.`)
 
@@ -156,13 +152,13 @@ counts1 <- row_count_summary %>%
   dplyr::mutate(salinity_range = salinity_max - salinity_min) %>%
   dplyr::mutate(ogt2 = (temperature_optimum + Predicted.OGT....) / 2) %>%
   dplyr::select(-temperature_optimum, -Predicted.OGT....,
-                -temperature_max, -temperature_min, -ph_max, -ph_min, 
+                -temperature_max, -ph_max, -ph_min, 
                 -salinity_max, -salinity_min) %>%
   dplyr::mutate(dist = case_when(
         row_count > 1 ~ "cosmopolitan",  # If 'row_count' is greater than 1, set 'dist' to "cosmopolitan"
     row_count <= 1 ~ "endemic"       # If 'row_count' is 1 or 0, set 'dist' to "endemic"
-  )) %>% ###########just thermophiles?
-  dplyr::filter(ogt2 < 50)
+  )) %>% ###########just thermophiles
+  dplyr::filter(ogt2 > 49)
 
 counts1$salinity_range[counts1$salinity_range < 0] <- 0
 
@@ -191,11 +187,12 @@ counts0 <- counts1 %>%
 
 counts0
 
+#write.csv(counts1, "cosm_end_mag_char_c30.csv")
 ```
 
 
 ```{r}
-#for cosmopolitan, make maps
+#for cosmopolitan thermophiles, make maps
 counts_cosm <- counts1 %>%
   dplyr::filter(dist == "cosmopolitan")
 
@@ -246,7 +243,7 @@ maps2 <- maps1 %>%
   dplyr::mutate(lat = as.numeric(lat),
          long = as.numeric(long)) %>%
   dplyr::left_join(., counts1, by = "MAG")  %>% ###################filter for just thermophiles
-  dplyr::filter(ogt2 < 50)
+  dplyr::filter(ogt2 > 49)
 
 maps2$tax_mag <- paste(maps2$Phylum, maps2$MAG, sep = ": ")
 
@@ -293,6 +290,32 @@ maps2 <- maps2 %>%
     )
   )
 
+###Fix some known cases
+
+maps2 <- maps2 %>%
+  mutate(
+    lat = case_when(
+      acc %in% c("ERR5003347", "ERR5002068", "ERR5004872", "ERR5004085") ~ 40.8012,
+      TRUE ~ lat
+    ),
+    long = case_when(
+      acc %in% c("ERR5003347", "ERR5002068", "ERR5004872", "ERR5004085") ~ -76.34256666,
+      TRUE ~ long
+    )
+  )
+
+maps2 <- maps2 %>%
+  mutate(
+    lat = case_when(
+      acc == "ERR5003692" ~ 19.389,
+      TRUE ~ lat
+    ),
+    long = case_when(
+      acc == "ERR5003692"~ -155.25,
+      TRUE ~ long
+    )
+  )
+
 ###Now for the mapping
 
 world <- map_data("world")
@@ -326,7 +349,7 @@ maps2 <- maps2 %>%
     organism == "biocrust metagenome" ~ "soil",
     organism == "gut metagenome" ~ "host-associated",
     organism == "invertebrate metagenome" ~ "host-associated",
-    organism == "biofilm metagenome" ~ "marine",
+    organism == "biofilm metagenome" ~ "hydrothermal",
     organism == "microbial mat metagenome" ~ "hydrothermal",
     organism == "hot springs metagenome" ~ "hydrothermal",
     organism == "rhizosphere metagenome" ~ "plant",
@@ -360,9 +383,8 @@ maps2 <- maps2 %>%
     organism == "wetland metagenome" ~ "wetland",
     bioproject == "PRJEB35881" ~ "plant",
     bioproject == "PRJEB38431" ~ "ice",
-    organism == "Atractylodes lancea" ~ "plant",
     TRUE ~ organism
-  ))  %>%
+  )) %>%
   dplyr::rename(organism_old = organism) %>%
   dplyr::rename(organism = organism2)
 
@@ -377,55 +399,10 @@ maps2 <- maps2 %>%
   mutate(organism = coalesce(category, organism)) %>%
   select(-category)
 
-#write.csv(maps2, "../Table S3_raw_branchwater_meso.csv", row.names = FALSE)
+#write.csv(maps2, "../Table S3_raw_branchwater.csv", row.names = FALSE)
 ```
 
 
-
-```{r}
-
-pal_barnf <- RColorBrewer::brewer.pal(10, "Paired")
-
-maps2.1 <- maps2 %>%
-  mutate(tax_mag = str_remove(tax_mag, "(?<=bin\\.\\d{1,3}).*"))
-
-mapsf <- ggplot() +
-  geom_map(
-    data = world, map = world,
-    aes(long, lat, map_id = region),
-        color = "white", fill = "black", linewidth = 0.05
-  ) +
-  geom_point( 
-    data = maps2.1, 
-    aes(long, lat, color = organism), 
-    alpha = 1, size = 3 
-  ) +
-  labs(color = "Sample type") +
-  #scale_color_manual(values = pal_barnf) +
-  plain +
-  theme(legend.position = "bottom") +
-  guides(color = guide_legend(nrow = 2)) +
-  facet_wrap(.~tax_mag, nrow = 7, ncol = 5,
-             labeller = labeller(tax_mag = label_wrap_gen(width = 10)))
-
-mapsf
-
-hab <- maps2 %>%
-  dplyr::group_by(organism) %>%
-  summarise(habitat_count = n()) %>%
-  ungroup(.) %>%
-  as.data.frame(.)
-
-habp <- ggplot(hab, aes(x = organism, y = habitat_count, fill = organism)) +
-  geom_bar(stat = "identity") +
-  scale_fill_manual(values = pal_barnf) +
-  theme_classic() +
-  labs(x = "", y = "Count") +
-    theme(legend.position = "none",
-        axis.text.x = element_text(angle = 45, hjust = 1),
-        axis.title.x = element_blank())
-  
-```
 
 ```{r}
 #average number of geographic locations?
@@ -507,13 +484,188 @@ mean(loc_count$n)
 median(loc_count$n)
 ```
 
+
+```{r}
+maps2.1 <- maps4 %>%
+  mutate(tax_mag = str_replace(tax_mag, "(bin\\.\\d+).*", "\\1"))
+
+# Get unique organisms and assign colors consistently
+all_organisms <- unique(maps2.1$organism)
+pal_barnf <- RColorBrewer::brewer.pal(min(10, length(all_organisms)), "Paired")
+names(pal_barnf) <- all_organisms  # Named vector for consistent color mapping
+
+# --- Build per-MAG plot list ---
+
+mag_list <- sort(unique(maps2.1$tax_mag))  # <-- alphabetical
+
+plot_list0 <- lapply(mag_list, function(mag) {
+  
+  df_mag <- maps2.1 %>% dplyr::filter(tax_mag == mag)
+  
+  # --- World map for this MAG ---
+  map_plot <- ggplot() +
+    geom_map(
+      data = world, map = world,
+      aes(long, lat, map_id = region),
+      color = "white", fill = "black", linewidth = 0.05
+    ) +
+    geom_point(
+      data = df_mag,
+      aes(long, lat, color = organism),
+      alpha = 1, size = 2
+    ) +
+    scale_color_manual(values = pal_barnf, drop = FALSE) +
+    plain +
+    labs(
+      title = str_wrap(mag, width = 20),
+      subtitle = paste0("n = ", nrow(df_mag), " locations")  # <-- count
+    ) +
+    theme(
+      legend.position = "none",
+      plot.title = element_text(size = 7, face = "bold", hjust = 0.5),
+      plot.subtitle = element_text(size = 6, hjust = 0.5, color = "grey40")  # <-- styled
+    )
+  
+  # --- Stacked bar for this MAG ---
+  bar_data <- df_mag %>%
+    dplyr::count(organism) %>%
+    dplyr::mutate(prop = n / sum(n))
+  
+  bar_plot <- ggplot(bar_data, aes(x = "", y = prop, fill = organism)) +
+    geom_col(width = 0.5) +
+    scale_fill_manual(values = pal_barnf, drop = FALSE) +
+    scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+    labs(x = NULL, y = NULL) +
+    theme_minimal() +
+    theme(
+      legend.position = "none",
+      axis.text.x = element_blank(),
+      axis.ticks.x = element_blank(),
+      panel.grid = element_blank(),
+      axis.text.y = element_text(size = 6),
+      plot.margin = margin(0, 2, 0, 2)
+    )
+  
+  map_plot + bar_plot + plot_layout(widths = c(4, 1))
+})
+
+hab <- maps4 %>%
+  dplyr::group_by(organism) %>%
+  summarise(habitat_count = n()) %>%
+  ungroup(.) %>%
+  as.data.frame(.)
+
+habp <- ggplot(hab, aes(x = organism, y = habitat_count, fill = organism)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = pal_barnf) +
+  theme_classic() +
+  labs(x = "", y = "Count") +
+    theme(legend.position = "none",
+        axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_text(size = 6)) +
+  scale_y_continuous(breaks = scales::pretty_breaks(n = 3))
+  
+plot_list1 <- c(plot_list0, list(habp))
+```
+
+```{r}
+#now that close sites are consolidated, look to see if there are correlations between num sites and things
+
+cor1 <- maps4 %>%
+  dplyr::group_by(MAG) %>%
+  summarise(count = n()) %>%
+  ungroup(.) %>%
+  as.data.frame(.) #%>%
+  #dplyr::filter(count < 500)
+
+cor0 <- maps4 %>%
+  dplyr::group_by(MAG) %>%
+  summarise(prop = mean(organism == "hydrothermal", na.rm = TRUE)) %>%
+  ungroup(.) %>%
+  as.data.frame(.)
+
+df <- left_join(cor1, cor0)
+
+#try exponential
+fit <- nls(prop ~ a * exp(b * count), 
+           data = df, 
+           start = list(a = 1, b = -0.01))
+
+summary(fit)
+
+RSS <- sum(residuals(fit)^2)
+TSS <- sum((df$prop - mean(df$prop))^2)
+R2 <- round(1 - RSS/TSS, 3)
+R2
+
+# Get predicted values over a smooth range of x
+x_seq <- seq(min(df$count), max(df$count), length.out = 200)
+pred <- predict(fit, newdata = data.frame(count = x_seq))
+fit_df <- data.frame(count = x_seq, prop = pred)
+
+# Plot
+exp_plot <- ggplot(df, aes(x = count, y = prop)) +
+  geom_point() +
+  geom_line(data = fit_df, aes(x = count, y = prop), color = "red") +
+  labs(x = "Count", y = "Proportion") +
+  theme_classic() +
+  theme(axis.text.y = element_text(size = 6),
+        axis.title.y = element_text(size = 6),
+        axis.text.x = element_text(size = 6),
+        axis.title.x = element_text(size = 6)
+  )
+
+exp_plot
+
+#add to list
+plot_list <- c(plot_list1, list(exp_plot))
+```
+
+
+```{r}
+# --- Shared legend ---
+# Build a dummy plot just to extract the legend
+legend_plot <- ggplot(maps2.1, aes(x = "", y = 1, fill = organism)) +
+  geom_col() +
+  scale_fill_manual(values = pal_barnf, name = "Sample type") +
+  guides(fill = guide_legend(nrow = 2)) +
+  theme(
+    legend.position = "bottom",
+    legend.text = element_text(size = 8),
+    legend.title = element_text(size = 9)
+  )
+
+shared_legend <- cowplot::get_legend(legend_plot)
+
+# --- Arrange all MAG plots in a grid + add shared legend at bottom ---
+grid_plots <- patchwork::wrap_plots(plot_list, nrow = 4, ncol = 5)
+
+final_plot <- cowplot::plot_grid(
+  grid_plots,
+  shared_legend,
+  ncol = 1,
+  rel_heights = c(1, 0.08)
+)
+
+final_plot
+
+#ggsave("../Figure S2_branch-map_cani97.png", final_plot, width = 230, height = 160, units = "mm",dpi = 300)
+#ggsave("../Figure S2_branch-map_cani97.svg", final_plot, width = 230, height = 160, units = "mm",dpi = 300)
+```
+
+
 ```{r}
 #saving data for trait analysis
-countsf <- counts1 %>% select(-row_count) %>%
+
+counts1 <- counts1 %>% select(-row_count) %>%
   left_join(., loc_count, by = "MAG") %>%
   dplyr::rename("num_locations" = "n") %>%
   mutate(num_locations = replace_na(num_locations, 0))
 
-#saveRDS(countsf, file = "counts1_branch_meso")
-
+#saveRDS(counts1, file = "counts1_branch")
+#saveRDS(maps2, file = "maps2_branch")
+#write.csv(combined_data, "../Table S3_raw_branchwater.csv", row.names = FALSE)
 ```

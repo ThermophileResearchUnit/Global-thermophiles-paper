@@ -564,8 +564,8 @@ fin_plot <- ggarrange(disp_other_colon, transc_mags,
 
 fin_plot
 
-#ggsave("../Figure S4_branch_trait_meso_vf.png", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
-#ggsave("../Figure S4_branch_trait_meso_vf.svg", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
+#ggsave("../Figure S5_branch_trait_meso_vf.png", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
+#ggsave("../Figure S5_branch_trait_meso_vf.svg", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
 
 #make table
 table_x <- counts1 %>% select(MAG, dist, num_locations, Site, Domain, Phylum,
@@ -582,6 +582,4 @@ table_x <- counts1 %>% select(MAG, dist, num_locations, Site, Domain, Phylum,
   rename(Coding_Density = Coding.density....) %>%
   rename(Genome_Size = Genome.size..Mbp.) %>%
   rename(growth_rate = Predicted.maximal.growth.rate..d.)
-
-#rite.csv(table_x, "../Table S3_mag_info_meso.csv", row.names = FALSE)
 ```

@@ -66,8 +66,7 @@ comb_df1 <- as.data.frame(comb_df)
 #want to make boxplots comparing dispersal characteristics
 #also include F8 cosmopolitans
 
-f8 <- read.csv("../F8 mags/mag_char_f8_end_cosm.csv") %>%
-  mutate(dist = str_replace_all(dist, "cosmopolitan", "F8 cosm"))
+f8 <- read.csv("../F8 mags/mag_char_f8_end_cosm.csv")
 
 counts2.0 <- counts1 %>%
   dplyr::select(MAG, Site, GC...., dist, Completeness....) %>%
@@ -378,11 +377,11 @@ colon_plot
 others <- counts1 %>%
   dplyr::select(MAG, Site, Coding.density...., 
                 ph_optimum, salinity_optimum,
-                ogt2, dist, temperature_min) %>%
+                ogt2, dist) %>%
   rename(Coding_Density = Coding.density....)
 
 f8_4 <- f8 %>% select(MAG, Site, Coding_Density, ph_optimum,
-                      salinity_optimum, ogt2, dist, temperature_min)
+                      salinity_optimum, ogt2, dist)
 
 others2 <- rbind(others, f8_4)
 
@@ -424,8 +423,7 @@ other_plot <- ggplot(counts5, aes(x = dist, y = value, color = dist)) +
             labeller = as_labeller(c(Coding_Density = "Coding density",
                                      ph_optimum = "pH optimum",
                                      salinity_optimum = "Salinity optimum",
-                                     ogt2 = "Optimal growth\ntemperature (\u00b0C)",
-                                     temperature_min = "Min. temp"
+                                     ogt2 = "Optimal growth\ntemperature (\u00b0C)"
                                      ))) +
   theme(
     text = element_text(size=12),
@@ -604,12 +602,12 @@ fin_plot <- ggarrange(colon_disp, transc_mags,
 fin_plot
 
 
-#ggsave("../Figure 4_branch_trait_vf.png", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
-#ggsave("../Figure 4_branch_trait_vf.svg", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
+ggsave("../Figure 4_branch_trait_vf.png", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
+ggsave("../Figure 4_branch_trait_vf.svg", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
 
 #save other plot
-#ggsave("../Supplementary Figure_trait_other.png", other_plot, width = 200, height = 100, units = "mm",dpi = 300)
-#ggsave("../Supplementary Figure_trait_other.svg", other_plot, width = 200, height = 100, units = "mm",dpi = 300)
+ggsave("../Figure S4_trait_other.png", other_plot, width = 200, height = 100, units = "mm",dpi = 300)
+ggsave("../Figure S4_trait_other.svg", other_plot, width = 200, height = 100, units = "mm",dpi = 300)
 
 #make table
 table_y <- counts1 %>% select(MAG, dist, num_locations, Site, Domain, Phylum,
@@ -637,7 +635,7 @@ table_f8 <- f8 %>% select(MAG, dist, num_locations, Site, Domain, Phylum,
                               )
 
 table_x <- rbind(table_y, table_f8)
-#write.csv(table_x, "../Table S1_mag_info.csv", row.names = FALSE)
+#write.csv(table_x, "../Table S2_mag_info_v2.csv", row.names = FALSE)
 ```
 
 
@@ -645,16 +643,16 @@ table_x <- rbind(table_y, table_f8)
 #look to see if there are correlations between num sites and things
 
 counts_arg <- counts1 %>%
-  dplyr::select(MAG, num_locations, temperature_min) %>%
+  dplyr::select(MAG, num_locations, GC....) %>%
   #filter(num_locations < 500) %>%
   filter(num_locations > 0)
 
 f8_arg <- f8 %>%
-  dplyr::select(MAG, num_locations, temperature_min) 
+  dplyr::select(MAG, num_locations, ogt2) 
 
 df <- rbind(counts_arg, f8_arg)
 
-cor_plot <- ggplot(df, aes(x = num_locations, y = temperature_min)) +
+cor_plot <- ggplot(counts_arg, aes(x = num_locations, y = GC....)) +
   geom_point() + 
   geom_smooth(method = "lm", se = TRUE, formula = y ~ x,color = "black") +
   stat_cor(aes(label =  ..rr.label..), color = "black") +
