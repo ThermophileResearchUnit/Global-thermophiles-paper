@@ -41,83 +41,70 @@ colorsc <- c("#b35806", "black", "#5e3c99", "#b2abd2")
 
 ```{r}
 #########Get data in
+###Note: here, defining unknowns as hits of 1 or 0 on non-Erebus/Melbourne/Rittmann metagenomes.
 
-###Note: here, defining endemics as hits of 1 or 0 on non-Erebus/Melbourne/Rittmann metagenomes.
-# this accounts for any potential false hit
-
-#Set the threshold for containment or cANI to use
-containment_thresh <- 0.3
-cani_thresh <- 0.95
+# Load per-MAG cANI thresholds from YACHT sweep results
+cani_thresholds <- read.table("cani_results.tsv", header = TRUE, sep = "\t", stringsAsFactors = FALSE)
 
 # Define the directory containing the .csv files
 csv_folder <- "./csvs"
-
 # Get list of .csv files in the folder
 csv_files <- list.files(csv_folder, pattern = "\\.csv", full.names = TRUE)
-
 # Initialize an empty list to store data frames
 all_data <- list()
-
 # Initialize a data frame to store the row count summary
 row_count_summary <- data.frame(filename = character(), row_count = integer(), stringsAsFactors = FALSE)
-
 # Iterate through each .csv file
 for (csv_file in csv_files) {
-  # Try to read in the .csv file, handling empty files
   df <- tryCatch({
     read.csv(csv_file)
   }, error = function(e) {
-    # If there's an error reading the file, return an empty data frame
     data.frame()
   })
   
-  # Get the filename without .csv extension
   filename_no_ext <- sub("\\.csv$", "", basename(csv_file))
   
-  # Check if the file is empty (0 rows)
   if (nrow(df) == 0) {
-    # Add to summary with row count of 0
     row_count_summary <- rbind(row_count_summary, 
                                data.frame(filename = filename_no_ext, row_count = 0))
-    next  # Skip to the next file
+    next
   }
   
-  # Filter the data frame
+  # Look up this MAG's cANI threshold; 0.97 if not in results
+  mag_row <- cani_thresholds[cani_thresholds$MAG == filename_no_ext, ]
+  if (nrow(mag_row) == 0) {
+    message("No cANI threshold found for ", filename_no_ext, " — using default 0.97")
+    cani_thresh <- 0.97
+  } else {
+    cani_thresh <- mag_row$lowest_cANI[1]
+  }
+  
   filtered_df <- df %>%
     filter(
       !bioproject %in% c("PRJNA431961", "PRJNA366278", "PRJNA366279", "PRJNA685225",
                          "PRJNA366053", "PRJNA366281", "PRJNA366280", "PRJNA1126331",
-                         "PRJEB37532", "PRJNA1026874", "PRJNA992360", "PRJNA940853"),  # Remove specified bioprojects
-      !grepl("^\\*-77\\.5182", lat_lon),  # Remove rows where lat_lon starts with *-77.5182
+                         "PRJEB37532", "PRJNA1026874", "PRJNA992360", "PRJNA940853"),
+      !grepl("^\\*-77\\.5182", lat_lon),
       !organism %in% c("mixed culture metagenome", "Delftia acidovorans", "Chloroflexota bacterium",
                        "microbial fuel cell metagenome", "uncultured bacterium",
-                       "activated sludge metagenome", "Acidobacteriota bacterium",
-                       "Lepraria finkii", "Verrucomicrobiota bacterium", "Bacillota bacterium",
-                       "Bacteroidota bacterium", "Bacillus anthracis", "anaerobic digester metagenome",
-                       "Actinomycetota bacterium", "sludge metagenome", "Pseudomonadota bacterium",
-                       "Abditibacteriota", "Stereocaulon cornutum", "museum specimen metagenome"), #remove synthetic and culture metagenomes
-      cani_thresh >= containment_thresh,
+                       "activated sludge metagenome"),
       cANI >= cani_thresh
     )
   
-  # Add the filename as a new column, but only if there are rows remaining
   if (nrow(filtered_df) > 0) {
     filtered_df$filename <- filename_no_ext
-    # Add the filtered data frame to the list
     all_data[[filename_no_ext]] <- filtered_df
   }
   
-  # Count the number of remaining rows and store in the summary
   row_count_summary <- rbind(row_count_summary, 
                              data.frame(filename = filename_no_ext, row_count = nrow(filtered_df)))
 }
-# Combine all filtered data frames into one large data frame, if there are any
+
 if (length(all_data) > 0) {
   combined_data <- bind_rows(all_data)
 } else {
-  combined_data <- data.frame()  # Create an empty data frame if no rows are left after filtering
+  combined_data <- data.frame()
 }
-
 combined_data <- combined_data %>%
   dplyr::mutate(Site = case_when(
     grepl("^Ritt", filename) ~ "Rittmann",        
@@ -160,7 +147,7 @@ counts1 <- row_count_summary %>%
                 -salinity_max, -salinity_min) %>%
   dplyr::mutate(dist = case_when(
         row_count > 1 ~ "cosmopolitan",  # If 'row_count' is greater than 1, set 'dist' to "cosmopolitan"
-    row_count <= 1 ~ "endemic"       # If 'row_count' is 1 or 0, set 'dist' to "endemic"
+    row_count <= 1 ~ "unknown"       
   )) %>% ###########just thermophiles?
   dplyr::filter(ogt2 < 50)
 
@@ -172,9 +159,9 @@ counts0 <- counts1 %>%
   dplyr::summarise(
     total_rows = n(),               # Total number of rows for each site
     cosm_prop = sum(row_count > 1) / total_rows,    # Proportion where 'row_count' is greater than 1
-    endemic_prop = sum(row_count <= 1) / total_rows, # Proportion where 'row_count' is 1 or less
+    unknown_prop = sum(row_count <= 1) / total_rows, # Proportion where 'row_count' is 1 or less
     cosm = sum(row_count > 1),    # count where 'row_count' is greater than 1
-    endemic = sum(row_count <= 1) # count where 'row_count' is 1 or less
+    unknown = sum(row_count <= 1) # count where 'row_count' is 1 or less
   ) %>%
   dplyr::bind_rows(
     counts1 %>%
@@ -182,9 +169,9 @@ counts0 <- counts1 %>%
         Site = "All Sites",
         total_rows = n(),
         cosm_prop = sum(row_count > 1) / total_rows,
-        endemic_prop = sum(row_count <= 1) / total_rows,
+        unknown_prop = sum(row_count <= 1) / total_rows,
         cosm = sum(row_count > 1),
-        endemic = sum(row_count <= 1)
+        unknown = sum(row_count <= 1)
       )
   ) %>% 
   as.data.frame(.)
@@ -408,7 +395,7 @@ mapsf <- ggplot() +
   facet_wrap(.~tax_mag, nrow = 7, ncol = 5,
              labeller = labeller(tax_mag = label_wrap_gen(width = 10)))
 
-mapsf
+#mapsf
 
 hab <- maps2 %>%
   dplyr::group_by(organism) %>%
@@ -515,5 +502,13 @@ countsf <- counts1 %>% select(-row_count) %>%
   mutate(num_locations = replace_na(num_locations, 0))
 
 #saveRDS(countsf, file = "counts1_branch_meso")
+
+####
+
+update <- countsf %>%
+  dplyr::select(MAG, dist, num_locations) %>%
+  left_join(., cani_thresholds, by = "MAG")
+
+#write.csv(update, "update_tables4_meso.csv", row.names = FALSE)
 
 ```
