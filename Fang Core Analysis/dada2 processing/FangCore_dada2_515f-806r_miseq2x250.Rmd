@@ -1,0 +1,550 @@
+---
+title: "FangCore_dada2_515f-806r_miseq2"
+output: html_document
+date: "2024-12-31"
+---
+
+````{r setup, include=FALSE}
+# some setup options for outputting markdown files; feel free to ignore these
+knitr::opts_chunk$set(eval = TRUE, 
+                      include = TRUE, 
+                      warning = FALSE, 
+                      message = FALSE,
+                      collapse = TRUE,
+                      dpi = 300,
+                      fig.dim = c(9, 9),
+                      out.width = '98%',
+                      out.height = '98%',
+                      dev = 'png', 
+                      fig.path = 'figure/')
+````
+
+````{r package installation, eval = FALSE, include=TRUE}
+#install.packages("BiocManager")
+#BiocManager::install("dada2")
+#BiocManager::install("ShortRead")
+
+#install.packages("dplyr")
+#install.packages("tidyr")
+#install.packages("Hmisc")
+#install.packages("ggplot2")
+#install.packages("plotly")
+````
+
+````{r }
+library(dada2); packageVersion("dada2") # the dada2 pipeline
+library(ShortRead); packageVersion("ShortRead") # dada2 depends on this
+library(dplyr); packageVersion("dplyr") # for manipulating data
+library(tidyr); packageVersion("tidyr") # for creating the final graph at the end of the pipeline
+library(Hmisc); packageVersion("Hmisc") # for creating the final graph at the end of the pipeline
+library(ggplot2); packageVersion("ggplot2") # for creating the final graph at the end of the pipeline
+library(plotly); packageVersion("plotly") # enables creation of interactive graphs, especially helpful for quality plots
+````
+````{r }
+# Set up pathway to idemp (demultiplexing tool) and test
+idemp <- "/usr/bin/idemp" # Location on server
+system2(idemp) # Check that idemp is in your path and you can run shell commands from R
+
+# Set up pathway to cutadapt (primer trimming tool) and test
+cutadapt <- "/usr/local/Python27/bin/cutadapt" # location on server
+system2(cutadapt, args = "--version") # Check by running shell command from R
+
+# Set path to shared data folder and contents
+data.fp <- "01.Amplicon/"
+
+# List all files in shared folder to check path
+list.files(data.fp)
+
+# Set file paths for barcodes file, map file, and fastqs
+    # Barcodes may need to have 'N' on the end of each 12bp sequence for compatibility
+    # Barcode file must have column 1 with barcodes and column 2 with sample IDs
+barcode.fp <- file.path(data.fp, "Fang_Cores_Demult.txt") # .txt file: barcode </t> sampleID
+I1.fp <- file.path(data.fp, "Undetermined_S0_L001_I1_001.fastq.gz") 
+R1.fp <- file.path(data.fp, "Undetermined_S0_L001_R1_001.fastq.gz") 
+R2.fp <- file.path(data.fp, "Undetermined_S0_L001_R2_001.fastq.gz") 
+````
+````{r }
+project.fp <- "01.Amplicon/FangCore_dada2_515f-806r_miseq2" # Project directory for analysis
+
+# Set up names of sub directories to stay organized
+preprocess.fp <- file.path(project.fp, "01_preprocess")
+    demultiplex.fp <- file.path(preprocess.fp, "demultiplexed")
+    filtN.fp <- file.path(preprocess.fp, "filtN")
+    trimmed.fp <- file.path(preprocess.fp, "trimmed")
+filter.fp <- file.path(project.fp, "02_filter") 
+table.fp <- file.path(project.fp, "03_tabletax") 
+````
+````{r }
+flags <- paste("-b", barcode.fp, "-I1", I1.fp, "-R1", R1.fp, "-R2", R2.fp, "-o", demultiplex.fp) 
+system2(idemp, args = flags) 
+
+# Look at output of demultiplexing
+list.files(demultiplex.fp)
+````
+````{r }
+# Change names of unassignable reads so they are not included in downstream processing
+unassigned_1 <- paste0("mv", " ", demultiplex.fp, "/Undetermined_S0_L001_R1_001.fastq.gz_unsigned.fastq.gz",
+                       " ", demultiplex.fp, "/Unassigned_reads1.fastq.gz")
+unassigned_2 <- paste0("mv", " ", demultiplex.fp, "/Undetermined_S0_L001_R2_001.fastq.gz_unsigned.fastq.gz", 
+                       " ", demultiplex.fp, "/Unassigned_reads2.fastq.gz")
+system(unassigned_1)
+system(unassigned_2)
+
+# Rename files - use gsub to get names in order!
+R1_names <- gsub(paste0(demultiplex.fp, "/Undetermined_S0_L001_R1_001.fastq.gz_"), "", 
+                 list.files(demultiplex.fp, pattern="Undetermined_S0_L001_R1_001", full.names = TRUE))
+file.rename(list.files(demultiplex.fp, pattern="Undetermined_S0_L001_R1_001", full.names = TRUE), 
+            paste0(demultiplex.fp, "/R1_", R1_names))
+
+R2_names <- gsub(paste0(demultiplex.fp, "/Undetermined_S0_L001_R2_001.fastq.gz_"), "", 
+                 list.files(demultiplex.fp, pattern="Undetermined_S0_L001_R2_001", full.names = TRUE))
+file.rename(list.files(demultiplex.fp, pattern="Undetermined_S0_L001_R2_001", full.names = TRUE),
+            paste0(demultiplex.fp, "/R2_", R2_names))
+
+# Get full paths for all files and save them for downstream analyses
+# Forward and reverse fastq filenames have format: 
+fnFs <- sort(list.files(demultiplex.fp, pattern="R1_", full.names = TRUE))
+fnRs <- sort(list.files(demultiplex.fp, pattern="R2_", full.names = TRUE))
+````
+````{r }
+# Name the N-filtered files to put them in filtN/ subdirectory
+fnFs.filtN <- file.path(preprocess.fp, "filtN", basename(fnFs))
+fnRs.filtN <- file.path(preprocess.fp, "filtN", basename(fnRs))
+
+# Filter Ns from reads and put them into the filtN directory
+filterAndTrim(fnFs, fnFs.filtN, fnRs, fnRs.filtN, maxN = 0, multithread = TRUE) 
+# CHANGE multithread to FALSE on Windows (here and elsewhere in the program)
+````
+````{r }
+# Set up the primer sequences to pass along to cutadapt
+FWD <- "GTGYCAGCMGCCGCGGTAA"  # this is 515f
+REV <- "GGACTACNVGGGTWTCTAAT"  # this is 806Br
+
+# Write a function that creates a list of all orientations of the primers
+allOrients <- function(primer) {
+    # Create all orientations of the input sequence
+    require(Biostrings)
+    dna <- DNAString(primer)  # The Biostrings works w/ DNAString objects rather than character vectors
+    orients <- c(Forward = dna, Complement = complement(dna), Reverse = reverse(dna), 
+                 RevComp = reverseComplement(dna))
+    return(sapply(orients, toString))  # Convert back to character vector
+}
+
+# Save the primer orientations to pass to cutadapt
+FWD.orients <- allOrients(FWD)
+REV.orients <- allOrients(REV)
+FWD.orients
+REV.orients
+
+# Write a function that counts how many time primers appear in a sequence
+primerHits <- function(primer, fn) {
+    # Counts number of reads in which the primer is found
+    nhits <- vcountPattern(primer, sread(readFastq(fn)), fixed = FALSE)
+    return(sum(nhits > 0))
+}
+````
+````{r }
+#Checking two samples to find files with barcodes (so we can confirm that they are removed later)
+rbind(FWD.ForwardReads = sapply(FWD.orients, primerHits, fn = fnFs.filtN[[3]]), 
+      FWD.ReverseReads = sapply(FWD.orients, primerHits, fn = fnRs.filtN[[3]]), 
+      REV.ForwardReads = sapply(REV.orients, primerHits, fn = fnFs.filtN[[3]]), 
+      REV.ReverseReads = sapply(REV.orients, primerHits, fn = fnRs.filtN[[3]]))
+rbind(FWD.ForwardReads = sapply(FWD.orients, primerHits, fn = fnFs.filtN[[4]]), 
+      FWD.ReverseReads = sapply(FWD.orients, primerHits, fn = fnRs.filtN[[4]]), 
+      REV.ForwardReads = sapply(REV.orients, primerHits, fn = fnFs.filtN[[4]]), 
+      REV.ReverseReads = sapply(REV.orients, primerHits, fn = fnRs.filtN[[4]]))
+````
+````{r }
+# Create directory to hold the output from cutadapt
+if (!dir.exists(trimmed.fp)) dir.create(trimmed.fp)
+fnFs.cut <- file.path(trimmed.fp, basename(fnFs.filtN))
+fnRs.cut <- file.path(trimmed.fp, basename(fnRs.filtN))
+
+# Save the reverse complements of the primers to variables
+FWD.RC <- dada2:::rc(FWD)
+REV.RC <- dada2:::rc(REV)
+
+##  Create the cutadapt flags ##
+# Trim FWD and the reverse-complement of REV off of R1 (forward reads)
+R1.flags <- paste("-g", FWD, "-a", REV.RC, "--minimum-length 50") 
+
+# Trim REV and the reverse-complement of FWD off of R2 (reverse reads)
+R2.flags <- paste("-G", REV, "-A", FWD.RC, "--minimum-length 50") 
+
+# Run Cutadapt
+for (i in seq_along(fnFs)) {
+    system2(cutadapt, args = c(R1.flags, R2.flags, "-n", 2, # -n 2 required to remove FWD and REV from reads
+                               "-o", fnFs.cut[i], "-p", fnRs.cut[i], # output files
+                               fnFs.filtN[i], fnRs.filtN[i])) # input files
+}
+
+# Re-Checking the same samples as before to confirm removal of primers
+rbind(FWD.ForwardReads = sapply(FWD.orients, primerHits, fn = fnFs.cut[[3]]), 
+      FWD.ReverseReads = sapply(FWD.orients, primerHits, fn = fnRs.cut[[3]]), 
+      REV.ForwardReads = sapply(REV.orients, primerHits, fn = fnFs.cut[[3]]), 
+      REV.ReverseReads = sapply(REV.orients, primerHits, fn = fnRs.cut[[3]]))
+rbind(FWD.ForwardReads = sapply(FWD.orients, primerHits, fn = fnFs.cut[[4]]), 
+      FWD.ReverseReads = sapply(FWD.orients, primerHits, fn = fnRs.cut[[4]]), 
+      REV.ForwardReads = sapply(REV.orients, primerHits, fn = fnFs.cut[[4]]), 
+      REV.ReverseReads = sapply(REV.orients, primerHits, fn = fnRs.cut[[4]]))
+````
+````{r }
+# Put filtered reads into separate sub-directories for big data workflow
+dir.create(filter.fp)
+    subF.fp <- file.path(filter.fp, "preprocessed_F") 
+    subR.fp <- file.path(filter.fp, "preprocessed_R") 
+dir.create(subF.fp)
+dir.create(subR.fp)
+
+# Move R1 and R2 from trimmed to separate forward/reverse sub-directories
+fnFs.Q <- file.path(subF.fp,  basename(fnFs.filtN)) 
+fnRs.Q <- file.path(subR.fp,  basename(fnRs.filtN))
+file.rename(from = fnFs.cut, to = fnFs.Q)
+file.rename(from = fnRs.cut, to = fnRs.Q)
+
+# File parsing; create file names and make sure that forward and reverse files match
+filtpathF <- file.path(subF.fp, "filtered") # files go into preprocessed_F/filtered/
+filtpathR <- file.path(subR.fp, "filtered") # files go into preprocessed_R/filtered/
+fastqFs <- sort(list.files(subF.fp, pattern="fastq.gz"))
+fastqRs <- sort(list.files(subR.fp, pattern="fastq.gz"))
+
+# Check to make sure your forward and reverse read files are in order.
+if(length(fastqFs) != length(fastqRs)) stop("Forward and reverse files do not match.")
+````
+````{r }
+# If the number of samples is 20 or less, plot them all, otherwise, just plot 20 randomly selected samples
+if( length(fastqFs) <= 20) {
+  plotQualityProfile(paste0(subF.fp, "/", fastqFs))
+  plotQualityProfile(paste0(subR.fp, "/", fastqRs))
+} else {
+  rand_samples <- sample(size = 20, 1:length(fastqFs)) # grab 20 random samples to plot
+  fwd_qual_plots <- plotQualityProfile(paste0(subF.fp, "/", fastqFs[rand_samples]))
+  rev_qual_plots <- plotQualityProfile(paste0(subR.fp, "/", fastqRs[rand_samples]))
+}
+
+fwd_qual_plots
+rev_qual_plots
+````
+````{r }
+# write plots to disk
+saveRDS(fwd_qual_plots, paste0(filter.fp, "/fwd_qual_plots.rds"))
+saveRDS(rev_qual_plots, paste0(filter.fp, "/rev_qual_plots.rds"))
+
+ggsave(plot = fwd_qual_plots, filename = paste0(filter.fp, "/fwd_qual_plots.png"), 
+       width = 10, height = 10, dpi = "retina")
+ggsave(plot = rev_qual_plots, filename = paste0(filter.fp, "/rev_qual_plots.png"), 
+       width = 10, height = 10, dpi = "retina")
+````
+````{r }
+filt_out <- filterAndTrim(fwd = file.path(subF.fp, fastqFs), 
+                          filt = file.path(filtpathF, fastqFs),
+                          rev = file.path(subR.fp, fastqRs), 
+                          filt.rev = file.path(filtpathR, fastqRs),
+                          truncLen = c(150,140), 
+                          maxEE = c(2,2), 
+                          truncQ = 2, 
+                          maxN = 0,
+                          rm.phix = TRUE,
+                          compress = TRUE, 
+                          verbose = TRUE, 
+                          multithread = TRUE)
+
+# look at how many reads were kept
+filt_out
+
+# summary of samples in filt_out by percentage
+filt_out %>% 
+  data.frame() %>% 
+  mutate(Samples = rownames(.),
+         percent_kept = 100*(reads.out/reads.in)) %>%
+  select(Samples, everything()) %>%
+  summarise(min_remaining = paste0(round(min(percent_kept), 2), "%"), 
+            median_remaining = paste0(round(median(percent_kept), 2), "%"),
+            mean_remaining = paste0(round(mean(percent_kept), 2), "%"), 
+            max_remaining = paste0(round(max(percent_kept), 2), "%"))
+#Despite the 2x250 sequencing, we chose an aggressive truncation length here based on the quality profiles. These parameters still preserves a 40bp overlap for merging.
+#We do not see a difference in read preservation throughout the pipeline using these lengths vs. less aggressive truncLen (e.g. 200, 160)
+````
+````{r }
+# figure out which samples, if any, have been filtered out
+if( length(fastqFs) <= 20) {
+  remaining_samplesF <-  fastqFs[
+  which(fastqFs %in% list.files(filtpathF))] # keep only samples that haven't been filtered out
+remaining_samplesR <-  fastqRs[
+  which(fastqRs %in% list.files(filtpathR))] # keep only samples that haven't been filtered out
+fwd_qual_plots_filt <- plotQualityProfile(paste0(filtpathF, "/", remaining_samplesF))
+rev_qual_plots_filt <- plotQualityProfile(paste0(filtpathR, "/", remaining_samplesR))
+} else {
+remaining_samplesF <-  fastqFs[rand_samples][
+  which(fastqFs[rand_samples] %in% list.files(filtpathF))] # keep only samples that haven't been filtered out
+remaining_samplesR <-  fastqRs[rand_samples][
+  which(fastqRs[rand_samples] %in% list.files(filtpathR))] # keep only samples that haven't been filtered out
+fwd_qual_plots_filt <- plotQualityProfile(paste0(filtpathF, "/", remaining_samplesF))
+rev_qual_plots_filt <- plotQualityProfile(paste0(filtpathR, "/", remaining_samplesR))
+}
+
+fwd_qual_plots_filt
+rev_qual_plots_filt
+
+# write plots to disk
+saveRDS(fwd_qual_plots_filt, paste0(filter.fp, "/fwd_qual_plots_filt.rds"))
+saveRDS(rev_qual_plots_filt, paste0(filter.fp, "/rev_qual_plots_filt.rds"))
+
+ggsave(plot = fwd_qual_plots_filt, filename = paste0(filter.fp, "/fwd_qual_plots_filt.png"), 
+       width = 10, height = 10, dpi = "retina")
+ggsave(plot = rev_qual_plots_filt, filename = paste0(filter.fp, "/rev_qual_plots_filt.png"), 
+       width = 10, height = 10, dpi = "retina")
+````
+````{r }
+# File parsing
+filtFs <- list.files(filtpathF, pattern="fastq.gz", full.names = TRUE)
+filtRs <- list.files(filtpathR, pattern="fastq.gz", full.names = TRUE)
+
+# Sample names in order
+sample.names <- substring(basename(filtFs), regexpr("_", basename(filtFs)) + 1) # doesn't drop fastq.gz
+sample.names <- gsub(".fastq.gz", "", sample.names)
+sample.namesR <- substring(basename(filtRs), regexpr("_", basename(filtRs)) + 1) # doesn't drop fastq.gz
+sample.namesR <- gsub(".fastq.gz", "", sample.namesR)
+
+# Double check
+if(!identical(sample.names, sample.namesR)) stop("Forward and reverse files do not match.")
+names(filtFs) <- sample.names
+names(filtRs) <- sample.names
+````
+````{r }
+set.seed(100) # Seed set to ensure that randomized steps are repeatable
+
+# Learn forward error rates (Notes: randomize default is FALSE)
+errF <- learnErrors(filtFs, nbases = 1e8, multithread = TRUE, randomize = TRUE)
+
+# Learn reverse error rates
+set.seed(100) # reset seed to ensure that randomized steps are repeatable
+errR <- learnErrors(filtRs, nbases = 1e8, multithread = TRUE, randomize = TRUE)
+````
+````{r }
+errF_plot <- plotErrors(errF, nominalQ = TRUE)
+errR_plot <- plotErrors(errR, nominalQ = TRUE)
+
+errF_plot
+errR_plot
+````
+````{r }
+# write error objects and plots to disk
+saveRDS(errF, paste0(filtpathF, "/errF.rds"))
+saveRDS(errR, paste0(filtpathR, "/errR.rds"))
+saveRDS(errF_plot, paste0(filtpathF, "/errF_plot.rds"))
+saveRDS(errR_plot, paste0(filtpathR, "/errR_plot.rds"))
+````
+````{r }
+# samples pooled to preserve rare taxa (see https://github.com/fiererlab/dada2_fiererlab for more explanation of this)
+# Dereplicate forward reads
+derepF.p <- derepFastq(filtFs)
+names(derepF.p) <- sample.names
+# Infer sequences for forward reads
+dadaF.p <- dada(derepF.p, err = errF, multithread = TRUE, pool = TRUE)
+names(dadaF.p) <- sample.names
+
+# Dereplicate reverse reads
+derepR.p <- derepFastq(filtRs)
+names(derepR.p) <- sample.names
+# Infer sequences for reverse reads
+dadaR.p <- dada(derepR.p, err = errR, multithread = TRUE, pool = TRUE)
+names(dadaR.p) <- sample.names
+
+# Merge reads together
+mergers <- mergePairs(dadaF.p, derepF.p, dadaR.p, derepR.p)
+````
+````{r }
+seqtab <- makeSequenceTable(mergers)
+
+# Save table as an r data object file
+dir.create(table.fp)
+saveRDS(seqtab, paste0(table.fp, "/seqtab.rds"))
+````
+````{r }
+# Read in RDS 
+st.all <- readRDS(paste0(table.fp, "/seqtab.rds"))
+
+# Remove chimeras
+seqtab.nochim <- removeBimeraDenovo(st.all, 
+                                    method = "consensus", 
+                                    multithread = TRUE)
+
+# Print percentage of our sequences that were not chimeric.
+100*sum(seqtab.nochim)/sum(seqtab)
+
+# Print starting number of ASVs, number of chimeras, and non-chimeric ASVs
+ncol(st.all) # starting number of ASVs
+ncol(st.all) - ncol(seqtab.nochim) # number of chimeras. there are removed.
+ncol(seqtab.nochim) # number of non-chimeric ASVs
+
+# Assign taxonomy
+tax <- assignTaxonomy(seqtab.nochim, "/data/dragonen/software/silva/silva_nr99_v138.2_toSpecies_trainset.fa.gz", tryRC = TRUE,
+                      multithread=TRUE)
+
+# Write results to disk
+saveRDS(seqtab.nochim, paste0(table.fp, "/seqtab_final.rds"))
+saveRDS(tax, paste0(table.fp, "/tax_final.rds"))
+````
+````{r }
+# Flip table
+seqtab.t <- as.data.frame(t(seqtab.nochim))
+
+# Pull out ASV repset
+rep_set_ASVs <- as.data.frame(rownames(seqtab.t))
+rep_set_ASVs <- mutate(rep_set_ASVs, ASV_ID = 1:n())
+rep_set_ASVs$ASV_ID <- sub("^", "ASV_", rep_set_ASVs$ASV_ID)
+rep_set_ASVs$ASV <- rep_set_ASVs$`rownames(seqtab.t)` 
+rep_set_ASVs$`rownames(seqtab.t)` <- NULL
+
+# Add ASV numbers to table
+rownames(seqtab.t) <- rep_set_ASVs$ASV_ID
+
+# Add ASV numbers to taxonomy
+taxonomy <- as.data.frame(tax)
+taxonomy$ASV <- as.factor(rownames(taxonomy))
+taxonomy <- merge(rep_set_ASVs, taxonomy, by = "ASV")
+rownames(taxonomy) <- taxonomy$ASV_ID
+# Note: If you used a database that only goes to genus level, delete the "Species" level here.
+# Note: In mctoolsr, these will correspond to taxonomy1-8 (or 1-7 for genus level)
+taxonomy_for_mctoolsr <- unite(taxonomy, 
+                               "taxonomy", 
+                                c("Kingdom", "Phylum", "Class", "Order", 
+                                  "Family", "Genus", "Species", "ASV_ID"),
+                                sep = ";")
+
+# Write repset to fasta file
+# create a function that writes fasta sequences
+writeRepSetFasta<-function(data, filename){
+  fastaLines = c()
+  for (rowNum in 1:nrow(data)){
+    fastaLines = c(fastaLines, as.character(paste(">", data[rowNum,"name"], sep = "")))
+    fastaLines = c(fastaLines,as.character(data[rowNum,"seq"]))
+  }
+  fileConn<-file(filename)
+  writeLines(fastaLines, fileConn)
+  close(fileConn)
+}
+
+# Arrange the taxonomy dataframe for the writeRepSetFasta function
+# Note: Remove Species according to your database.
+taxonomy_for_fasta <- taxonomy %>%
+  unite("TaxString", 
+        c("Kingdom", "Phylum", "Class", "Order", 
+          "Family", "Genus", "Species", "ASV_ID"), 
+        sep = ";", 
+        remove = FALSE) %>%
+  unite("name", 
+        c("ASV_ID", "TaxString"), 
+        sep = " ", 
+        remove = TRUE) %>%
+  select(ASV, name) %>%
+  rename(seq = ASV)
+
+# write fasta file
+writeRepSetFasta(taxonomy_for_fasta, paste0(table.fp, "/repset.fasta"))
+
+# Merge taxonomy and table
+seqtab_wTax <- merge(seqtab.t, taxonomy_for_mctoolsr, by = 0)
+seqtab_wTax$ASV <- NULL 
+
+# Set name of table in mctoolsr format and save
+out_fp <- paste0(table.fp, "/seqtab_wTax_mctoolsr.txt")
+names(seqtab_wTax)[1] = "#ASV_ID"
+write("#Exported for mctoolsr", out_fp)
+suppressWarnings(write.table(seqtab_wTax, out_fp, sep = "\t", row.names = FALSE, append = TRUE))
+
+# Also export files as .txt
+write.table(seqtab.t, file = paste0(table.fp, "/seqtab_final.txt"),
+            sep = "\t", row.names = TRUE, col.names = NA)
+write.table(tax, file = paste0(table.fp, "/tax_final.txt"), 
+            sep = "\t", row.names = TRUE, col.names = NA)
+
+````
+````{r }
+getN <- function(x) sum(getUniques(x)) # function to grab sequence counts from output objects
+# tracking reads by counts
+filt_out_track <- filt_out %>%
+  data.frame() %>%
+  mutate(Sample = gsub("(R1\\_)(.{1,})(\\.fastq\\.gz)","\\2",rownames(.))) %>%
+  rename(input = reads.in, filtered = reads.out)
+rownames(filt_out_track) <- filt_out_track$Sample
+
+# If you did not pool samples, use this
+#ddF_track <- data.frame(denoisedF = sapply(ddF[sample.names], getN)) %>%
+#  mutate(Sample = row.names(.))
+#ddR_track <- data.frame(denoisedR = sapply(ddR[sample.names], getN)) %>%
+#  mutate(Sample = row.names(.))
+
+# If you used samples = pooled, use this
+ ddF_track <- data.frame(denoisedF = sapply(derepF.p[sample.names], getN)) %>% mutate(Sample = row.names(.)) 
+ ddR_track <- data.frame(denoisedR = sapply(derepR.p[sample.names], getN)) %>% mutate(Sample = row.names(.))
+
+merge_track <- data.frame(merged = sapply(mergers, getN)) %>%
+  mutate(Sample = row.names(.))
+chim_track <- data.frame(nonchim = rowSums(seqtab.nochim)) %>%
+  mutate(Sample = row.names(.))
+
+track <- left_join(filt_out_track, ddF_track, by = "Sample") %>%
+  left_join(ddR_track, by = "Sample") %>%
+  left_join(merge_track, by = "Sample") %>%
+  left_join(chim_track, by = "Sample") %>%
+  replace(., is.na(.), 0) %>%
+  select(Sample, everything())
+row.names(track) <- track$Sample
+track
+
+# tracking reads by percentage
+track_pct <- track %>% 
+  data.frame() %>%
+  mutate(Sample = rownames(.),
+         filtered_pct = ifelse(filtered == 0, 0, 100 * (filtered/input)),
+         denoisedF_pct = ifelse(denoisedF == 0, 0, 100 * (denoisedF/filtered)),
+         denoisedR_pct = ifelse(denoisedR == 0, 0, 100 * (denoisedR/filtered)),
+         merged_pct = ifelse(merged == 0, 0, 100 * merged/((denoisedF + denoisedR)/2)),
+         nonchim_pct = ifelse(nonchim == 0, 0, 100 * (nonchim/merged)),
+         total_pct = ifelse(nonchim == 0, 0, 100 * nonchim/input)) %>%
+  select(Sample, ends_with("_pct"))
+
+# summary stats of tracked reads averaged across samples
+track_pct_avg <- track_pct %>% summarize_at(vars(ends_with("_pct")), 
+                                            list(avg = mean))
+track_pct_med <- track_pct %>% summarize_at(vars(ends_with("_pct")), 
+                                            list(med = stats::median))
+track_pct_avg
+
+track_pct_med
+
+track_plot <- track %>% 
+  data.frame() %>%
+  mutate(Sample = rownames(.)) %>%
+  gather(key = "Step", value = "Reads", -Sample) %>%
+  mutate(Step = factor(Step, 
+                       levels = c("input", "filtered", "denoisedF", "denoisedR", "merged", "nonchim"))) %>%
+  ggplot(aes(x = Step, y = Reads)) +
+  geom_line(aes(group = Sample), alpha = 0.2) +
+  geom_point(alpha = 0.5, position = position_jitter(width = 0)) + 
+  stat_summary(fun = median, geom = "line", group = 1, color = "steelblue", size = 1, alpha = 0.5) +
+  stat_summary(fun = median, geom = "point", group = 1, color = "steelblue", size = 2, alpha = 0.5) +
+  stat_summary(fun.data = median_hilow, fun.args = list(conf.int = 0.5), 
+               geom = "ribbon", group = 1, fill = "steelblue", alpha = 0.2) +
+  geom_label(data = t(track_pct_avg[1:5]) %>% data.frame() %>% 
+               rename(Percent = 1) %>%
+               mutate(Step = c("filtered", "denoisedF", "denoisedR", "merged", "nonchim"),
+                      Percent = paste(round(Percent, 2), "%")),
+             aes(label = Percent), y = 1.1 * max(track[,2])) +
+  geom_label(data = track_pct_avg[6] %>% data.frame() %>%
+               rename(total = 1),
+             aes(label = paste("Total\nRemaining:\n", round(track_pct_avg[1,6], 2), "%")), 
+             y = mean(track[,6]), x = 6.5) +
+  expand_limits(y = 1.1 * max(track[,2]), x = 7) +
+  theme_classic()
+
+track_plot
+````
+````{r }
+# Write results to disk
+saveRDS(track, paste0(project.fp, "/tracking_reads.rds"))
+saveRDS(track_pct, paste0(project.fp, "/tracking_reads_percentage.rds"))
+saveRDS(track_plot, paste0(project.fp, "/tracking_reads_summary_plot.rds"))
+````
