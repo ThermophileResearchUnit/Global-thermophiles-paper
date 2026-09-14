@@ -1,9 +1,9 @@
 ## DADA2 Workflow
 
-This directory contains scripts used to process raw Illumina amplicon sequencing data using a modified DADA2 pipeline. For this workflow you will need to download the raw sequencing files from NCBI Sequence Read Archive
+This directory contains scripts used to process raw Illumina amplicon sequencing data using a modified DADA2 pipeline. To run the code in "FangCore_dada2_515f-806r_miseq2x250.Rmd" you will need to download the raw sequencing files from NCBI Sequence Read Archive.
 
 Workflow steps:
-1. Demultiplex raw sequencing reads
+1. Demultiplex raw sequencing reads (with barcodes found in file "Fang_Cores_Demult.txt")
 2. Remove sample barcodes, primers, and adapter sequences
 3. Perform read quality filtering and trimming
 4. Learn sequencing error rates
