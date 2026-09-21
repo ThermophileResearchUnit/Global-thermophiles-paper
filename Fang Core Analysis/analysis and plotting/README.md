@@ -10,3 +10,6 @@ Downstream workflows included:
 - Indicator taxa analysis
 - Taxonomic and diversity visualizations
 - Generation of figures
+
+also included:
+Files used for searching for thermophiles within Antarctic soils (which are from https://link.springer.com/article/10.1007/s00300-025-03372-y)
