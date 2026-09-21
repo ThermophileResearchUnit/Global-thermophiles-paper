@@ -1,0 +1,137 @@
+---
+title: "00.Decontam"
+output: html_document
+date: "2026-01-02"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+library(phyloseq)
+library(decontam)
+library(tidyverse)
+```
+```{r}
+# Read table - direct output from dada2 pipeline
+
+tab <- read.delim(
+  "seqtab_wTax_mctoolsr.txt",
+  skip = 1,
+  check.names = FALSE
+)
+```
+```{r}
+#Pipeline formats for mcToolsR, but need in Phyloflash format
+
+tax <- tab[, c("#ASV_ID", "taxonomy")]
+
+taxmat <- stringr::str_split_fixed(
+  tax$taxonomy,
+  ";",
+  n = 8
+)
+
+colnames(taxmat) <- c(
+  "Kingdom",
+  "Phylum",
+  "Class",
+  "Order",
+  "Family",
+  "Genus",
+  "Species",
+  "ASV"
+)
+
+rownames(taxmat) <- tax$`#ASV_ID`
+
+otu <- tab %>%
+  select(-taxonomy)
+
+rownames(otu) <- otu$`#ASV_ID`
+otu$`#ASV_ID` <- NULL
+
+```
+```{r}
+# Indicating samples that are extraction blanks or No template PCR controls
+meta <- data.frame(
+  SampleID = colnames(otu)
+)
+
+meta$is.neg <- grepl("NTC", meta$SampleID) |
+               grepl("FangEB", meta$SampleID)
+
+rownames(meta) <- meta$SampleID
+
+table(meta$is.neg)
+```
+```{r}
+#Double Checking that samples are correctly listed as 
+grepl("^NTC", meta$SampleID) |
+grepl("FangEB", meta$SampleID)
+```
+```{r}
+#Create Phyloflash Objects
+
+otu_ps <- otu_table(
+  as.matrix(otu),
+  taxa_are_rows = TRUE
+)
+
+tax_ps <- tax_table(
+  as.matrix(taxmat)
+)
+
+meta_ps <- sample_data(meta)
+
+ps <- phyloseq(
+  otu_ps,
+  tax_ps,
+  meta_ps
+)
+```
+```{r}
+#Run Decontam in prevalence mode
+contam.df <- isContaminant(
+  ps,
+  method = "prevalence",
+  neg = "is.neg"
+)
+```
+```{r}
+table(contam.df$contaminant)
+```
+```{r}
+contam_tax <- cbind(
+  contam.df,
+  as(tax_table(ps), "matrix")
+)
+
+head(
+  contam_tax[
+    contam_tax$contaminant,
+  ]
+)
+```
+```{r}
+#Remove contamination from tax table
+ps.clean <- prune_taxa(
+  !contam.df$contaminant,
+  ps
+)
+```
+```{r}
+ntaxa(ps)
+ntaxa(ps.clean)
+```
+```{r}
+#Output as phyloflash ASV table
+otu.clean <- otu_table(ps.clean)
+
+write.table(
+  as.data.frame(as.matrix(otu.clean)),
+  "ASV_table_decontam_filtered.txt",
+  sep = "\t",
+  quote = FALSE
+)
+```
