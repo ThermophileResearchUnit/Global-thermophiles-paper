@@ -1,0 +1,281 @@
+---
+title: "2025.10.Fang_Analysis"
+output: html_document
+date: "2025-10-30"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# Load libraries ----
+library(dplyr); packageVersion("dplyr")
+library(ggplot2); packageVersion("ggplot2")
+library(reshape2); packageVersion("reshape2")
+theme_set(theme_bw())
+library(mgcv); packageVersion("mgcv")
+library(tidymv); packageVersion("tidymv")
+library(here)
+library(cowplot)
+library(viridis)
+library(cowplot)
+library(ggtext)
+library(forcats)
+
+suppressMessages(library(car)) # For Levene Test and ANOVA
+suppressMessages(library(PMCMRplus)) # For Nemenyi posthoc test
+```
+```{r}
+colors<-c("white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"lightblue",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"lightgrey",
+"white",
+"lightgrey",
+"white",
+"white",
+"darkgrey",
+"darkgrey",
+"white",
+"lightgrey",
+"white",
+"white",
+"lightgrey",
+"white",
+"lightblue",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"lightgrey",
+"white",
+"lightgrey",
+"white",
+"white",
+"darkgrey",
+"white",
+"lightblue",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"lightblue",
+"white",
+"lightgrey",
+"white",
+"white",
+"lightgrey",
+"white",
+"darkgrey",
+"white",
+"lightblue")
+```
+```{r}
+colors_rev<-c("lightblue",
+"white",
+"darkgrey",
+"white",
+"lightgrey",
+"white",
+"white",
+"lightgrey",
+"white",
+"lightblue",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"lightblue",
+"white",
+"darkgrey",
+"white",
+"white",
+"lightgrey",
+"white",
+"lightgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"lightblue",
+"white",
+"lightgrey",
+"white",
+"white",
+"lightgrey",
+"white",
+"darkgrey",
+"darkgrey",
+"white",
+"white",
+"lightgrey",
+"white",
+"lightgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"lightblue",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white")
+```
+
+```{r}
+colors_rev2<-c("white",
+"darkgrey",
+"white",
+"lightblue",
+"white",
+"darkgrey",
+"white",
+"white",
+"white",
+"white",
+"white",
+"white",
+"lightblue",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"white",
+"white",
+"darkgrey",
+"white",
+"white",
+"white",
+"white",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"lightblue",
+"white",
+"white",
+"white",
+"white",
+"white",
+"white",
+"darkgrey",
+"darkgrey",
+"white",
+"white",
+"white",
+"white",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"lightblue",
+"white",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"darkgrey",
+"white",
+"lightblue",
+"white")
+```
+```{r}
+Fang_Diagram<-read.csv("2025_10_30-Ice_Core_Diagram.csv")
+Fang_Diagram$Order2<-as.factor(Fang_Diagram$Order2)
+
+# Stacked
+Fang_Core_plot<-ggplot(Fang_Diagram, aes(fill=Order2, y=Amount, x=Fang)) + 
+    geom_bar(position="stack", stat="identity")+
+    geom_hline(yintercept = 1179, color = "orange", linetype = "dashed")+
+    geom_hline(yintercept = 0, color = "orange", linetype = "dashed")+
+
+  scale_fill_manual(values=colors_rev2)+
+scale_y_reverse(limits=c(1200, 0), breaks = c(0,100,200,300,400,500,600,700,800,900,1000,1100,1200))+theme_classic()+
+  ylab("Depth (cm)")+ xlab("Fang 1")+
+  theme(
+    axis.text.x = element_blank(),
+    axis.title.y = element_text(size=24, face = "bold"),
+    axis.text.y = element_text(size = 16),
+    axis.title.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    legend.position = "none"
+  )
+ # ylim(0,1100)
+Fang_Core_plot
+```
+
+
+```{r}
+#save_plot(plot = Fang_Core_plot, device="png", base_height= 6, base_width=3, filename = "2026_01_05-Fang_Core_image.png")
+```

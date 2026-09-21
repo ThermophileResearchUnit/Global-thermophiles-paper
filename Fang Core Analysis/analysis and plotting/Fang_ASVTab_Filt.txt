@@ -1,0 +1,145 @@
+#Exported for mctoolsr																										
+#ASV_ID	Fang1	Fang10	Fang11	Fang12	Fang13	Fang14	Fang15	Fang16	Fang17	Fang18	Fang19	Fang2	Fang20	Fang21	Fang22	Fang23	Fang25	Fang3	Fang4	Fang5	Fang6	Fang7	Fang8	Fang9	Fang24	taxonomy
+ASV_1	0	0	0	0	0	0	0	0	0	3	0	0	4727	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Hydrogenophilaceae;NA;NA;ASV_1
+ASV_5	0	0	0	0	0	0	0	0	0	0	0	0	629	0	0	0	0	2	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Lysobacterales;Lysobacteraceae;Vulcaniibacterium;NA;ASV_5
+ASV_6	608	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	4	0	0	0	0	0	1	0	Bacteria;Chloroflexota;Ktedonobacteria;Ktedonobacterales;Ktedonobacteraceae;Thermogemmatispora;NA;ASV_6
+ASV_7	0	0	0	0	0	0	0	0	221	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Actinomycetota;Actinobacteria;Frankiales;Geodermatophilaceae;Modestobacter;NA;ASV_7
+ASV_11	0	0	0	0	0	0	0	0	0	2	0	0	126	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacteroidota;Bacteroidia;Cytophagales;Microscillaceae;OLB12;NA;ASV_11
+ASV_12	0	0	0	0	0	0	0	0	0	0	0	0	119	0	0	0	0	0	0	0	1	0	0	0	2	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Rhodocyclaceae;Methyloversatilis;NA;ASV_12
+ASV_14	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	98	Bacteria;Pseudomonadota;Gammaproteobacteria;Gammaproteobacteria Incertae Sedis;Unknown Family;Acidibacter;NA;ASV_14
+ASV_16	0	0	0	0	0	0	0	0	84	0	0	6	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacteroidota;Bacteroidia;Cytophagales;Hymenobacteraceae;Hymenobacter;NA;ASV_16
+ASV_19	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	74	0	0	0	0	0	0	0	0	Bacteria;Actinomycetota;Actinobacteria;Frankiales;Geodermatophilaceae;Blastococcus;NA;ASV_19
+ASV_20	0	0	0	0	0	0	0	0	69	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacteroidota;Bacteroidia;Cytophagales;Hymenobacteraceae;Hymenobacter;NA;ASV_20
+ASV_24	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	64	Bacteria;Acidobacteriota;Vicinamibacteria;Vicinamibacterales;NA;NA;NA;ASV_24
+ASV_25	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	61	Bacteria;Myxococcota;Polyangiia;Polyangiales;BIrii41;NA;NA;ASV_25
+ASV_26	0	0	0	0	0	0	0	0	60	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Actinomycetota;Actinobacteria;Frankiales;Geodermatophilaceae;Modestobacter;NA;ASV_26
+ASV_28	0	0	0	0	0	0	0	0	0	56	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Pseudomonadales;Pseudomonadaceae;Pseudomonas;mendocina;ASV_28
+ASV_29	0	0	0	0	0	0	0	0	0	0	0	0	55	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Sulfuricellaceae;Sulfuriferula;NA;ASV_29
+ASV_31	0	0	0	0	0	0	0	0	0	0	0	0	54	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Alphaproteobacteria;Hyphomicrobiales;Hyphomicrobiaceae;Hyphomicrobium;NA;ASV_31
+ASV_34	0	0	0	0	0	0	0	0	3	0	0	0	0	0	0	0	43	4	0	0	0	0	0	0	0	Bacteria;Deinococcota;Deinococci;Deinococcales;Trueperaceae;Truepera;NA;ASV_34
+ASV_35	0	0	0	0	0	0	0	0	0	0	0	0	49	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Sutterellaceae;NA;NA;ASV_35
+ASV_36	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	47	0	0	0	Bacteria;Cyanobacteriota;Cyanobacteriia;Cyanobacteriales;Chroococcidiopsaceae;NA;NA;ASV_36
+ASV_37	0	0	0	0	0	0	0	0	8	1	0	0	0	0	0	0	33	0	0	1	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Lysobacterales;Lysobacteraceae;Stenotrophomonas;maltophilia;ASV_37
+ASV_38	40	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Actinomycetota;Rubrobacteria;Rubrobacterales;Rubrobacteriaceae;Rubrobacter;naiadicus;ASV_38
+ASV_41	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	31	1	0	4	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Pseudomonadales;Pseudomonadaceae;Pseudomonas;antarctica;ASV_41
+ASV_42	0	0	0	1	2	0	0	0	0	0	3	7	0	0	1	0	0	0	0	0	0	0	0	0	20	Bacteria;Acidobacteriota;Vicinamibacteria;Vicinamibacterales;NA;NA;NA;ASV_42
+ASV_43	0	0	0	0	0	0	0	0	33	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacteroidota;Bacteroidia;Cytophagales;Hymenobacteraceae;Hymenobacter;terrae;ASV_43
+ASV_46	0	0	0	0	0	0	0	0	0	0	0	0	0	0	33	0	0	0	0	0	0	0	0	0	0	Bacteria;Cyanobacteriota;Cyanobacteriia;Leptolyngbyales;Leptolyngbyaceae;CENA359;NA;ASV_46
+ASV_49	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	29	Bacteria;Bacteroidota;Bacteroidia;Cytophagales;Spirosomataceae;Dyadobacter;NA;ASV_49
+ASV_48	0	0	0	0	0	0	0	0	0	0	0	0	31	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Gemmatimonadota;Gemmatimonadia;Gemmatimonadales;Gemmatimonadaceae;Gemmatimonas;NA;ASV_48
+ASV_51	0	0	0	0	0	0	0	0	0	0	0	28	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Alphaproteobacteria;Hyphomicrobiales;Xanthobacteraceae;NA;NA;ASV_51
+ASV_53	0	0	0	0	0	0	0	0	0	0	0	27	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Oxalobacteraceae;Duganella;NA;ASV_53
+ASV_54	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	27	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Alphaproteobacteria;Rhodospirillales;Magnetospirillaceae;Telmatospirillum;NA;ASV_54
+ASV_55	8	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	1	12	0	3	Bacteria;Actinomycetota;Actinobacteria;Micrococcales;Intrasporangiaceae;Knoellia;NA;ASV_55
+ASV_56	2	0	0	0	0	0	0	0	0	6	0	4	0	0	0	1	0	13	0	0	0	0	0	0	0	Bacteria;Bacillota;Bacilli;Bacillales;Bacillaceae;Geobacillus;thermoleovorans;ASV_56
+ASV_57	0	0	0	0	0	0	0	0	0	1	0	0	0	1	0	0	0	24	0	0	0	0	0	0	0	Bacteria;Actinomycetota;Actinobacteria;Mycobacteriales;Corynebacteriaceae;Corynebacterium;ureicelerivorans;ASV_57
+ASV_60	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	25	Bacteria;Actinomycetota;Thermoleophilia;Gaiellales;NA;NA;NA;ASV_60
+ASV_61	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	25	Bacteria;Acidobacteriota;Thermoanaerobaculia;Thermoanaerobaculales;Thermoanaerobaculaceae;Subgroup 10;NA;ASV_61
+ASV_58	0	0	1	0	0	0	0	0	24	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Alphaproteobacteria;Acetobacterales;Acetobacteraceae;Roseomonas;NA;ASV_58
+ASV_67	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	24	Bacteria;Planctomycetota;Planctomycetes;Isosphaerales;Isosphaeraceae;Aquisphaera;NA;ASV_67
+ASV_64	0	0	0	0	0	0	0	0	0	0	0	24	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Myxococcota;Polyangiia;Haliangiales;Haliangiaceae;NA;NA;ASV_64
+ASV_65	0	0	0	0	0	0	0	0	0	0	0	24	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Lysobacterales;Rhodanobacteraceae;Dyella;NA;ASV_65
+ASV_66	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	24	0	0	Bacteria;Acidobacteriota;Blastocatellia;Blastocatellales;Blastocatellaceae;Blastocatella;NA;ASV_66
+ASV_70	0	0	0	0	0	0	0	0	0	0	0	20	0	0	0	1	1	0	0	0	0	0	0	0	0	Bacteria;Bacillota;Bacilli;Bacillales;Bacillaceae;NA;NA;ASV_70
+ASV_71	0	0	0	0	0	0	0	0	0	0	0	0	22	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Alphaproteobacteria;Rhodospirillales;NA;NA;NA;ASV_71
+ASV_73	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	21	1	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Oxalobacteraceae;Massilia;plicata;ASV_73
+ASV_77	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	21	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Nitrosomonadaceae;Ellin6067;NA;ASV_77
+ASV_75	0	0	0	0	0	0	0	1	0	1	2	0	1	0	0	2	0	0	0	0	0	14	0	0	0	Bacteria;Pseudomonadota;Alphaproteobacteria;Sphingomonadales;Sphingomonadaceae;Sphingomonas;panni;ASV_75
+ASV_76	0	0	0	0	0	0	0	0	0	20	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Comamonadaceae;Alicycliphilus;denitrificans;ASV_76
+ASV_78	10	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	1	0	0	0	0	0	0	0	8	Bacteria;Actinomycetota;Actinobacteria;Propionibacteriales;Nocardioidaceae;Marmoricola;NA;ASV_78
+ASV_79	0	0	0	0	0	0	0	0	20	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Actinomycetota;Actinobacteria;Kineosporiales;Kineosporiaceae;NA;NA;ASV_79
+ASV_85	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	19	Bacteria;Acidobacteriota;Vicinamibacteria;Vicinamibacterales;NA;NA;NA;ASV_85
+ASV_81	0	1	0	0	0	0	1	0	0	0	2	0	3	0	0	0	0	0	0	0	0	0	0	0	12	Bacteria;Verrucomicrobiota;Verrucomicrobiia;Chthoniobacterales;Chthoniobacteraceae;Candidatus Udaeobacter;NA;ASV_81
+ASV_82	0	0	0	0	0	0	5	0	1	1	0	0	0	0	0	0	0	9	0	3	0	0	0	0	0	Bacteria;Actinomycetota;Actinobacteria;Micrococcales;Micrococcaceae;Micrococcus;luteus;ASV_82
+ASV_83	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	19	0	0	0	0	0	0	0	0	Bacteria;Cyanobacteriota;Cyanobacteriia;Cyanobacteriales;NA;NA;NA;ASV_83
+ASV_91	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	18	Bacteria;Verrucomicrobiota;Verrucomicrobiia;Chthoniobacterales;Chthoniobacteraceae;Chthoniobacter;NA;ASV_91
+ASV_92	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	18	Bacteria;Planctomycetota;Planctomycetes;Planctomycetales;NA;NA;NA;ASV_92
+ASV_86	0	0	0	0	0	0	0	0	0	0	0	18	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Planctomycetota;Phycisphaerae;Tepidisphaerales;WD2101 soil group;NA;NA;ASV_86
+ASV_88	0	0	0	0	0	0	0	0	0	17	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Pseudomonadales;Moraxellaceae;Enhydrobacter;NA;ASV_88
+ASV_89	0	0	0	0	0	0	0	0	0	0	0	0	0	0	18	0	0	0	0	0	0	0	0	0	0	Bacteria;Deinococcota;Deinococci;Deinococcales;Deinococcaceae;Deinococcus;NA;ASV_89
+ASV_93	0	0	0	0	0	1	0	0	0	11	0	3	0	0	0	0	1	0	0	0	0	0	0	0	1	Bacteria;Bacillota;Bacilli;Bacillales;Bacillaceae;Niallia;NA;ASV_93
+ASV_94	0	0	0	0	0	0	0	0	0	0	0	17	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacillota;Bacilli;Bacillales;Bacillaceae;Niallia;NA;ASV_94
+ASV_100	0	0	0	0	0	0	0	0	0	0	0	16	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Bacteroidetes vadinHA17;NA;NA;ASV_100
+ASV_101	0	0	0	0	0	0	0	0	0	0	0	16	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Chloroflexota;Gitt-GS-136;NA;NA;NA;NA;ASV_101
+ASV_102	0	0	0	0	0	0	0	0	0	0	0	16	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bdellovibrionota;Oligoflexia;Oligoflexales;Oligoflexaceae;Oligoflexus;NA;ASV_102
+ASV_97	0	0	0	0	0	0	0	0	0	0	0	16	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Chloroflexota;Anaerolineae;Caldilineales;Caldilineaceae;NA;NA;ASV_97
+ASV_98	0	0	0	0	0	0	0	0	0	0	0	16	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Acidobacteriota;Vicinamibacteria;Vicinamibacterales;Vicinamibacteraceae;NA;NA;ASV_98
+ASV_99	0	0	0	0	0	0	0	0	0	0	0	16	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Actinomycetota;Acidimicrobiia;Acidimicrobiales;Acidimicrobiaceae;NA;NA;ASV_99
+ASV_106	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	3	0	0	12	Bacteria;Actinomycetota;Actinobacteria;Micrococcales;Cellulomonadaceae;Cellulomonas;NA;ASV_106
+ASV_104	0	0	0	0	0	0	0	0	0	12	0	0	0	0	0	0	0	0	0	0	0	0	0	0	3	Bacteria;Pseudomonadota;Alphaproteobacteria;Caulobacterales;Caulobacteraceae;Phenylobacterium;NA;ASV_104
+ASV_103	0	0	0	0	0	0	0	0	0	2	0	12	1	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Actinomycetota;Actinobacteria;Micrococcales;Intrasporangiaceae;Terrabacter;NA;ASV_103
+ASV_111	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	14	Bacteria;Actinomycetota;Acidimicrobiia;Microtrichales;Ilumatobacteraceae;NA;NA;ASV_111
+ASV_112	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	14	Bacteria;Planctomycetota;Planctomycetes;Pirellulales;Pirellulaceae;Pir4 lineage;NA;ASV_112
+ASV_113	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	14	Bacteria;Actinomycetota;Thermoleophilia;Gaiellales;NA;NA;NA;ASV_113
+ASV_107	0	0	0	1	0	0	0	0	0	0	1	0	11	0	0	0	0	0	0	0	0	0	0	0	1	Bacteria;Acidobacteriota;Acidobacteriae;Bryobacterales;Bryobacteraceae;Bryobacter;NA;ASV_107
+ASV_109	0	0	0	0	0	0	0	0	0	0	0	11	1	0	0	0	0	1	0	0	0	0	0	0	1	Bacteria;Actinomycetota;Actinobacteria;Frankiales;Nakamurellaceae;Nakamurella;NA;ASV_109
+ASV_108	0	0	0	0	0	0	0	0	0	0	0	14	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Verrucomicrobiota;Verrucomicrobiia;Chthoniobacterales;Chthoniobacteraceae;Chthoniobacter;NA;ASV_108
+ASV_110	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	14	0	0	0	0	0	0	0	Bacteria;Bacillota;Bacilli;Lactobacillales;Lactobacillaceae;Ligilactobacillus;NA;ASV_110
+ASV_122	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	13	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;SC-I-84;NA;NA;ASV_122
+ASV_123	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	13	Bacteria;Pseudomonadota;Alphaproteobacteria;Hyphomicrobiales;Xanthobacteraceae;NA;NA;ASV_123
+ASV_114	13	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Chloroflexota;Ktedonobacteria;Ktedonobacterales;Ktedonobacteraceae;NA;NA;ASV_114
+ASV_116	0	0	0	0	0	11	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacillota;Clostridia;Peptostreptococcales-Tissierellales;Family XI;Anaerococcus;NA;ASV_116
+ASV_117	0	0	0	0	0	0	0	0	0	12	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Rhodocyclaceae;Azospira;oryzae;ASV_117
+ASV_119	0	0	0	0	0	0	0	0	0	0	0	13	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Campylobacterota;Campylobacteria;Campylobacterales;Arcobacteraceae;Arcobacter;NA;ASV_119
+ASV_121	0	0	0	0	0	0	0	0	0	0	0	0	13	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Comamonadaceae;Caldimonas;NA;ASV_121
+ASV_129	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	12	Bacteria;Pseudomonadota;Alphaproteobacteria;Hyphomicrobiales;Xanthobacteraceae;Pseudolabrys;NA;ASV_129
+ASV_124	0	0	0	0	0	0	0	0	0	0	0	0	0	12	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacteroidota;Bacteroidia;Chitinophagales;Chitinophagaceae;Asinibacterium;NA;ASV_124
+ASV_125	0	0	0	0	0	0	0	0	0	0	1	11	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Acidobacteriota;Vicinamibacteria;Vicinamibacterales;Vicinamibacteraceae;NA;NA;ASV_125
+ASV_126	0	0	0	0	0	0	0	0	0	0	0	12	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Planctomycetota;Planctomycetes;Pirellulales;Pirellulaceae;Pir4 lineage;NA;ASV_126
+ASV_128	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	12	0	0	0	0	Bacteria;Planctomycetota;Planctomycetes;Gemmatales;Gemmataceae;NA;NA;ASV_128
+ASV_138	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	11	Bacteria;Actinomycetota;Thermoleophilia;Gaiellales;NA;NA;NA;ASV_138
+ASV_134	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	3	0	0	0	7	0	0	1	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Oxalobacteraceae;Massilia;NA;ASV_134
+ASV_132	0	0	0	0	0	0	0	0	0	0	0	11	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacillota;Bacilli;Paenibacillales;Paenibacillaceae;Paenibacillus;NA;ASV_132
+ASV_133	0	0	0	0	0	0	0	0	0	0	0	0	11	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Gemmatimonadota;Gemmatimonadia;Gemmatimonadales;Gemmatimonadaceae;NA;NA;ASV_133
+ASV_136	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	11	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Pseudomonadales;Moraxellaceae;Psychrobacter;cibarius;ASV_136
+ASV_137	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	11	0	0	Bacteria;Verrucomicrobiota;Verrucomicrobiia;Chthoniobacterales;Chthoniobacteraceae;Chthoniobacter;flavus;ASV_137
+ASV_139	0	0	0	0	0	0	0	0	0	0	0	10	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Actinomycetota;Actinobacteria;Frankiales;Geodermatophilaceae;Geodermatophilus;NA;ASV_139
+ASV_141	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	7	3	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Pseudomonadales;Pseudomonadaceae;Pseudomonas;rhizosphaerae;ASV_141
+ASV_142	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	10	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Halothiobacillales;Halothiobacillaceae;Thiovirga;NA;ASV_142
+ASV_143	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	10	0	0	Bacteria;Actinomycetota;Actinobacteria;Micrococcales;Brevibacteriaceae;Brevibacterium;iodinum;ASV_143
+ASV_153	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	9	Bacteria;Verrucomicrobiota;Verrucomicrobiia;Chthoniobacterales;Xiphinematobacteraceae;Candidatus Xiphinematobacter;NA;ASV_153
+ASV_145	0	0	0	0	0	9	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Alphaproteobacteria;Hyphomicrobiales;Xanthobacteraceae;Nitrobacter;NA;ASV_145
+ASV_147	0	0	0	0	0	0	0	1	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	6	0	Bacteria;Bacillota;Bacilli;Paenibacillales;Paenibacillaceae;Paenibacillus;polymyxa;ASV_147
+ASV_149	0	0	0	0	0	0	0	0	0	0	0	0	9	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Dependentiae;Babeliae;Babeliales;NA;NA;NA;ASV_149
+ASV_150	0	0	0	0	0	0	0	0	0	0	0	0	7	0	0	0	0	0	0	0	0	0	2	0	0	Bacteria;Bacteroidota;Bacteroidia;Chitinophagales;Chitinophagaceae;Lacibacter;NA;ASV_150
+ASV_152	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	9	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Alphaproteobacteria;Hyphomicrobiales;Pleomorphomonadaceae;Pleomorphomonas;NA;ASV_152
+ASV_158	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	8	Bacteria;Bacteroidota;Bacteroidia;Sphingobacteriales;env.OPS 17;NA;NA;ASV_158
+ASV_159	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	8	Bacteria;Actinomycetota;Acidimicrobiia;Acidimicrobiales;Acidimicrobiaceae;Acidiferrimicrobium;NA;ASV_159
+ASV_154	8	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacteroidota;Bacteroidia;Bacteroidales;Dysgonomonadaceae;Proteiniphilum;NA;ASV_154
+ASV_155	0	0	0	0	0	0	0	0	0	0	0	8	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Planctomycetota;Planctomycetes;Pirellulales;Pirellulaceae;Pirellula;NA;ASV_155
+ASV_156	0	0	0	0	0	0	0	0	0	0	0	0	8	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Alphaproteobacteria;Rickettsiales;NA;NA;NA;ASV_156
+ASV_157	0	0	0	0	0	0	0	0	0	8	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Pseudomonadales;Cellvibrionaceae;Cellvibrio;NA;ASV_157
+ASV_170	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	7	Bacteria;Planctomycetota;Planctomycetes;Gemmatales;Gemmataceae;NA;NA;ASV_170
+ASV_171	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	7	Bacteria;Chloroflexota;KD4-96;NA;NA;NA;NA;ASV_171
+ASV_163	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	6	Bacteria;Chloroflexota;TK10;NA;NA;NA;NA;ASV_163
+ASV_164	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	6	Bacteria;Acidobacteriota;Acidobacteriae;Terriglobales;Acidobacteriaceae (Subgroup 1);Occallatibacter;NA;ASV_164
+ASV_168	0	0	0	0	0	0	0	0	0	6	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	Bacteria;Acidobacteriota;Vicinamibacteria;Vicinamibacterales;Vicinamibacteraceae;NA;NA;ASV_168
+ASV_162	1	0	0	0	0	1	3	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacillota;Desulfotomaculia;Desulfotomaculales;Desulfotomaculaceae;Desulfotomaculum;NA;ASV_162
+ASV_166	0	0	0	0	0	0	0	0	0	0	0	0	7	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Dadabacteria;Dadabacteriia;Dadabacteriales;Incertae Sedis;CSP1-2;NA;ASV_166
+ASV_167	0	0	0	0	0	0	0	0	0	7	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Lysobacterales;Lysobacteraceae;Pseudoxanthomonas;NA;ASV_167
+ASV_177	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	6	Bacteria;Acidobacteriota;Vicinamibacteria;Vicinamibacterales;NA;NA;NA;ASV_177
+ASV_178	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	6	Bacteria;Pseudomonadota;Gammaproteobacteria;Steroidobacterales;Steroidobacteraceae;Steroidobacter;NA;ASV_178
+ASV_179	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	6	Bacteria;Chloroflexota;KD4-96;NA;NA;NA;NA;ASV_179
+ASV_175	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	6	0	0	0	Bacteria;Bacteroidota;Bacteroidia;Cytophagales;Hymenobacteraceae;Hymenobacter;NA;ASV_175
+ASV_186	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	5	Bacteria;Actinomycetota;Thermoleophilia;Gaiellales;NA;NA;NA;ASV_186
+ASV_181	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	3	Archaea;Thermoproteota;Nitrososphaeria;Nitrososphaerales;Nitrososphaeraceae;Candidatus Nitrosocosmicus;NA;ASV_181
+ASV_180	0	5	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Enterobacterales;Idiomarinaceae;Aliidiomarina;NA;ASV_180
+ASV_183	0	0	0	0	0	0	0	0	0	0	0	5	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Pseudomonadales;Endozoicomonadaceae;Sansalvadorimonas;NA;ASV_183
+ASV_184	0	0	0	0	0	0	0	0	0	0	0	0	5	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Spirochaetota;Leptospirae;Leptospirales;Leptospiraceae;Turneriella;parva;ASV_184
+ASV_185	0	0	0	0	0	0	0	0	0	5	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Chloroflexota;Ktedonobacteria;Ktedonobacterales;Ktedonobacteraceae;JG30a-KF-32;NA;ASV_185
+ASV_198	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	4	Bacteria;Bacteroidota;Bacteroidia;Flavobacteriales;Crocinitomicaceae;Fluviicola;NA;ASV_198
+ASV_187	3	0	0	0	0	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacillota;Bacilli;Lactobacillales;Lactobacillaceae;Lactobacillus;iners;ASV_187
+ASV_190	0	0	0	0	0	0	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Chloroflexota;OLB14;NA;NA;NA;NA;ASV_190
+ASV_191	0	0	0	0	0	0	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Cyanobacteriota;Cyanobacteriia;Cyanobacteriales;Nostocaceae;Nostoc PCC-73102;NA;ASV_191
+ASV_193	0	0	0	0	0	0	0	0	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Actinomycetota;Actinobacteria;Micrococcales;Micrococcaceae;Kocuria;NA;ASV_193
+ASV_194	0	0	0	0	0	0	0	0	0	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Gemmatimonadota;Gemmatimonadia;Gemmatimonadales;Gemmatimonadaceae;NA;NA;ASV_194
+ASV_195	0	0	0	0	0	0	0	0	0	4	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacteroidota;Bacteroidia;Flavobacteriales;Flavobacteriaceae;Flavobacterium;rivuli;ASV_195
+ASV_203	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	3	Bacteria;Verrucomicrobiota;Verrucomicrobiia;Pedosphaerales;Pedosphaeraceae;NA;NA;ASV_203
+ASV_199	3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacillota;Bacilli;Erysipelotrichales;Erysipelatoclostridiaceae;Erysipelotrichaceae UCG-003;NA;ASV_199
+ASV_200	0	0	0	0	0	0	0	0	0	0	0	0	0	3	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Verrucomicrobiota;Verrucomicrobiia;Chthoniobacterales;Terrimicrobiaceae;FukuN18 freshwater group;NA;ASV_200
+ASV_201	0	0	0	0	0	0	0	0	0	3	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bacteroidota;Bacteroidia;Sphingobacteriales;Sphingobacteriaceae;Sphingobacterium;multivorum;ASV_201
+ASV_207	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	Bacteria;Verrucomicrobiota;Verrucomicrobiia;Verrucomicrobiales;Rubritaleaceae;Luteolibacter;NA;ASV_207
+ASV_208	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	2	Bacteria;Pseudomonadota;Alphaproteobacteria;Reyranellales;Reyranellaceae;Reyranella;NA;ASV_208
+ASV_204	0	0	0	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Bdellovibrionota;Bdellovibrionia;Bdellovibrionales;Pseudobdellovibrionaceae;NA;NA;ASV_204
+ASV_205	0	0	0	0	0	0	0	0	0	0	2	0	0	0	0	0	0	0	0	0	0	0	0	0	0	Bacteria;Dependentiae;Babeliae;Babeliales;NA;NA;NA;ASV_205
+ASV_210	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	0	0	0	0	Bacteria;Pseudomonadota;Gammaproteobacteria;Burkholderiales;Oxalobacteraceae;Duganella;NA;ASV_210
