@@ -14,4 +14,4 @@ Workflow steps:
 9. Assign taxonomy using the SILVA database
 10. Generate ASV and taxonomy tables for downstream analysis
 
-An knit HTML output of the processing used to generate the data used in this analysis is included (FangCore_dada2_515f-806r_miseq2x250.html). The output files are in the folder: dada2_output
+An knit HTML output of the processing used to generate the data used in this analysis is included (FangCore_dada2_515f-806r_miseq2x250.html). The output files are in the folder: output
