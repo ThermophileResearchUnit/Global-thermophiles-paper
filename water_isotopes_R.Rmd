@@ -1,0 +1,61 @@
+---
+title: "water"
+author: "Stephen Noell"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE, 
+                      warning = FALSE,
+                      fig.align = "center",
+                      fig.width = 10,
+                      fig.height = 6)
+```
+
+
+```{r Libraries and seed}
+
+# Libraries
+library("tidyverse")       # data wrangling and visualisation
+library("svglite") #for saving SVGs
+library("ggpubr") #for saving plots
+library("here")            # set the path to the folder 
+library("RColorBrewer")
+
+set.seed(57)
+```
+
+```{r}
+df <- read.csv("water_isotopes.csv", header = TRUE) #%>%
+  #reshape2::melt(., id.vars = "depth")
+
+# Calculate scaling factor to map d-excess range onto Delta 2H range
+scale_factor <- diff(range(df$Delta.2H)) / diff(range(df$d.excess))
+offset <- min(df$Delta.2H) - min(df$d.excess) * scale_factor
+
+plot <- ggplot(df, aes(x = depth)) +
+  geom_line(aes(y = Delta.2H), color = "blue") +
+  geom_point(aes(y = Delta.2H), color = "blue") +
+  geom_line(aes(y = d.excess * scale_factor + offset), color = "red") +
+  geom_point(aes(y = d.excess * scale_factor + offset), color = "red") +
+  scale_y_continuous(
+    name = "Delta 2H",
+    sec.axis = sec_axis(~ (. - offset) / scale_factor, name = "d-excess")
+  ) +
+  xlab("Depth (cm)") +
+  theme_bw() +
+  theme(
+    axis.title.y.left  = element_text(color = "blue"),
+    axis.text.y.left   = element_text(color = "blue"),
+    axis.title.y.right = element_text(color = "red"),
+    axis.text.y.right  = element_text(color = "red")
+  )
+
+plot
+
+#ggsave("Figure S6_water isotopes.png", plot, width = 220, height = 100, units = "mm",dpi = 300)
+#ggsave("Figure S6_water isotopes.svg", plot, width = 220, height = 100, units = "mm",dpi = 300)
+
+```
