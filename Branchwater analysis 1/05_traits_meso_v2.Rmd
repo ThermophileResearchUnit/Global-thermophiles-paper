@@ -1,5 +1,5 @@
 ---
-title: "Branchwater"
+title: "Branchwater traits mesophiles"
 author: "Stephen Noell"
 date: "`r Sys.Date()`"
 output: html_document
@@ -153,6 +153,34 @@ disp_plot <- ggplot(disp2, aes(x = dist, y = value, color = dist)) +
                    facet.by = "variable")  # match your facet_wrap variable
 
 disp_plot
+```
+
+```{r}
+#Are cosmopolitan MAGs more likely to have dormancy genes?
+
+dor <- comb_df2 %>%
+  group_by(MAG) %>%
+  summarise(
+    dormancy_count = sum(COG_ID %in% c("COG3448", "COG3130", "COG1544", "COG4575"), ignore_case = TRUE)
+  ) %>% 
+  as.data.frame(.)
+
+dor2 <- full_join(dor, counts2, by = "MAG") %>%
+  dplyr::mutate(dormancy_count = dormancy_count / (Completeness/100)) %>%
+  dplyr::select(MAG, dormancy_count, dist)
+
+dor_plot <- ggplot(dor2, aes(x = dormancy_count,
+                                         fill = dist)) +
+  geom_density(alpha=.7) +
+  theme_bw() +
+  theme (legend.position = "none",
+         axis.title.x = element_text(size=10),
+         axis.title.y = element_text(size=10)) +
+  scale_fill_manual(values=colorsc) +
+  xlab("Count of\ndormancy-related genes") +
+  ylab("Density")
+
+dor_plot
 ```
 
 
@@ -323,8 +351,7 @@ colon_plot <- ggplot(colon3, aes(x = dist, y = value, color = dist)) +
     axis.ticks.x = element_blank(),
     strip.background = element_blank(),
     strip.placement = "outside",
-    legend.position = "bottom",
-    legend.title = element_text(size=10)
+    legend.position = "none"
   ) +
   stat_pvalue_manual(wilcox_results, 
                    label = "p.adj",
@@ -402,8 +429,7 @@ other_plot <- ggplot(counts5, aes(x = dist, y = value, color = dist)) +
     axis.ticks.x = element_blank(),
     strip.background = element_blank(),
     strip.placement = "outside",
-    legend.position = "bottom",
-    legend.title = element_text(size=10)
+    legend.position = "none"
   ) +
   stat_pvalue_manual(wilcox_results, 
                    label = "p.adj",
@@ -542,30 +568,108 @@ metab_prop2 <- all_hits4 %>%
 metab_prop2
 ```
 
+
+```{r}
+cors <- counts1 %>%
+  dplyr::select(1, 21,34) %>%
+  dplyr::rename(GC_Content = GC....)# %>%
+  #dplyr::filter(max_dist_km > 30000)
+
+cor3 <- cors %>% reshape2::melt(., id.vars = c("MAG", "max_dist_km"))
+cor3$value <- as.numeric(cor3$value)
+
+cor_plot <- ggplot(cor3, aes(x = max_dist_km, y = value)) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = TRUE, formula = y ~ x,color = "black") +
+  stat_cor(aes(label =  ..rr.label..), color = "black") +
+  stat_regline_equation(color = "black", label.y.npc = 0.88) +
+  theme_bw() +
+  xlab("Max distance (km)") +
+ facet_wrap(. ~ variable, scales = "free_y",
+             strip.position = "left", nrow = 2,
+            labeller = as_labeller(c(GC_Content = "GC",
+                                     temp_range = "Temp. range (\u00b0C)"
+                                     ))) +
+  theme(
+    axis.text.x = element_text(size = 10),
+    axis.title.x = element_text(size = 10),
+    axis.title.y = element_blank(),
+    strip.background = element_blank(),
+    strip.placement = "outside"
+  )
+
+cor_plot
+
+# Perform correlation tests for each variable level
+correlation_results <- cor3 %>%
+ # Get unique variable levels
+  pull(variable) %>%
+  unique() %>%
+  na.omit() %>%
+  # Test correlation for each level
+  lapply(function(var_level) {
+    subset_data <- cor3 %>% filter(variable == var_level)
+    
+    if(nrow(subset_data) > 2) {  # Need at least 3 points for correlation
+      test <- cor.test(subset_data$max_dist_km, as.numeric(subset_data$value))
+      
+      # Calculate slope using linear regression
+      lm_model <- lm(value ~ max_dist_km, data = subset_data)
+      slope <- coef(lm_model)[2]
+      
+      data.frame(
+        variable = var_level,
+        n = nrow(subset_data),
+        r = test$estimate,
+        r_squared = test$estimate^2,
+        slope = slope,
+        p_value = test$p.value
+      )
+    } else {
+      NULL
+    }
+  }) %>%
+  bind_rows() %>%
+  mutate(p_adjusted = p.adjust(p_value, method = "BH")) %>%
+  arrange(p_adjusted)
+
+print(correlation_results)
+#note, GC remains significant even after removing four mags with lower distribution: R2 = 0.22, adj p = 0.014
+```
+
+
 ```{r}
 #put together plots
 
-colon_disp <- ggarrange(disp_plot, colon_plot,
-                         nrow = 2,
-                         common.legend = TRUE,
+disp_plot2 <- ggarrange(disp_plot, dor_plot,
+                        ncol = 2,
                         labels = c("A", "B"),
-                         heights = c(0.5, 1))
+                        widths = c(1, 0.5))
 
-disp_other_colon <- ggarrange(colon_disp, other_plot,
+colon_disp <- ggarrange(disp_plot2, colon_plot,
+                         nrow = 2,
+                        labels = c("", "C"),
+                         heights = c(0.7, 1))
+
+other_cor <- ggarrange(other_plot, cor_plot,
+                       nrow = 2,
+                       labels = c("D", "E"),
+                       heights = c(1, 0.5))
+
+disp_other_colon <- ggarrange(colon_disp, other_cor,
                               ncol = 2,
-                              labels = c("", "C"),
-                              common.legend = TRUE,
+                              labels = c("", ""),
                               widths  = c(1, 0.7))
 
 fin_plot <- ggarrange(disp_other_colon, transc_mags,
                         nrow = 2,
-                        labels = c("", "D"),
-                      heights = c(0.8, 1))
+                        labels = c("", "F"),
+                      heights = c(0.6, 1))
 
 fin_plot
 
-#ggsave("../Figure S4_branch_trait_meso_vf.png", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
-#ggsave("../Figure S4_branch_trait_meso_vf.svg", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
+#ggsave("../Figure S4_branch_trait_meso_vf_dor2.png", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
+#ggsave("../Figure S4_branch_trait_meso_vf_dor2.svg", fin_plot, width = 250, height = 300, units = "mm",dpi = 300)
 
 #make table
 table_x <- counts1 %>% select(MAG, dist, num_locations, Site, Domain, Phylum,
