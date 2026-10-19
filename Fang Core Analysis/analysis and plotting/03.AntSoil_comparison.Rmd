@@ -1,0 +1,131 @@
+---
+title: "03.AntSoil_comparison"
+output: html_document
+date: "2026-04-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# R packages required for this tutorial
+suppressMessages(library(mctoolsr)) # For inputting, rarefying, filtering, taxonomic analyses
+suppressMessages(library(plyr)) # For hulls
+suppressMessages(library(tidyverse)) # For data manipulation and plotting
+suppressMessages(library(RColorBrewer)) # For color palettes
+suppressMessages(library(vegan)) # For alpha and beta diversity analyses
+suppressMessages(library(indicspecies)) # For indicator species
+suppressMessages(library(car)) # For Levene Test and ANOVA
+suppressMessages(library(PMCMRplus)) # For Nemenyi posthoc test
+suppressMessages(library(ggh4x)) # For nested facet plots
+suppressMessages(library(emmeans)) # For pairwise comparisons
+suppressMessages(library(multcomp)) # For automated significant difference letters
+suppressMessages(library(zCompositions)) # CLR
+suppressMessages(library(compositions)) # Aitchison
+suppressMessages(library(reshape2)) # For melting
+suppressMessages(library(cowplot)) # For plotting
+suppressMessages(library(dplyr)) # For plotting
+
+
+# Note: This tutorial was run with dplyr 1.1.3. If you are using a newer version of dplyr, you may need to install and load this version using:
+#install.packages("dplyr", version='1.1.3')
+#library(dplyr)
+
+# If you haven't already installed these packages before, you will need to install them with:
+# install.packages()
+
+# For Installing mctoolsR the first time, use:
+# install.packages("devtools")
+# devtools::install_github("leffj/mctoolsr")
+
+# Custom functions
+source("/Users/nbd/Desktop/Work/Other/Alpha_Beta_Tutorial/Alpha-Beta-Tutorial-main/cliffplot_taxa_bars.R")
+source("/Users/nbd/Desktop/Work/Other/Alpha_Beta_Tutorial/Alpha-Beta-Tutorial-main/plot_multipatt_asv.R")
+```
+
+# Loading Data
+## This loads the mctoolsr example dataset.
+```{r}
+# Loading ASV Table
+tax_table_fp = "/Antsoils_03_tabletax/seqtab_wTax_mctoolsr_soils.txt"
+
+# Loading mapping file
+map_fp = "/Antsoils_03_tabletax/Antsoils_Metadata.txt"
+
+
+# Combine the ASV table and mapping file into an mctoolsR object
+input = load_taxa_table(tax_table_fp, map_fp)
+```
+
+```{r}
+# Copy the dataset before doing any filtering
+input_filt <- input
+
+input_filt_1<-filter_data(input_filt,"location_group", filter_vals = c("Blank"))
+
+# New versions call it NA
+input_filt_2 <- filter_taxa_from_input(input_filt_1, at_spec_level = 2, taxa_to_remove = c("NA","Incertae Sedis"))
+##716 removed
+
+# If you want to filter out multiple groups at the same time, you can also do that like this: #24 removed total
+input_filt_3 <- filter_taxa_from_input(input_filt_2, 
+                                     taxa_to_remove = c("Chloroplast",
+                                                        "Mitochondria",
+                                                        "Eukaryota"))
+#384
+
+# However, it's interesting to do it individually to see how much of each DNA category there was!
+
+# Filtering out singletons and doubletons
+# First we'll save the ASV IDs of ASVs with less than 3 total counts
+#singdoub <- data.frame("count" = rowSums(input_filt_bflm2$data_loaded)) %>%
+#  filter(count < 3) %>%
+#  mutate(ASV = rownames(.))
+
+# Now we'll provide that list of ASV IDs to the taxa_IDs_to_remove argument # 7 removed
+#input_filt_bflm2 <- filter_taxa_from_input(input_filt_bflm2,
+#                                     taxa_IDs_to_remove = singdoub$ASV)
+
+# Lets save the filtered but unrarefied dataset.
+saveRDS(input_filt_3, file = "input_filt_AntSoil.rds")
+
+# You can read it in like this:
+input_AntSoil_Filt<- readRDS("input_filt_AntSoil.rds")
+
+#export_taxa_table(input_AntSoil_Filt, "/Users/nbd/Desktop/Work/Research/Antarctic_Cores/05_AnCult_Data/Filtered/2026_04_07-input_filt_AntSoil.txt")
+```
+
+```{r}
+sort(colSums(input_AntSoil_Filt$data_loaded))
+```
+
+```{r}
+Distance_Matrix<-read.csv("2026_04_07-Distance_matrix_output2.csv")
+
+mean(Distance_Matrix$Prop)*100
+min(Distance_Matrix$Prop)*100
+max(Distance_Matrix$Prop)*100
+
+
+cor.test(Distance_Matrix$km,Distance_Matrix$Prop)
+
+Distance_plot<-ggplot(Distance_Matrix, aes(x=km, y=Prop)) + 
+#      geom_rect(aes(xmin =6.5, xmax=65, ymin=-Inf, ymax=Inf), fill = "orange", alpha = 0.5)+
+  geom_point()+
+   # geom_smooth(se=TRUE, color="darkorange4",method="gam")+
+  #ggtitle("Aluminium (%IncMSE = 4.76, p = 0.04)")+
+  #geom_vline(xintercept = 11, linetype="dotted", color = "purple", size =1)+
+  xlab("Distance from Erebus (km))") + ylab("Proportional abundance of thermophiles")+
+  #coord_cartesian(xlim = c(0,30))+
+#scale_x_continuous(limits=c(0, 650), breaks= c(0,130,260,390,520,650))+
+  scale_y_continuous(limits=c(0, 0.1), breaks= c(0,0.02,0.04,0.06,0.08,0.1))+
+  theme(legend.position = "none")
+  
+Distance_plot
+```
+
+
+
+
+
