@@ -1,0 +1,208 @@
+---
+title: "02.Amplicon_Analysis (figures only)"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# Figures are written to /results in Code Ocean, or the working directory elsewhere
+out_dir <- if (dir.exists("/results")) "/results" else "."
+```
+
+```{r libraries}
+suppressMessages(library(mctoolsr))   # load_taxa_table
+suppressMessages(library(plyr))       # kept in original load order (before tidyverse) in case cliffplot_taxa_bars.R uses it
+suppressMessages(library(tidyverse))  # ggplot2, dplyr, readr, forcats
+suppressMessages(library(vegan))      # specnumber, diversity, simper
+suppressMessages(library(cowplot))    # plot_grid, save_plot
+library(RColorBrewer)
+
+source("cliffplot_taxa_bars.R")       # https://github.com/cliffbueno/Alpha-Beta-Tutorial
+```
+
+# Load data
+```{r load}
+input <- load_taxa_table("Fang_ASVTab_Filt.txt", "Fang_Metadata.txt")
+```
+
+# Figure: reads, ASV richness, Shannon
+```{r alpha}
+input$map_loaded$rich <- specnumber(input$data_loaded, MARGIN = 2)
+input$map_loaded$shannon <- diversity(input$data_loaded, index = "shannon", MARGIN = 2)
+
+# Tests (the p-values in the plot titles below are typed in by hand from these)
+wilcox.test(input$map_loaded$rich ~ input$map_loaded$Group)
+wilcox.test(input$map_loaded$shannon ~ input$map_loaded$Group)
+wilcox.test(input$map_loaded$Seq ~ input$map_loaded$Group)
+
+alpha_theme <- theme_bw() +
+  theme(axis.title = element_text(face = "bold", size = 16),
+        axis.text = element_text(size = 14),
+        legend.position = "none",
+        axis.title.x = element_blank())
+
+rich_comp <- ggplot(input$map_loaded, aes(Group, rich, colour = Group)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(size = 3, alpha = 0.5) +
+  labs(x = "Group", y = "ASV Richness", colour = "Group") +
+  scale_y_continuous(limits = c(0, 50), breaks = c(0, 10, 20, 30, 40, 50)) +
+  scale_colour_manual(values = c("lightblue", "darkgrey")) +
+  ggtitle("p > 0.99") +
+  alpha_theme
+
+Shannon_comp <- ggplot(input$map_loaded, aes(Group, shannon, colour = Group)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(size = 3, alpha = 0.5) +
+  labs(x = "Group", y = "Shannon diversity", colour = "Group") +
+  scale_y_continuous(limits = c(0, 4), breaks = c(0, 1, 2, 3, 4)) +
+  scale_colour_manual(values = c("lightblue", "darkgrey")) +
+  ggtitle("p = 0.50") +
+  alpha_theme
+
+Seq_comp <- ggplot(input$map_loaded, aes(Group, log(Seq), colour = Group)) +
+  geom_boxplot(outlier.shape = NA) +
+  geom_jitter(size = 3, alpha = 0.5) +
+  labs(x = "Group", y = "log(Reads)", colour = "Group") +
+  ggtitle("p = 0.79") +
+  scale_y_continuous(limits = c(0, 10), breaks = c(0, 2, 4, 6, 8, 10)) +
+  scale_colour_manual(values = c("lightblue", "darkgrey")) +
+  alpha_theme
+
+FigS_RRS <- plot_grid(Seq_comp, rich_comp, Shannon_comp,
+                      nrow = 1, ncol = 3, align = "vh", labels = "AUTO")
+FigS_RRS
+```
+
+# Figure: taxonomic bars by group, domain to genus
+```{r taxbars}
+PlotK <- cliffplot_taxa_bars(input = input, level = 1, variable = "Group")
+PlotP <- cliffplot_taxa_bars(input = input, level = 2, variable = "Group")
+PlotC <- cliffplot_taxa_bars(input = input, level = 3, variable = "Group")
+PlotO <- cliffplot_taxa_bars(input = input, level = 4, variable = "Group")
+PlotF <- cliffplot_taxa_bars(input = input, level = 5, variable = "Group")
+PlotG <- cliffplot_taxa_bars(input = input, level = 6, variable = "Group")
+
+Supp_Group_TaxBars <- plot_grid(PlotK, PlotP, PlotC, PlotO, PlotF, PlotG,
+                                nrow = 3, ncol = 2, align = "vh", labels = "AUTO")
+Supp_Group_TaxBars
+```
+
+# Figure: taxa associated with Ice vs Tephra
+```{r simper}
+# Regenerates the raw SIMPER table.
+sim <- simper(t(input$data_loaded), input$map_loaded$Group)
+s <- summary(sim)
+write.csv(head(s$Tephra_Ice, n = 145), file.path(out_dir, "SIMPER_ExportALL.csv"))
+```
+
+```{r associated}
+associated_ASVs <- read.csv("2026_04_06-SIMPER_PLOT.csv")
+
+tephra_ice_Associated <- ggplot(associated_ASVs,
+       aes(x = Group,
+           y = fct_reorder(Genus, Order, .desc = TRUE),
+           colour = Group)) +
+  geom_point(aes(size = Avg_Abund)) +
+  scale_size(limits = c(0.001, 300), range = c(1, 7), name = waiver()) +
+  scale_x_discrete(position = "top") +
+  scale_color_manual(values = c("Tephra" = "darkgrey", "Ice" = "lightblue")) +
+  theme_classic() +
+  labs(x = NULL, y = NULL, fill = NULL, size = "Average abundance (reads)") +
+  theme(axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.y = element_text(face = "italic"))
+tephra_ice_Associated
+```
+
+# Figure: core depth, phyla bars, richness, Shannon
+Panels B to D.
+```{r fig1_inputs}
+map <- input$map_loaded %>% mutate(sampleID = rownames(.))
+
+# Replaces Label_plot.csv. Needs rich/shannon from the alpha-diversity chunk above.
+bars_labels <- map %>%
+  transmute(groupby = sampleID, OrderF, Color2 = Group, mean_value = 1,
+            Rich = rich, Shannon = shannon, Seqs = Seq)
+
+# Replaces 2026_01_05-Phyla_bars_Form.csv
+tax_sum_phyla <- summarize_taxonomy(input, level = 2, report_higher_tax = FALSE)
+phyla_bars_Plot <- plot_taxa_bars(tax_sum_phyla, map, "sampleID",
+                                  num_taxa = 12, data_only = TRUE) %>%
+  ungroup() %>%
+  left_join(select(map, sampleID, OrderF), by = c("group_by" = "sampleID"))
+```
+
+```{r fig1_panels}
+Stacked_Labels <- ggplot() +
+  geom_bar(stat = "identity", data = bars_labels,
+           aes(x = fct_reorder(groupby, OrderF, .desc = FALSE), y = mean_value, fill = Color2)) +
+  scale_fill_manual(values = c("Tephra" = "darkgrey", "Ice" = "lightblue")) +
+  coord_flip() +
+  theme_bw() +
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.y = element_text(size = 10),
+        axis.ticks.x = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "bottom",
+        legend.text = element_text(size = 10),
+        legend.title = element_text(face = "bold", size = 10)) +
+  labs(x = "Site", y = "Proportion of Reads", fill = "Sample type")
+
+Stacked_Phyla <- ggplot() +
+  geom_bar(stat = "identity", data = phyla_bars_Plot,
+           aes(x = fct_reorder(group_by, OrderF, .desc = FALSE), y = mean_value, fill = taxon)) +
+  scale_fill_manual(values = c("Other" = "grey", "Verrucomicrobiota" = "#332288",
+                               "Thermoproteota" = "deepskyblue4", "Pseudomonadota" = "#0077BB",
+                               "Planctomycetota" = "#88CCEE", "Deinococcota" = "darkseagreen2",
+                               "Cyanobacteriota" = "#117733", "Chloroflexota" = "#44AA99",
+                               "Bdellovibrionota" = "#355f8d", "Bacteroidota" = "#999933",
+                               "Bacillota" = "#CC6677", "Actinomycetota" = "#AA4499",
+                               "Acidobacteriota" = "mediumpurple3")) +
+  coord_flip() +
+  theme_bw() +
+  theme(axis.text.x = element_text(size = 10, hjust = 1),
+        axis.title.x = element_text(face = "bold", size = 10),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.title.y = element_blank(),
+        legend.position = "bottom",
+        legend.text = element_text(size = 10),
+        legend.title = element_text(face = "bold", size = 10)) +
+  labs(x = "Site", y = "Proportion of Reads", fill = "Phyla")
+
+dot_theme <- theme_bw() +
+  theme(axis.text.x = element_text(size = 10, hjust = 1),
+        axis.title.x = element_text(face = "bold", size = 10),
+        axis.text.y = element_blank(),
+        axis.title.y = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        legend.position = "bottom",
+        legend.title = element_blank())
+
+Samples_Rich <- ggplot(data = bars_labels,
+                       aes(x = fct_reorder(groupby, OrderF, .desc = FALSE), y = Rich, fill = Color2)) +
+  geom_dotplot(binaxis = "y", stackdir = "center", dotsize = 3.0) +
+  coord_flip() +
+  scale_fill_manual(values = c("Ice" = "lightblue", "Tephra" = "darkgrey")) +
+  dot_theme +
+  labs(x = "Site", y = "Richness", fill = "Phyla")
+
+Samples_Shan <- ggplot(data = bars_labels,
+                       aes(x = fct_reorder(groupby, OrderF, .desc = FALSE), y = Shannon, fill = Color2)) +
+  geom_dotplot(binaxis = "y", stackdir = "center", dotsize = 3.0) +
+  scale_y_continuous(limits = c(0, 4), breaks = c(0, 1, 2, 3, 4)) +
+  coord_flip() +
+  scale_fill_manual(values = c("Ice" = "lightblue", "Tephra" = "darkgrey")) +
+  dot_theme +
+  labs(x = "Site", y = "Richness", fill = "Phyla")
+
+Stacked_Labels
+Stacked_Phyla
+Samples_Rich
+Samples_Shan
+
+```
