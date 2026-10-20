@@ -1,0 +1,71 @@
+ASV,average,sd,ratio,ava,avb,Avg_Abund,Group,cumsum,p,ASV_ID,Phyla,Genus,Order,Lab_color,Lab_Col_2,Lab_Col_3
+ASV_1,0.040040472,0.172510907,0.232104002,236.5,0,0,Ice,0.206407763,0.649,ASV_1,Pseudomonadota,Hydrogenophilaceae;NA,1,Thermophile,Red,Black
+ASV_11,0.001487033,0.004936109,0.301256185,6.4,0,0,Ice,0.961460071,0.613,ASV_11,Bacteroidota,Microscillaceae;NA,4,Black,Black,Black
+ASV_12,0.001848264,0.005422349,0.340860464,6.1,0,0,Ice,0.935085669,0.688,ASV_12,Pseudomonadota,Methyloversatilis,5,Thermophile,Red,Black
+ASV_124,0.050574637,0.137860071,0.36685486,0,2.4,2.4,Ice,0.121419478,0.148,ASV_124,Bacteroidota,Asinibacterium,31,Black,Black,Red
+ASV_14,0.009933188,0.032306399,0.30746813,5,0,0,Ice,0.731334446,0.651,ASV_14,Pseudomonadota,Acidibacter,6,geothermal-assocaited,purple,Black
+ASV_19,0.012786137,0.058774427,0.217545922,3.75,0,0,Ice,0.604319427,0.468,ASV_19,Actinomycetota,Blastococcus,7,Black,Black,Black
+ASV_193,0.00123618,0.002620479,0.47173808,0,0.8,0.8,Ice,0.976500523,0.197,ASV_193,Actinomycetota,Kocuria,32,Black,Black,Black
+ASV_20,0.021324098,0.045203257,0.47173808,0,13.8,13.8,Ice,0.494650098,0.197,ASV_20,Bacteroidota,Hymenobacter,27,Black,Black,Black
+ASV_200,0.012643659,0.034465018,0.36685486,0,0.6,0.6,Ice,0.617233876,0.148,ASV_200,Verrucomicrobiota,Terrimicrobiaceae;NA,33,Black,Black,Red
+ASV_204,0.008429106,0.022976679,0.36685486,0,0.4,0.4,Ice,0.758824785,0.148,ASV_204,Bdellovibrionota,Pseudobdellovibrionaceae;NA,35,Black,Black,Red
+ASV_205,0.010293621,0.029017436,0.354739154,0,0.4,0.4,Ice,0.710771616,0.127,ASV_205,Dependentiae,Babeliales;NA;NA,34,Black,Black,Red
+ASV_24,0.004438009,0.019819279,0.223923838,3.2,0,0,Ice,0.884529764,0.537,ASV_24,Acidobacteriota,Vicinamibacterales;NA;NA,8,Black,Black,Black
+ASV_25,0.004229977,0.018890251,0.223923838,3.05,0,0,Ice,0.888850335,0.537,ASV_25,Myxococcota,Polyangiales;NA;NA,9,Black,Black,Black
+ASV_26,0.018542694,0.03930718,0.47173808,0,12,12,Ice,0.513589921,0.197,ASV_26,Actinomycetota,Modestobacter,28,Black,Black,Black
+ASV_28,0.012354795,0.056792139,0.217544102,2.85,0,0,Ice,0.629853274,0.453,ASV_28,Pseudomonadota,Pseudomonas (P. mendocina),10,Black,Black,Black
+ASV_29,0.000458252,0.002008661,0.228137881,2.75,0,0,Ice,0.995614911,0.564,ASV_29,Pseudomonadota,Sulfuriferula,11,geothermal-assocaited,purple,Red
+ASV_31,0.00044992,0.00197214,0.228137881,2.7,0,0,Ice,0.996074467,0.564,ASV_31,Pseudomonadota,Hyphomicrobium,12,Black,Black,Black
+ASV_35,0.000408261,0.001789534,0.228137881,2.45,0,0,Ice,0.997766394,0.563,ASV_35,Pseudomonadota,Sutterellaceae;NA,13,Black,Black,Black
+ASV_36,0.021357815,0.101720766,0.209965146,2.35,0,0,Ice,0.472869301,0.426,ASV_36,Cyanobacteriota,Chroococcidiopsaceae;NA,14,Thermophile,red,Red
+ASV_38,0.002604586,0.011534553,0.225807251,2.1,0,0,Ice,0.924398942,0.531,ASV_38,Actinomycetota,Rubrobacter (R. naiadicus),15,Thermophile,Red,Black
+ASV_43,0.010198481,0.021618949,0.47173808,0,6.6,6.6,Ice,0.721188518,0.197,ASV_43,Bacteroidota,Hymenobacter (H. terrae),29,Black,Black,Black
+ASV_46,0.021471512,0.103453788,0.207546889,1.65,0,0,Ice,0.451054065,0.429,ASV_46,Cyanobacteriota,Leptolyngbyaceae;NA,16,Thermophile,Red,Black
+ASV_48,0.000258287,0.001132154,0.228137881,1.55,0,0,Ice,0.998667674,0.563,ASV_48,Gemmatimonadota,Gemmatimonas,18,Black,Black,Black
+ASV_49,0.006286207,0.023281615,0.270007339,1.55,0,0,Ice,0.801848179,0.625,ASV_49,Bacteroidota,Dyadobacter,17,Thermophile,Red,Black
+ASV_5,0.006086606,0.023127902,0.263171553,31.55,0,0,Ice,0.820650731,0.597,ASV_5,Pseudomonadota,Vulcaniibacterium; NA,2,Thermophile,Red,Black
+ASV_51,0.003153175,0.014283093,0.220762769,1.4,0,0,Ice,0.907434761,0.491,ASV_51,Pseudomonadota,Xanthobacteraceae;NA,19,Black,Black,Red
+ASV_53,0.003040562,0.013772983,0.220762769,1.35,0,0,Ice,0.910540443,0.491,ASV_53,Pseudomonadota,Duganella,21,Black,Black,Red
+ASV_54,0.004662172,0.021445387,0.217397437,1.35,0,0,Ice,0.870681696,0.468,ASV_54,Pseudomonadota,Telmatospirillum,20,Black,Black,Red
+ASV_55,0.00763157,0.029066902,0.262551884,1.3,0,0,Ice,0.774737633,0.551,ASV_55,Actinomycetota,Knoellia,23,Black,Black,Black
+ASV_56,0.010434842,0.03033237,0.344016714,1.3,0,0,Ice,0.700257536,0.639,ASV_56,Bacillota,Geobacillus (G. thermoleovorans),22,Thermophile,Red,red
+ASV_6,0.043165781,0.175015741,0.246639423,30.65,0,0,Ice,0.165509743,0.633,ASV_6,Chloroflexota,Thermogemmatispora,3,Thermophile,Red,Black
+ASV_60,0.001733597,0.007741906,0.223923838,1.25,0,0,Ice,0.953297167,0.537,ASV_60,Actinomycetota,Gaiellales;NA;NA,24,Black,Black,Black
+ASV_61,0.001733597,0.007741906,0.223923838,1.25,0,0,Ice,0.955067893,0.537,ASV_61,Acidobacteriota,Thermoanaerobaculaceae;NA,25,Thermophile,Red,purple
+ASV_7,0.068298921,0.144781446,0.47173808,0,44.2,44.2,Ice,0.069761682,0.197,ASV_7,Actinomycetota,Modestobacter,26,Black,Black,Black
+ASV_79,0.006180898,0.013102393,0.47173808,0,4,4,Ice,0.808161453,0.197,ASV_79,Actinomycetota,Kineosporiaceae;NA,30,Black,Black,purple
+ASV_1,0.040040472,0.172510907,0.232104002,236.5,0,236.5,Tephra,0.206407763,0.649,ASV_1,Pseudomonadota,Hydrogenophilaceae;NA,1,Thermophile,Red,Black
+ASV_11,0.001487033,0.004936109,0.301256185,6.4,0,6.4,Tephra,0.961460071,0.613,ASV_11,Bacteroidota,Microscillaceae;NA,4,Black,Black,Black
+ASV_12,0.001848264,0.005422349,0.340860464,6.1,0,6.1,Tephra,0.935085669,0.688,ASV_12,Pseudomonadota,Methyloversatilis,5,Thermophile,Red,Black
+ASV_124,0.050574637,0.137860071,0.36685486,0,2.4,0,Tephra,0.121419478,0.148,ASV_124,Bacteroidota,Asinibacterium,31,Black,Black,Red
+ASV_14,0.009933188,0.032306399,0.30746813,5,0,5,Tephra,0.731334446,0.651,ASV_14,Pseudomonadota,Acidibacter,6,geothermal-assocaited,purple,Black
+ASV_19,0.012786137,0.058774427,0.217545922,3.75,0,3.75,Tephra,0.604319427,0.468,ASV_19,Actinomycetota,Blastococcus,7,Black,Black,Black
+ASV_193,0.00123618,0.002620479,0.47173808,0,0.8,0,Tephra,0.976500523,0.197,ASV_193,Actinomycetota,Kocuria,32,Black,Black,Black
+ASV_20,0.021324098,0.045203257,0.47173808,0,13.8,0,Tephra,0.494650098,0.197,ASV_20,Bacteroidota,Hymenobacter,27,Black,Black,Black
+ASV_200,0.012643659,0.034465018,0.36685486,0,0.6,0,Tephra,0.617233876,0.148,ASV_200,Verrucomicrobiota,Terrimicrobiaceae;NA,33,Black,Black,Red
+ASV_204,0.008429106,0.022976679,0.36685486,0,0.4,0,Tephra,0.758824785,0.148,ASV_204,Bdellovibrionota,Pseudobdellovibrionaceae;NA,35,Black,Black,Red
+ASV_205,0.010293621,0.029017436,0.354739154,0,0.4,0,Tephra,0.710771616,0.127,ASV_205,Dependentiae,Babeliales;NA;NA,34,Black,Black,Red
+ASV_24,0.004438009,0.019819279,0.223923838,3.2,0,3.2,Tephra,0.884529764,0.537,ASV_24,Acidobacteriota,Vicinamibacterales;NA;NA,8,Black,Black,Black
+ASV_25,0.004229977,0.018890251,0.223923838,3.05,0,3.05,Tephra,0.888850335,0.537,ASV_25,Myxococcota,Polyangiales;NA;NA,9,Black,Black,Black
+ASV_26,0.018542694,0.03930718,0.47173808,0,12,0,Tephra,0.513589921,0.197,ASV_26,Actinomycetota,Modestobacter,28,Black,Black,Black
+ASV_28,0.012354795,0.056792139,0.217544102,2.85,0,2.85,Tephra,0.629853274,0.453,ASV_28,Pseudomonadota,Pseudomonas (P. mendocina),10,Black,Black,Black
+ASV_29,0.000458252,0.002008661,0.228137881,2.75,0,2.75,Tephra,0.995614911,0.564,ASV_29,Pseudomonadota,Sulfuriferula,11,geothermal-assocaited,purple,Red
+ASV_31,0.00044992,0.00197214,0.228137881,2.7,0,2.7,Tephra,0.996074467,0.564,ASV_31,Pseudomonadota,Hyphomicrobium,12,Black,Black,Black
+ASV_35,0.000408261,0.001789534,0.228137881,2.45,0,2.45,Tephra,0.997766394,0.563,ASV_35,Pseudomonadota,Sutterellaceae;NA,13,Black,Black,Black
+ASV_36,0.021357815,0.101720766,0.209965146,2.35,0,2.35,Tephra,0.472869301,0.426,ASV_36,Cyanobacteriota,Chroococcidiopsaceae;NA,14,Thermophile,red,Red
+ASV_38,0.002604586,0.011534553,0.225807251,2.1,0,2.1,Tephra,0.924398942,0.531,ASV_38,Actinomycetota,Rubrobacter (R. naiadicus),15,Thermophile,Red,Black
+ASV_43,0.010198481,0.021618949,0.47173808,0,6.6,0,Tephra,0.721188518,0.197,ASV_43,Bacteroidota,Hymenobacter (H. terrae),29,Black,Black,Black
+ASV_46,0.021471512,0.103453788,0.207546889,1.65,0,1.65,Tephra,0.451054065,0.429,ASV_46,Cyanobacteriota,Leptolyngbyaceae;NA,16,Thermophile,Red,Black
+ASV_48,0.000258287,0.001132154,0.228137881,1.55,0,1.55,Tephra,0.998667674,0.563,ASV_48,Gemmatimonadota,Gemmatimonas,18,Black,Black,Black
+ASV_49,0.006286207,0.023281615,0.270007339,1.55,0,1.55,Tephra,0.801848179,0.625,ASV_49,Bacteroidota,Dyadobacter,17,Thermophile,Red,Black
+ASV_5,0.006086606,0.023127902,0.263171553,31.55,0,31.55,Tephra,0.820650731,0.597,ASV_5,Pseudomonadota,Vulcaniibacterium; NA,2,Thermophile,Red,Black
+ASV_51,0.003153175,0.014283093,0.220762769,1.4,0,1.4,Tephra,0.907434761,0.491,ASV_51,Pseudomonadota,Xanthobacteraceae;NA,19,Black,Black,Red
+ASV_53,0.003040562,0.013772983,0.220762769,1.35,0,1.35,Tephra,0.910540443,0.491,ASV_53,Pseudomonadota,Duganella,21,Black,Black,Red
+ASV_54,0.004662172,0.021445387,0.217397437,1.35,0,1.35,Tephra,0.870681696,0.468,ASV_54,Pseudomonadota,Telmatospirillum,20,Black,Black,Red
+ASV_55,0.00763157,0.029066902,0.262551884,1.3,0,1.3,Tephra,0.774737633,0.551,ASV_55,Actinomycetota,Knoellia,23,Black,Black,Black
+ASV_56,0.010434842,0.03033237,0.344016714,1.3,0,1.3,Tephra,0.700257536,0.639,ASV_56,Bacillota,Geobacillus (G. thermoleovorans),22,Thermophile,Red,red
+ASV_6,0.043165781,0.175015741,0.246639423,30.65,0,30.65,Tephra,0.165509743,0.633,ASV_6,Chloroflexota,Thermogemmatispora,3,Thermophile,Red,Black
+ASV_60,0.001733597,0.007741906,0.223923838,1.25,0,1.25,Tephra,0.953297167,0.537,ASV_60,Actinomycetota,Gaiellales;NA;NA,24,Black,Black,Black
+ASV_61,0.001733597,0.007741906,0.223923838,1.25,0,1.25,Tephra,0.955067893,0.537,ASV_61,Acidobacteriota,Thermoanaerobaculaceae;NA,25,Thermophile,Red,purple
+ASV_7,0.068298921,0.144781446,0.47173808,0,44.2,0,Tephra,0.069761682,0.197,ASV_7,Actinomycetota,Modestobacter,26,Black,Black,Black
+ASV_79,0.006180898,0.013102393,0.47173808,0,4,0,Tephra,0.808161453,0.197,ASV_79,Actinomycetota,Kineosporiaceae;NA,30,Black,Black,purple
